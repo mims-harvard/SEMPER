@@ -176,7 +176,7 @@ python construct_siletti_transposenet.py -rank_filename ../data/siletti_superclu
 def main():
 
     parser = argparse.ArgumentParser(description="Constructing cell type specific PPI networks.")
-    parser.add_argument("-transposenet_ppi_dir", type=str, default="../data/TransposeNet_v2/", help="Filename (prefix) of ranked genes.")
+    parser.add_argument("-transposenet_ppi_dir", type=str, default="../data/TransposeNet_v3/", help="Filename (prefix) of ranked genes.")
     parser.add_argument("-rank_filename", type=str, default="../data/siletti_supercluster_cluster", help="Filename (prefix) of ranked genes.")
     parser.add_argument("-celltype_ppi_filename", type=str, default="../data/siletti_transposenet", help="Filename (prefix) of cell type specific PPI.")
     parser.add_argument("-celltype_ppi_dir", type=str, default="../data/networks/ppi_edgelists/", help="Directory to save cell type specific PPI.")
