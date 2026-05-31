@@ -73,7 +73,7 @@ SEMPER was trained on the following inputs:
 | Input | Description |
 |---|---|
 | Background interactome | Global human reference PPI network |
-| Cell type-specific PPI networks | One edgelist per CNS cell type (STRING threshold ≥ 4000) |
+| Cell type-specific PPI networks | One edgelist per CNS cell type |
 | BTO metagraph | Cell type / tissue hierarchy edgelist |
 | Protein sequences | Canonical amino acid sequences (FASTA) retrieved via Ensembl and UniProt |
 
