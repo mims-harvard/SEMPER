@@ -16,7 +16,6 @@ label dictionary.
 
 Single unified script. Loads one specific cluster, runs Leiden community detection,
 produces a Nature-style UMAP colored by module, and tests GO term enrichment per module.
-This is how Figure 2e was generated — on the dopaminergic neuron cluster (ID 395).
 
 ```bash
 python cluster_and_enrich.py \
