@@ -1,7 +1,6 @@
 # Evaluating SEMPER
 
-This directory contains scripts to reproduce the core evaluation analyses from
-the SEMPER paper. All scripts operate on `esm_projected.pth` and its companion
+All scripts operate on `esm_projected.pth` and its companion
 label dictionary.
 
 **Required files** (download from [Figshare](#)):
