@@ -25,7 +25,7 @@ data/
 ├── ensp2lowestgo.json.gz                      # Fig 2e: ENSP → most-specific GO annotations
 │                                              #         (different from ensp2go above)
 │
-├── laman_trip_association_scores/             # Fig 2f: Laman Trip et al. co-abundance CSVs
+├── laman_trip_association_scores/             # Fig 2f: Laman Trip et al. co-abundance CSVs, download from [Laman Trip et al., Nat Commun 2022](https://doi.org/10.1038/s41467-022-34544-2) | Protein co-abundance association scores across 11 tissues
 │   ├── cohorts_combined_brain_tumor_avg_outer_prob.csv
 │   ├── cohorts_combined_ovary_tumor_avg_outer_prob.csv
 │   └── ...                                   # one CSV per tissue
