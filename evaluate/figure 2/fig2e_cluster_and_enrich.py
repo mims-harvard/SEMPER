@@ -13,7 +13,6 @@ import scanpy as sc
 import anndata
 import matplotlib.pyplot as plt
 
-# ----------------- Text & ID Helpers -----------------
 _ZWS = "\u200b\u200c\u200d\ufeff"
 
 def _clean(s: Optional[str]) -> str:
@@ -31,7 +30,6 @@ def parse_digits(label: str) -> str:
     m = re.search(r"(\d+)", s)
     return m.group(1) if m else ""
 
-# ----------------- Loaders -----------------
 def load_json_maybe_gz(path: str):
     if path.endswith(".gz"):
         with gzip.open(path, "rt", encoding="utf-8") as f: return json.load(f)
@@ -84,7 +82,6 @@ def load_single_cluster_embedding(embed_path: str, label_dict_path: str, target_
         
     return protein_map
 
-# ----------------- Stats -----------------
 def bh_fdr(pvals: np.ndarray) -> np.ndarray:
     p = np.asarray(pvals, dtype=float)
     n = p.size
@@ -107,7 +104,6 @@ def hypergeom_pval_righttail(k: int, K: int, n: int, N: int) -> float:
     m = max(logs)
     return float(sum(exp(x - m) for x in logs) * exp(m))
 
-# ----------------- Main -----------------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--embed-pt", required=True)
@@ -129,7 +125,7 @@ def main():
     norms[norms == 0] = 1.0
     X = X / norms
     
-    # 2. Pipeline: Neighbors -> Leiden -> UMAP
+    # Neighbors -> Leiden -> UMAP
     print(f"--- Running Unified Pipeline (Res: {args.resolution}) ---")
     adata = anndata.AnnData(X=X)
     adata.obs_names = genes
@@ -138,7 +134,7 @@ def main():
     sc.tl.leiden(adata, resolution=args.resolution, key_added='leiden')
     sc.tl.umap(adata)
     
-    # 3. Export Assignments (Proteins -> Cluster + UMAP Coords)
+    # Export Assignments
     df_assign = pd.DataFrame({
         "Protein_ENSP": genes,
         "Leiden_Cluster": adata.obs['leiden'].values,
@@ -148,25 +144,15 @@ def main():
     df_assign.to_csv(f"{args.out_prefix}_cluster_assignments.csv", index=False)
     print(f"[SUCCESS] Saved protein-level cluster assignments.")
 
-    # 4. Plotting
     import matplotlib.pyplot as plt
-
-    # Set Nature-style fonts
-    plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = ['Arial', 'Helvetica', 'DejaVu Sans']
-
     sc.set_figure_params(dpi=300, frameon=False, figsize=(6, 6))
     
-    # Generate the base scanpy plot
-    # - legend_loc=None: Removes the giant numbers stamped over the data
-    # - title="": Removes the default title (so you can put it in the figure caption)
-    # - size & alpha: Tweaks the dots to look like a continuous cloud
     ax = sc.pl.umap(
         adata, 
         color=['leiden'], 
         legend_loc=None, 
         title="", 
-        size=15,       # Adjust this if dots are too small/large (scanpy scaling varies by n_cells)
+        size=15,
         alpha=0.8, 
         show=False,
         frameon=False,
@@ -174,55 +160,44 @@ def main():
 
     )
     
-    # Scanpy can return a single axis or a list/dict depending on the version and inputs
     if isinstance(ax, dict): ax = ax['leiden']
     elif isinstance(ax, list): ax = ax[0]
         
-    # Ensure axes and default scanpy labels are completely off
     ax.axis('off')
     ax.set_xlabel("")
     ax.set_ylabel("")
     
-    # --- Add the CellWhisperer "L" Scalebar ---
     xmin, xmax = ax.get_xlim()
     ymin, ymax = ax.get_ylim()
     
     x_range = xmax - xmin
     y_range = ymax - ymin
-    
-    # Place the origin of the arrows in the bottom left
     orig_x = xmin + x_range * 0.05
     orig_y = ymin + y_range * 0.05
-    
-    # Arrow lengths
     len_x = x_range * 0.15
     len_y = y_range * 0.15
     
-    # Draw the arrows
     ax.annotate('', xy=(orig_x + len_x, orig_y), xytext=(orig_x, orig_y),
                 arrowprops=dict(arrowstyle="->", lw=1.5, color='black'))
     ax.annotate('', xy=(orig_x, orig_y + len_y), xytext=(orig_x, orig_y),
                 arrowprops=dict(arrowstyle="->", lw=1.5, color='black'))
                 
-    # Add the "UMAP 1" and "UMAP 2" text
     ax.text(orig_x + len_x/2, orig_y - y_range*0.03, 'UMAP 1', 
             ha='center', va='top', fontsize=12, fontweight='bold')
     ax.text(orig_x - x_range*0.03, orig_y + len_y/2, 'UMAP 2', 
             ha='right', va='center', rotation=90, fontsize=12, fontweight='bold')
 
-    # Save with transparent=True for easy Illustrator/PowerPoint assembly
     plt.savefig(f"{args.out_prefix}_umap.png", bbox_inches='tight', transparent=True)
     plt.savefig(f"{args.out_prefix}_umap.pdf", bbox_inches='tight', transparent=True)
     print(f"[SUCCESS] Saved Nature-style UMAP plots.")
     plt.close()
 
-    # 5. GO Enrichment
+    # GO Enrichment
     print(f"--- Running GO Enrichment ({args.ontology}) ---")
     ensp2lowest = load_ensp2lowestgo(args.ensp2lowestgo)
     go2ont = load_go2ont(args.go2ontology)
     onts = ["BP", "MF", "CC"] if args.ontology == "ALL" else [args.ontology]
     
-    # Universe Background
     go_bg = {ont: defaultdict(set) for ont in onts}
     for g in genes:
         ann = ensp2lowest.get(g)

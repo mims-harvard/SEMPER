@@ -1,26 +1,4 @@
 #!/usr/bin/env python3
-"""
-fig2bcd_go_dispersion.py
--------------------------
-Reproduces Figures 2b–d: distribution of mean pairwise squared Euclidean
-distance between SEMPER embeddings of proteins sharing a Gene Ontology (GO)
-term, compared to a random null, for Biological Process (BP), Cellular
-Component (CC), and Molecular Function (MF).
-
-Combines two steps into one run:
-  1. Compute per-GO-term embedding dispersion and the global null
-  2. Run one-sided t-tests and plot the histograms
-
-Usage:
-    python fig2bcd_go_dispersion.py \
-        --ensp2go        data/ensp2go.json.gz \
-        --go2ontology    data/go2ontology.json.gz \
-        --embed-pt       outputs/contrastive/esm_projected.pth \
-        --labels         outputs/contrastive/esm_projected_labels.txt \
-        --out-prefix     outputs/evaluate/fig2_embedding_space/fig2bcd \
-        --min-term-size  10 \
-        --max-term-size  500
-"""
 
 import argparse
 import csv
@@ -37,16 +15,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 
-# ── Globals ────────────────────────────────────────────────────────────────────
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['Arial', 'Helvetica', 'DejaVu Sans']
-plt.rcParams['pdf.fonttype'] = 42
-plt.rcParams['axes.linewidth'] = 1.0
-
 _ZWS = "\u200b\u200c\u200d\ufeff"
-
-
-# ── Utilities ──────────────────────────────────────────────────────────────────
 
 def _clean(s: Optional[str]) -> str:
     if s is None: return ""
@@ -69,9 +38,6 @@ def format_p_value(p: float) -> str:
     if p == 0:   return "p < 1e-300"
     if p < 0.001: return f"p < {p:.1e}"
     return f"p = {p:.4f}"
-
-
-# ── Loaders ────────────────────────────────────────────────────────────────────
 
 def load_json_maybe_gz(path: str):
     if path.endswith(".gz"):
@@ -107,18 +73,11 @@ def build_go2proteins(
         for ont in ("BP", "MF", "CC")
     }
 
-
-# ── Embedding loader ───────────────────────────────────────────────────────────
-
 def build_mean_embeddings(
     embed_pt: str,
     labels_path: str,
     l2_normalize: bool = True,
 ) -> Dict[str, np.ndarray]:
-    """
-    Averages each protein's embeddings across all cell types it appears in,
-    returning one mean vector per ENSP ID.
-    """
     print("[INFO] Loading embeddings...")
     embed = torch.load(embed_pt, map_location="cpu")
 
@@ -178,14 +137,7 @@ def build_mean_embeddings(
     print(f"[INFO] Built mean embeddings for {len(result):,} proteins.")
     return result
 
-
-# ── Dispersion math ────────────────────────────────────────────────────────────
-
 def _dispersion(n: int, sum_vec: np.ndarray) -> float:
-    """
-    Mean pairwise squared Euclidean distance for L2-normalized vectors.
-    = 2 * (1 - ||mean_vec||^2) * (n / (n-1))
-    """
     if n < 2: return float("nan")
     mean_vec     = sum_vec / n
     norm_mean_sq = float(np.dot(mean_vec, mean_vec))
@@ -206,9 +158,6 @@ def global_null(emb: Dict[str, np.ndarray]) -> float:
     if n < 2: return 0.0
     s = sum(v.astype(np.float64) for v in emb.values())
     return _dispersion(n, s)
-
-
-# ── Compute dispersions ────────────────────────────────────────────────────────
 
 def compute_dispersions(
     emb: Dict[str, np.ndarray],
@@ -238,9 +187,6 @@ def compute_dispersions(
     print(f"[SAVED] {out_csv}")
     return null_disp, pd.DataFrame(rows)
 
-
-# ── Stats ──────────────────────────────────────────────────────────────────────
-
 def run_ttest(ont: str, deltas: List[float]) -> None:
     n = len(deltas)
     if n < 2:
@@ -255,9 +201,6 @@ def run_ttest(ont: str, deltas: List[float]) -> None:
     print(f"  P-value (1-tail): {p_val:.4e}")
     sig = p_val < 0.05 and mean_d < 0
     print(f"  Result: {'SIGNIFICANT' if sig else 'not significant'}")
-
-
-# ── Plotting ───────────────────────────────────────────────────────────────────
 
 COLORS      = {"BP": "#a8dadc", "MF": "#1d3557", "CC": "#457b9d"}
 LINE_COLORS = {"BP": "#457b9d", "MF": "#0b1d35", "CC": "#1d4e70"}
@@ -300,9 +243,6 @@ def plot_histogram(df: pd.DataFrame, ont: str, null_disp: float, out_prefix: str
                     transparent=True, bbox_inches="tight")
     plt.close()
     print(f"[SUCCESS] Saved {out_prefix}_{ont}.pdf / .png")
-
-
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     ap = argparse.ArgumentParser(

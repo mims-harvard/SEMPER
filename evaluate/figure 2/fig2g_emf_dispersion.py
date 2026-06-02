@@ -1,44 +1,4 @@
 #!/usr/bin/env python3
-"""
-fig2g_emf_dispersion.py
-------------------------
-Reproduces Figure 2g: distribution of centroid dispersion — defined as the
-mean L2 distance of a protein's cell type-specific embeddings from its global
-centroid — for computationally predicted extreme multifunctional (EMF) proteins
-vs. all other proteins in the proteome.
-
-Combines two steps into one run:
-  1. Compute per-protein centroid dispersion from esm_projected.pth
-  2. Map an EMF gene list to ENSP IDs, split into EMF vs. background,
-     run Mann-Whitney U, and plot the density histogram
-
-In the paper, the EMF gene set (n=243) was derived from MoonDB
-(https://moondb.hb.univ-amu.fr). To reproduce exactly, download the MoonDB
-extreme multifunctional protein list and pass gene symbols as --emf-genes.
-
-Usage:
-    python fig2g_emf_dispersion.py \
-        --embed-pt      outputs/contrastive/esm_projected.pth \
-        --labels        outputs/contrastive/esm_projected_labels.txt \
-        --ensp-json     data/ensp_to_gene.json \
-        --emf-genes     data/moondb_emf_genes.txt \
-        --out-prefix    outputs/evaluate/fig2_embedding_space/fig2g \
-        --metric        disp_centroid_mean_l2 \
-        --exclude-k1
-
-Arguments:
-    --embed-pt       Path to esm_projected.pth
-    --labels         Path to esm_projected_labels.txt
-    --ensp-json      Path to ensp_to_gene.json (ENSP -> gene symbol map)
-    --emf-genes      Path to a plain-text file of EMF gene symbols, one per line.
-                     In the paper this was the MoonDB extreme multifunctional
-                     protein set (n=243). Download from https://moondb.hb.univ-amu.fr
-    --out-prefix     Output prefix for CSV and figures
-    --metric         Dispersion metric to use for the plot (default: disp_centroid_mean_l2)
-    --min-contexts   Minimum cell type contexts required to score a protein (default: 1)
-    --exclude-k1     If set, exclude proteins with only 1 context from the comparison
-    --top-k          Number of top outliers to save in a separate CSV (default: 200)
-"""
 
 import argparse
 import json
@@ -56,15 +16,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import mannwhitneyu
 
-# ── Globals ────────────────────────────────────────────────────────────────────
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['Arial', 'Helvetica', 'DejaVu Sans']
-plt.rcParams['pdf.fonttype'] = 42
 
 _ZWS = "\u200b\u200c\u200d\ufeff"
-
-
-# ── Utilities ──────────────────────────────────────────────────────────────────
 
 def _clean(s: Optional[str]) -> str:
     if s is None: return ""
@@ -88,14 +41,10 @@ def format_p_value(p: float) -> str:
     if p < 0.001: return f"p < {p:.1e}"
     return f"p = {p:.4f}"
 
-
-# ── Step 1: Load per-cell-type embeddings ──────────────────────────────────────
-
 def load_celltype_embeddings(
     embed_path: str,
     label_dict_path: str,
 ) -> Dict[str, Dict[str, np.ndarray]]:
-    """Returns {cluster_label -> {ENSP -> np.float32[D]}}"""
     print("[INFO] Loading embeddings...")
     embed = torch.load(embed_path, map_location="cpu")
     with open(label_dict_path, "r") as f:
@@ -142,17 +91,12 @@ def load_celltype_embeddings(
     print(f"[INFO] Loaded {len(per_ct)} clusters.")
     return per_ct
 
-
-# ── Step 2: Compute dispersion metrics ────────────────────────────────────────
-
 def centroid_mean_l2(X: np.ndarray) -> float:
-    """Mean L2 distance of each row to the centroid (mean vector)."""
     if X.shape[0] < 1: return float("nan")
     mu = X.mean(axis=0, keepdims=True)
     return float(np.mean(np.linalg.norm(X - mu, axis=1)))
 
 def mean_pairwise_l2(X: np.ndarray) -> float:
-    """Mean pairwise L2 distance."""
     k = X.shape[0]
     if k < 2: return float("nan")
     G    = X @ X.T
@@ -194,23 +138,33 @@ def compute_protein_dispersions(
     return pd.DataFrame(rows)
 
 
-# ── Step 3: Map EMF gene list to ENSP IDs ─────────────────────────────────────
+def load_emf_genes(xlsx_path: str) -> List[str]:
+    df = pd.read_excel(xlsx_path)
+    needed = {"symbol", "alias"}
+    missing = needed - set(df.columns)
+    if missing:
+        raise ValueError(f"Expected columns {needed}, missing: {missing}. "
+                         f"Found: {df.columns.tolist()}")
 
-def load_emf_genes(path: str) -> List[str]:
-    """Load gene symbols from a plain-text file (one per line)."""
-    with open(path) as f:
-        genes = [line.strip().upper() for line in f if line.strip()]
-    print(f"[INFO] Loaded {len(genes)} EMF gene symbols.")
-    return genes
+    genes = set()
+    for _, row in df.iterrows():
+        sym = str(row["symbol"]).strip() if pd.notnull(row["symbol"]) else ""
+        if sym: genes.add(sym.upper())
+        alias = row.get("alias", "")
+        if pd.notnull(alias) and str(alias).strip():
+            for a in re.split(r"[;,|/]\s*|\s*,\s*", str(alias)):
+                a = a.strip()
+                if a: genes.add(a.upper())
+
+    print(f"[INFO] Loaded {len(df)} MoonDB EMF entries → "
+          f"{len(genes)} unique gene symbols (primary + aliases).")
+    return sorted(genes)
+
 
 def map_genes_to_ensp(
     gene_symbols: List[str],
     ensp_json: str,
 ) -> Dict[str, List[str]]:
-    """
-    Map gene symbols to ENSP IDs using ensp_to_gene.json.
-    Returns {symbol -> [ENSP, ...]}
-    """
     with open(ensp_json) as f:
         ensp_to_gene = json.load(f)
 
@@ -223,11 +177,8 @@ def map_genes_to_ensp(
         ensps = gene_to_ensps.get(gene.upper(), [])
         if ensps:
             mapping[gene] = ensps
-    print(f"[INFO] Mapped {len(mapping)}/{len(gene_symbols)} EMF genes to ENSP IDs.")
+    print(f"[INFO] Mapped {len(mapping)}/{len(gene_symbols)} EMF gene symbols to ENSP IDs.")
     return mapping
-
-
-# ── Step 4: Plot ───────────────────────────────────────────────────────────────
 
 def plot_histogram(
     background_vals: np.ndarray,
@@ -274,8 +225,6 @@ def plot_histogram(
     print(f"  Mean (null): {mean_bg:.4e}  |  Mean (EMF): {mean_hl:.4e}  |  {p_text}")
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
-
 def main():
     ap = argparse.ArgumentParser(
         description="Fig 2g: centroid dispersion for EMF vs. background proteins."
@@ -286,10 +235,10 @@ def main():
                     help="Path to esm_projected_labels.txt")
     ap.add_argument("--ensp-json",     required=True,
                     help="Path to ensp_to_gene.json")
-    ap.add_argument("--emf-genes",     required=True,
-                    help="Plain-text file of EMF gene symbols (one per line). "
-                         "In the paper: MoonDB extreme multifunctional proteins "
-                         "(https://moondb.hb.univ-amu.fr), n=243.")
+    ap.add_argument("--emf-xlsx",      required=True,
+                    help="Path to moondb_emf_idmap.xlsx (columns: symbol, alias). "
+                         "Included in data/moondb_emf_idmap.xlsx. "
+                         "Source: MoonDB (https://moondb.hb.univ-amu.fr)")
     ap.add_argument("--out-prefix",    required=True,
                     help="Output prefix for CSV and figures")
     ap.add_argument("--metric",        default="disp_centroid_mean_l2",
@@ -307,8 +256,6 @@ def main():
 
     # Load
     per_ct = load_celltype_embeddings(args.embed_pt, args.labels)
-
-    # Dispersion
     df = compute_protein_dispersions(per_ct, args.min_contexts, not args.no_l2)
     df.sort_values(args.metric, ascending=False, inplace=True)
     df.to_csv(f"{args.out_prefix}_protein_dispersion.csv", index=False)
@@ -318,8 +265,7 @@ def main():
     # Optionally exclude k=1
     df_rank = df[df["n_contexts"] >= 2].copy() if args.exclude_k1 else df.copy()
 
-    # Map EMF genes
-    emf_genes  = load_emf_genes(args.emf_genes)
+    emf_genes  = load_emf_genes(args.emf_xlsx)
     gene_map   = map_genes_to_ensp(emf_genes, args.ensp_json)
     emf_ensps  = set(e for ensps in gene_map.values() for e in ensps)
 
@@ -333,7 +279,6 @@ def main():
         print("[WARN] No EMF proteins matched. Check --emf-genes and --ensp-json.")
         return
 
-    # Plot
     plot_histogram(bg_vals, emf_vals, args.metric, args.out_prefix)
     print("\n[DONE]")
 

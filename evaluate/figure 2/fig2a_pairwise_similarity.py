@@ -1,23 +1,4 @@
 #!/usr/bin/env python3
-"""
-fig2a_pairwise_similarity.py
------------------------------
-Reproduces Figure 2a: mean pairwise cosine similarity of protein embeddings
-within the same cell type (intra-cell-type) vs. across different cell types
-(inter-cell-type), across 30 CNS superclusters.
-
-Combines two steps into one run:
-  1. Sample pairwise cosine similarity scores from esm_projected.pth
-  2. Run Mann-Whitney U tests (BH-FDR corrected) and plot the dumbbell figure
-
-Usage:
-    python fig2a_pairwise_similarity.py \
-        --embed-pt      outputs/contrastive/esm_projected.pth \
-        --labels        outputs/contrastive/esm_projected_labels.txt \
-        --supercluster-xlsx  data/science.add7046_table_s3.xlsx \
-        --out-prefix    outputs/evaluate/fig2_embedding_space/fig2a \
-        --n-pairs       100000
-"""
 
 import argparse
 import json
@@ -33,15 +14,7 @@ from tqdm import tqdm
 from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
-# ── Globals ────────────────────────────────────────────────────────────────────
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['Arial', 'Helvetica', 'DejaVu Sans']
-plt.rcParams['pdf.fonttype'] = 42
-
 _ZWS = "\u200b\u200c\u200d\ufeff"
-
-
-# ── Utilities ──────────────────────────────────────────────────────────────────
 
 def _clean(s):
     if s is None: return ""
@@ -56,9 +29,6 @@ def get_stars(p):
     if p < 0.01:  return "**"
     if p < 0.05:  return "*"
     return "n.s."
-
-
-# ── Step 1: Load embeddings ────────────────────────────────────────────────────
 
 def load_data(embed_path, label_path):
     print("[INFO] Loading embeddings...")
@@ -89,9 +59,6 @@ def load_data(embed_path, label_path):
 
     print(f"[INFO] Successfully mapped {len(per_ct_emb)} clusters.")
     return per_ct_emb
-
-
-# ── Step 2: Sample pairwise scores ────────────────────────────────────────────
 
 def get_pairwise_scores(tensor, n_pairs=100):
     n = tensor.shape[0]
@@ -133,9 +100,6 @@ def sample_pairwise(per_ct_emb, ct_to_super, n_pairs):
                                  "Type": "Diff Cell Type", "n_types": len(ct_list)})
     return pd.DataFrame(results)
 
-
-# ── Step 3: Stats ──────────────────────────────────────────────────────────────
-
 def compute_stats(df):
     print("[INFO] Computing statistics...")
     superclusters = df["Supercluster"].unique()
@@ -174,8 +138,6 @@ def compute_stats(df):
     agg = pd.DataFrame(stats_temp).sort_values("shift", ascending=True).reset_index(drop=True)
     return agg
 
-
-# ── Step 4: Plot ───────────────────────────────────────────────────────────────
 
 def plot_dumbbell(agg_df, out_prefix):
     color_inter = "#A0A0A0"
@@ -217,8 +179,6 @@ def plot_dumbbell(agg_df, out_prefix):
     plt.close()
     print(f"[SUCCESS] Saved {out_prefix}.pdf / .png")
 
-
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     ap = argparse.ArgumentParser(
