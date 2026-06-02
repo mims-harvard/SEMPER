@@ -3,7 +3,7 @@
 All scripts operate on `esm_projected.pth` and its companion
 label dictionary.
 
-**Required files** (download from [Figshare](#)):
+**Required files**:
 - `esm_projected.pth` — SEMPER embeddings `{cluster_idx → tensor [n_proteins, 512]}`
 - `esm_projected_labels.txt` — label dictionary
 - `ensp_to_gene.json` — ENSP → HGNC gene symbol map
@@ -101,14 +101,3 @@ python calc_hits_significance.py \
     --baselines     PINNACLE PPI-GT ORCA-CT ESM-C \
     --k_values      5 10 25
 ```
-
----
-
-## Summary
-
-| Script | Figure | What it does |
-|---|---|---|
-| `cluster_and_enrich.py` | Fig 2e | Leiden + UMAP + GO enrichment for a specific cell type cluster |
-| `run_target_prioritization.py` | Fig 4 (Step 1) | Compute Hits@K trials CSV per disease and model |
-| `plot_hits_at_k.py` | Fig 4c–g (Step 2) | Multi-model Hits@K comparison plot |
-| `calc_hits_significance.py` | Fig 4 stats (Step 3) | Paired Wilcoxon significance vs. baselines |
