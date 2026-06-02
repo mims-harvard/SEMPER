@@ -1,4 +1,4 @@
-# Figure 2 — Cell type context and biological function structure the SEMPER latent space
+# Figure 2 — SEMPER embedding latent space analysis
 
 This directory contains scripts to reproduce all panels of Figure 2 from the SEMPER paper.
 All scripts require `esm_projected.pth` and `esm_projected_labels.txt` as base inputs,
@@ -32,6 +32,16 @@ data/
 │
 └── moonlightproteins_moondb_allemf_idmap.xlsx                       # Fig 2g: MoonDB EMF gene symbols
 ```
+
+| File | Source | Notes |
+|---|---|---|
+| `esm_projected.pth`, `esm_projected_labels.txt` | [Figshare](#) | Primary SEMPER outputs |
+| `science.add7046_table_s3.xlsx` | [Siletti et al., Science 2023](https://doi.org/10.1126/science.add7046) | Supplementary Table S3 — CNS cell type supercluster annotations |
+| `ensp2go.json.gz`, `go2ontology.json.gz` | Already included in `data/` | Full GO term annotations per protein; GO term → BP/MF/CC namespace |
+| `ensp2lowestgo.json.gz` | Already included in `data/` | Most-specific (lowest-level) GO annotations per protein; used only for Fig 2e enrichment |
+| `laman_trip_association_scores/` | [Laman Trip et al., Nat Commun 2022](https://doi.org/10.1038/s41467-022-34544-2) | Protein co-abundance association scores across 11 tissues |
+| `moondb_emf_idmap.xlsx` | Already included in `data/` | MoonDB EMF proteins (238 entries, columns: symbol, alias). Source: [MoonDB](https://moondb.hb.univ-amu.fr) |
+
 ---
 
 ## Panel-by-panel
