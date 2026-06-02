@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEMPER — Cell Type-Aware Protein Embeddings</title>
+  <title>SEMPER — System-Scale Multimodal Protein Embedding Representations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -309,20 +309,22 @@
 <header>
   <div class="wrap">
     <div class="venue-line">
-      <!-- VENUE: update when known, e.g. "Nature Methods · 2025" -->
-      Preprint · 2025
+      <!-- VENUE: update when known, e.g. "Nature Methods · 2026" -->
+      Preprint · 2026
     </div>
 
     <h1>
-      SEMPER: Cell Type-Aware Protein Embeddings from Sequence and Interaction
+      SEMPER: System-Scale Multimodal Protein Embedding Representations
     </h1>
 
     <div class="author-block">
       <div class="authors">
-        <!-- AUTHORS: replace with full author list -->
         Amy Dong,
-        <!-- co-authors, -->
-        Marinka Zitnik
+        <a href="https://michellemli.com/">Michelle M. Li</a>,
+        XXX,
+        XXX,
+        XXX,
+        <a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a>
       </div>
       <div class="affiliations">
         Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University ·
@@ -546,8 +548,8 @@
         <!-- LINK: replace # with Figshare DOI -->
         Pre-trained Embeddings
       </a>
-      <a href="https://github.com/mims-harvard/SEMPER/blob/main/semper_inference_tutorial.ipynb" class="btn btn-light">
-        Inference Tutorial
+      <a href="https://github.com/mims-harvard/semper/tree/main/evaluate" class="btn btn-light">
+        Evaluate
       </a>
     </div>
 
@@ -558,11 +560,12 @@ conda env create -f environment.yml && conda activate semper
 pip install torch-scatter torch-sparse torch-cluster torch-geometric \
     -f https://data.pyg.org/whl/torch-2.1.0+cu118.html
 
-# 2. Download pre-trained embeddings from Figshare
+# 2. Download pre-trained embeddings from Figshare (link above)
 #    Place esm_projected.pth and esm_projected_labels.txt in outputs/contrastive/
 
-# 3. Run the inference tutorial
-jupyter notebook semper_inference_tutorial.ipynb</pre>
+# 3. Reproduce paper evaluations
+cd evaluate/
+# See evaluate/README.md for full usage of each script</pre>
 
     <div class="repo-tree">
       <span class="dir">SEMPER/</span><br>
@@ -587,24 +590,37 @@ jupyter notebook semper_inference_tutorial.ipynb</pre>
 
     <div class="cite-block">
       <div class="cite-header">BibTeX</div>
-      <pre>@article{semper2025,
-  title   = {SEMPER: Cell Type-Aware Protein Embeddings
-             from Sequence and Interaction},
-  author  = {Dong, Amy and {[co-authors]} and Zitnik, Marinka},
+      <pre>@article{semper2026,
+  title   = {SEMPER: System-Scale Multimodal Protein Embedding Representations},
+  author  = {Dong, Amy and Li, Michelle M. and {[co-authors]} and Zitnik, Marinka},
   journal = {},
-  year    = {2025},
+  year    = {2026},
   url     = {}
 }</pre>
     </div>
 
     <h2 style="margin-top: 56px;">Team</h2>
     <div class="author-grid">
-      <!-- AUTHORS: add one .author-card per author -->
       <div class="author-card">
-        <div class="name"><a href="#">Amy Dong</a></div>
+        <div class="name">Amy Dong</div>
         <div class="role">Harvard University</div>
       </div>
-      <!-- add more cards here -->
+      <div class="author-card">
+        <div class="name"><a href="https://michellemli.com/">Michelle M. Li</a></div>
+        <div class="role">Harvard Medical School</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
       <div class="author-card">
         <div class="name"><a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a></div>
         <div class="role">Harvard Medical School</div>
