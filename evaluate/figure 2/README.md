@@ -1,4 +1,4 @@
-# Figure 2 — Cell type context and biological function structure the SEMPER latent space
+# Figure 2 — SEMPER embedding latent space analysis
 
 This directory contains scripts to reproduce all panels of Figure 2 from the SEMPER paper.
 All scripts require `esm_projected.pth` and `esm_projected_labels.txt` as base inputs,
