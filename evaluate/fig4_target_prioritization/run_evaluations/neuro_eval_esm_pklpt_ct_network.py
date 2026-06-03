@@ -1,34 +1,4 @@
 #!/usr/bin/env python3
-"""
-neuro_eval_esm_pklpt_ct_network.py
-
-ESM evaluator in the SAME "CT network" candidate setting as SEMPER-CT scripts:
-- Seeds still come from seedplan trials (per cluster/cell type).
-- Candidates come from the *cell-type network protein set* for that cluster, derived from the
-  same SEMPER/PINNACLE labels_dict (so universe is CT-specific, not ProTrek).
-- Embeddings are global ESM pkl+pt (prot->idx + [N,D]), then subset to CT candidates.
-- Positives come from an OpenTargets disease gene JSON (HGNC list), intersected with CT candidates.
-
-Example:
-python neuro_eval_esm_pklpt_ct_network.py \
-  --seedplan neuro_seedplan.protrek_intersection.json \
-  --ensp_json /n/holylfs06/LABS/mzitnik_lab/Lab/adong/TransposeNetv3_data/TransposeNet_v3/ENSP_to_pref.json \
-  --pd_gene_file /n/holylfs06/LABS/mzitnik_lab/Lab/adong/PINNACLE_newTransposeNet_DDP_tests/PD_genelist_similarity_test/neurodegen_disease/raw_targets_EFO_0000618.json \
-  --ot_key clinically_relevant_targets \
-  --label_dict /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/.../esm_projected_labels.txt \
-  --esm_pickle /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/test_protein_esmc_600m_official.pkl \
-  --esm_embeddings /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/test_protein_esmc_600m_official.pt \
-  --model_name ESMC_600M \
-  --out_prefix neuro_ESMC600M_ctnet_OTpos \
-  --device cuda \
-  --k_values 5 10 25 \
-  --skip_if_missing_seed
-
-Notes:
-- This script intentionally ignores payload["universe_ensp"] and payload["positive_ensp"].
-- It uses label_dict to define CT candidate proteins, and seedplan ONLY for seed trials.
-"""
-
 import argparse
 import json
 import pickle
@@ -38,11 +8,6 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 import pandas as pd
 import torch
-
-
-# ----------------------------
-# ID normalization
-# ----------------------------
 
 def norm_ensp(x: Any) -> str:
     if x is None:
@@ -63,28 +28,11 @@ def norm_hgnc(x: Any) -> str:
         return ""
     return str(x).strip().upper()
 
-
-# ----------------------------
-# Load OpenTargets disease genes (HGNC)
-# ----------------------------
-
 def load_ot_json(pd_gene_file: str) -> dict:
     with open(pd_gene_file, "r") as f:
         return json.load(f)
 
-
-# ----------------------------
-# Load CT protein lists from labels_dict
-# ----------------------------
-
 def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, List[str]]:
-    """
-    Returns: cluster_id(str) -> list of ENSP proteins in that CT network.
-
-    Works with labels_dict where:
-      labels_dict["Cell Type"] includes CCI_* rows describing cluster ordering
-      labels_dict["Cell Type"] + labels_dict["Name"] contain protein rows with cell type labels (not CCI/BTO/Sanity)
-    """
     with open(label_dict_path, "r") as f:
         labels_raw = f.read()
     labels_raw = labels_raw.replace("'", "\"")
@@ -107,7 +55,7 @@ def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, Lis
         .to_dict()["target"]
     )
 
-    # Build CCI ordering: index -> CCI_* label
+    # Build CCI ordering
     cci_cells = [str(c) for c in labels_dict["Cell Type"] if str(c).startswith("CCI_")]
     seen = set()
     cci_cells_unique = []
@@ -126,11 +74,9 @@ def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, Lis
             s = s.split(":", 1)[1]
         return s
 
-    # cluster_id -> ensp list
     out: Dict[str, List[str]] = {}
 
     for idx, cci_label in idx_to_cci.items():
-        # protein list key might be 'CCI_x' or just 'x' depending on how the table was built
         prot_list_key = None
         if cci_label in celltype_protein_dict:
             prot_list_key = cci_label
@@ -156,19 +102,7 @@ def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, Lis
         raise RuntimeError(f"Could not parse any CT protein lists from {label_dict_path}")
     return out
 
-
-# ----------------------------
-# Load ESM embeddings (pkl + pt)
-# ----------------------------
-
 def load_esm_from_pkl_pt(esm_pickle: str, esm_embeddings: str) -> Dict[str, torch.Tensor]:
-    """
-    Loads:
-      - esm_pickle: dict {protein_id_str -> index_int}
-      - esm_embeddings: tensor/array-like [N, D]
-    Returns:
-      dict {ENSP -> torch.FloatTensor[D]} on CPU
-    """
     with open(esm_pickle, "rb") as f:
         protein_ids = pickle.load(f)  # {prot_str: idx}
 
@@ -178,7 +112,6 @@ def load_esm_from_pkl_pt(esm_pickle: str, esm_embeddings: str) -> Dict[str, torc
     if not isinstance(emb, torch.Tensor):
         emb = torch.tensor(emb)
 
-    # handle dict-like embeddings if needed
     if isinstance(protein_ids, dict):
         index_to_protein = {int(v): k for k, v in protein_ids.items()}
     else:
@@ -202,11 +135,6 @@ def load_esm_from_pkl_pt(esm_pickle: str, esm_embeddings: str) -> Dict[str, torc
         raise RuntimeError("No embeddings loaded. Check that indices in pkl match rows in pt.")
     return out
 
-
-# ----------------------------
-# Metrics / ranking
-# ----------------------------
-
 def apr_at_k(ranked_hgnc: List[str], relevant_set: set, k: int) -> float:
     num_relevant_in_data = len(relevant_set.intersection(ranked_hgnc))
     if num_relevant_in_data == 0:
@@ -225,11 +153,6 @@ def cosine_rank_candidates(E_all: torch.Tensor, seed_vecs: torch.Tensor) -> torc
     E = E_all / (E_all.norm(dim=1, keepdim=True) + 1e-12)
     S = seed_vecs / (seed_vecs.norm(dim=1, keepdim=True) + 1e-12)
     return (E @ S.t()).mean(dim=1)
-
-
-# ----------------------------
-# Main
-# ----------------------------
 
 def main():
     ap = argparse.ArgumentParser(description="Evaluate global ESM pkl+pt on CT-network candidates, seeds from seedplan, positives from OT HGNC.")
@@ -264,19 +187,16 @@ def main():
         ensp_to_hgnc_raw = json.load(f)
     ensp_to_hgnc = {norm_ensp(k): norm_hgnc(v) for k, v in ensp_to_hgnc_raw.items() if v}
 
-    # OT HGNC
     ot_json = load_ot_json(args.pd_gene_file)
     if args.ot_key not in ot_json:
         raise SystemExit(f"[ERROR] Key '{args.ot_key}' not found in {args.pd_gene_file}. Keys: {list(ot_json.keys())[:20]}")
     ot_hgnc = set(norm_hgnc(g) for g in ot_json[args.ot_key] if g)
     print(f"[INFO] OT HGNC loaded: n={len(ot_hgnc)} (key={args.ot_key})")
 
-    # CT candidate protein lists
     print("[INFO] Loading CT protein lists from label_dict...")
     ct_to_proteins = load_ct_protein_lists_from_label_dict(args.label_dict)
     print(f"[INFO] CTs found in label_dict: {len(ct_to_proteins)}")
 
-    # ESM embeddings
     print("[INFO] Loading ESM embeddings (pkl+pt)...")
     esm_dict = load_esm_from_pkl_pt(args.esm_pickle, args.esm_embeddings)
     dim = next(iter(esm_dict.values())).numel()
@@ -303,7 +223,6 @@ def main():
                 skip_counts["missing_cluster_in_label_dict"] += len(trials)
                 continue
 
-            # Candidate ENSPs from CT network, filtered to those with ESM vectors
             ct_prots = [norm_ensp(x) for x in ct_to_proteins[cluster_id]]
             cand = [e for e in ct_prots if e in esm_dict]
             if args.max_candidates and len(cand) > args.max_candidates:
@@ -315,7 +234,6 @@ def main():
 
             E_all = torch.stack([esm_dict[e] for e in cand]).to(device)
 
-            # Relevant HGNC = OT genes that are present in THIS CT candidate set
             relevant_hgnc = set()
             for e in cand:
                 h = ensp_to_hgnc.get(e)
@@ -348,7 +266,7 @@ def main():
 
                 scores = cosine_rank_candidates(E_all, seed_vecs)
 
-                # exclude seeds themselves (even if seed not in CT cand, we still exclude if it is)
+                # exclude seeds themselves
                 seed_set = set(seed_ensp)
                 idxs = [i for i, e in enumerate(cand) if e not in seed_set]
                 if len(idxs) == 0:
