@@ -20,13 +20,15 @@ The pipeline has two parts:
 ```
 data/
 ├── esm_projected.pth / esm_projected_labels.txt   # SEMPER (Figshare)
-├── ppi_gt_embed.pth / ppi_gt_labels.txt           # PPI-GT (Figshare)
-├── pinnacle_embed.pth / pinnacle_labels.txt        # PINNACLE (Figshare)
-├── protein_esmc_600m.pkl / protein_esmc_600m.pt   # ESM-C (Figshare)
-├── ensp_to_gene.json                              # ENSP → gene symbol (Figshare)
-├── transposenet_orbits.txt                        # ORCA global orbits (Figshare)
-├── transposenet_nodes.json                        # ORCA node map (Figshare)
-└── ppi_graphlets_orca/                            # ORCA-CT per-cell-type orbits (Figshare)
+├── ppi_gt_embed.pth / ppi_gt_labels.txt           # PPI-GT
+├── pinnacle_embed.pth / pinnacle_labels.txt        # PINNACLE
+├── protein_esmc_600m.pkl / protein_esmc_600m.pt   # ESM-C
+├── ensp_to_gene.json                              # ENSP → gene symbol
+├── ensp_id2vec_mean.pkl.gz                        # ProTrek Seq embeddings
+├── ensp_id2vec_structure_mean.pkl.gz              # ProTrek Struct embeddings
+├── transposenet_orbits.txt                        # ORCA global orbits
+├── transposenet_nodes.json                        # ORCA node map
+└── ppi_graphlets_orca/                            # ORCA-CT per-cell-type orbits
     └── <N>_edgelist_nodes.json / <N>_edgelist_orbits.txt
 ```
 
@@ -35,10 +37,6 @@ data/
 The seedplan JSONs (which control seed/held-out trial splits per cell type) and
 the disease gene lists (clinical trial candidate targets for each disease) are
 required to run the evaluations but are not included in this repository.
-
-To reproduce the paper results, please contact the authors to request access to:
-- `neuro_seedplan_<DISEASE>.json` — one per disease (PD, AZ, MS, HD, ALS)
-- `raw_targets_<DISEASE>.json` — clinical trial candidate gene lists per disease
 
 ---
 
@@ -146,6 +144,37 @@ python run_evaluations/neuro_eval_graphlets_ct_orbits_ct_network.py \
 # Repeat for AZ, MS, HD, ALS
 ```
 
+### ProTrek Seq and ProTrek Struct (global embedding models)
+
+ProTrek scores against its own global protein universe rather than
+the per-cell-type SEMPER candidate space. Run once per model × disease:
+
+```bash
+# ProTrek Seq
+python run_evaluations/neuro_eval_protrek.py \
+    --seedplan      data/neuro_seedplan_PD.json \
+    --ensp_json     data/ensp_to_gene.json \
+    --protrek_gz    data/ensp_id2vec_mean.pkl.gz \
+    --model_name    ProTrek_seq_mean \
+    --out_prefix    trials/neuro_eval_ProTrek_seq__PD \
+    --device        cuda \
+    --k_values 5 10 25 \
+    --skip_if_missing_seed
+
+# ProTrek Struct — swap --protrek_gz and --model_name
+python run_evaluations/neuro_eval_protrek.py \
+    --seedplan      data/neuro_seedplan_PD.json \
+    --ensp_json     data/ensp_to_gene.json \
+    --protrek_gz    data/ensp_id2vec_structure_mean.pkl.gz \
+    --model_name    ProTrek_struct_mean \
+    --out_prefix    trials/neuro_eval_ProTrek_struct__PD \
+    --device        cuda \
+    --k_values 5 10 25 \
+    --skip_if_missing_seed
+
+# Repeat for AZ, MS, HD, ALS
+```
+
 ---
 
 ## Part 2 — Plot results
@@ -173,16 +202,3 @@ python plot_results/calc_hits_significance.py \
     --baselines     PINNACLE PPI-GT ORCA-CT ESM-C ORCA \
     --k_values      5 10 25
 ```
-
----
-
-## Summary
-
-| Script | What it does |
-|---|---|
-| `run_evaluations/neuro_eval_semper_ct_network.py` | Hits@K for SEMPER, PPI-GT, PINNACLE |
-| `run_evaluations/neuro_eval_esm_pklpt_ct_network.py` | Hits@K for ESM-C |
-| `run_evaluations/neuro_eval_graphlets_global_ct_network.py` | Hits@K for ORCA (global graphlets) |
-| `run_evaluations/neuro_eval_graphlets_ct_orbits_ct_network.py` | Hits@K for ORCA-CT |
-| `plot_results/plot_hits_at_k.py` | Per-disease Hits@K strip plots (Figs 4c–g) |
-| `plot_results/calc_hits_significance.py` | Paired Wilcoxon significance vs. baselines 
