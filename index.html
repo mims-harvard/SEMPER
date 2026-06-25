@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEMPER — System-Scale Multimodal Protein Embedding Representations</title>
+  <title>SEMPER — System-scale Multimodal Protein Representations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -86,6 +86,8 @@
     .btn-dark:hover  { background: #333; border-color: #333; text-decoration: none; }
     .btn-light { background: var(--white); color: var(--ink); border: 1.5px solid var(--rule); }
     .btn-light:hover { border-color: var(--ink-3); text-decoration: none; }
+    .avail-list { margin: 0 0 8px 1.1rem; padding: 0; }
+    .avail-list li { margin: 0 0 6px; padding-left: 4px; line-height: 1.6; list-style: disc; }
  
     /* ── Sections ── */
     section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
@@ -234,17 +236,26 @@
       <!-- VENUE: update when known -->
       Preprint · 2026
     </div>
-    <h1>SEMPER: System-Scale Multimodal Protein Embedding Representations</h1>
+    <h1>SEMPER: System-scale Multimodal Protein Representations</h1>
     <div class="author-block">
       <div class="authors">
         Amy Dong,
         <a href="https://michellemli.com/">Michelle M. Li</a>,
-        XXX, XXX, XXX,
+        Kerr Ding,
+        Sumaiya Nazeen,
+        Ayush Noori,
+        Yepeng Huang,
+        Dylan Ritter,
+        Jalwa Afroz,
+        Alexander B. H. Henderson,
+        Lorenz Studer,
+        Yunan Luo,
+        Vikram Khurana,
+        Giovanni Parmigiani,
         <a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a>
       </div>
       <div class="affiliations">
-        Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University ·
-        Department of Biomedical Informatics, Harvard Medical School
+        Harvard Medical School · Harvard University · and collaborating institutions
       </div>
     </div>
     <div class="btn-row">
@@ -256,11 +267,6 @@
       <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-light">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         Code
-      </a>
-      <a href="#" class="btn btn-light">
-        <!-- LINK: replace # with Figshare DOI -->
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        Embeddings
       </a>
     </div>
   </div>
@@ -429,27 +435,40 @@ Across our analyses, this embedding space recovers cellular and functional organ
   <div class="wrap">
     <h2>Code &amp; Data</h2>
     <p>
-      The full SEMPER codebase is available on GitHub under the MIT License.
-      Pre-trained embeddings and required data files are hosted on Figshare.
+      The full SEMPER codebase is available on GitHub under the MIT License, and
+      trained model weights are released on HuggingFace. Because SEMPER's inputs
+      derive from a controlled-access CNS atlas, the underlying data and the
+      atlas-derived embeddings are not redistributed — see availability below.
     </p>
     <div class="btn-row" style="margin-bottom: 28px;">
       <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-dark">GitHub Repository</a>
-      <a href="#" class="btn btn-light">Pre-trained Embeddings</a>
-      <a href="https://github.com/mims-harvard/semper/tree/main/evaluate" class="btn btn-light">Evaluate</a>
+      <a href="https://huggingface.co/mims-harvard/SEMPER" class="btn btn-light">Model Weights</a>
+      <a href="https://github.com/mims-harvard/SEMPER/tree/main/evaluate" class="btn btn-light">Evaluate</a>
     </div>
     <pre># 1. Clone and set up environment
 git clone https://github.com/mims-harvard/SEMPER
 cd SEMPER
 conda env create -f environment.yml && conda activate semper
-pip install torch-scatter torch-sparse torch-cluster torch-geometric \
-    -f https://data.pyg.org/whl/torch-2.1.0+cu118.html
 
-# 2. Download pre-trained embeddings from Figshare (link above)
-#    Place esm_projected.pth and esm_projected_labels.txt in outputs/contrastive/
+# 2. Train SEMPER on your own cell type-specific PPI networks
+#    (see README for the three-component pipeline)
 
 # 3. Reproduce paper evaluations
 cd evaluate/
 # See evaluate/README.md for full usage of each script</pre>
+
+    <ul class="avail-list">
+      <li><strong>Code</strong> — this repository, MIT License.</li>
+      <li><strong>Model weights</strong> — released on
+        <a href="https://huggingface.co/mims-harvard/SEMPER">HuggingFace</a>
+        (specific to the CNS atlas SEMPER was trained on; not a general-purpose embedder).</li>
+      <li><strong>Training data</strong> — the CNS single-cell atlas, the 442 cell
+        type-specific PPI networks, and the metagraph are not publicly available;
+        they are collaborator-controlled under a data use agreement and available
+        on reasonable request.</li>
+      <li><strong>Derived embeddings</strong> — not released, as they are derived
+        one-to-one from and would reconstitute the restricted atlas.</li>
+    </ul>
 
     <div class="repo-tree">
       <span class="dir">SEMPER/</span><br>
@@ -471,8 +490,8 @@ cd evaluate/
     <div class="cite-block">
       <div class="cite-header">BibTeX</div>
       <pre>@article{semper2026,
-  title   = {SEMPER: System-Scale Multimodal Protein Embedding Representations},
-  author  = {Dong, Amy and Li, Michelle M. and {[co-authors]} and Zitnik, Marinka},
+  title   = {SEMPER: Multimodal protein representations for neurological target assessment},
+  author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
   journal = {},
   year    = {2026},
   url     = {}
@@ -490,15 +509,15 @@ cd evaluate/
         <div class="role">Harvard Medical School</div>
       </div>
       <div class="author-card">
-        <div class="name">XXX</div>
+        <div class="name">Kerr Ding</div>
+        <div class="role">Georgia Institute of Technology</div>
+      </div>
+      <div class="author-card">
+        <div class="name">Ayush Noori</div>
         <div class="role">Harvard University</div>
       </div>
       <div class="author-card">
-        <div class="name">XXX</div>
-        <div class="role">Harvard University</div>
-      </div>
-      <div class="author-card">
-        <div class="name">XXX</div>
+        <div class="name">Yepeng Huang</div>
         <div class="role">Harvard University</div>
       </div>
       <div class="author-card">
