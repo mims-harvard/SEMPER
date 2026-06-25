@@ -69,11 +69,15 @@ best_val_acc = -1
 best_model = None
 eps = 10e-4
 
-# Log in to WandB
-wandb.login()
-
-#input for W&B tracking
-#wandb.init(config = hparams_raw, project = "ppigt", entity = "XXX")
+# Initialize W&B tracking. The entity is read from the WANDB_ENTITY env var so
+# no personal account is baked into the repo. To run with NO tracking and no
+# login, set WANDB_MODE=disabled in your shell — wandb.log/watch become no-ops
+# and wandb.config is still populated from hparams_raw.
+wandb.init(
+    config=hparams_raw,
+    project="ppigt",
+    entity=os.environ.get("WANDB_ENTITY"),  # None -> your default W&B entity
+)
 
 hparams = wandb.config
 
