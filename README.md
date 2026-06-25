@@ -206,7 +206,7 @@ SEMPER was trained on, so they are intended
 for reproducing the published model (e.g., once the source atlas is available),
 **not** as a general-purpose protein embedder. To apply SEMPER to a different
 organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
-networks (see *Training*).
+networks (see [Training](#training))).
 
 ---
 
