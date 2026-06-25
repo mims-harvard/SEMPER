@@ -4,8 +4,14 @@ This directory contains scripts for the two LLM evaluator pipelines introduced i
 Figures 5 and 6. Both pipelines take SEMPER's top-100 candidate proteins as input
 and rerank them using an LLM evaluator, but differ in how the LLM scores candidates.
 
-Both scripts call the OpenAI API (or any Azure OpenAI-compatible endpoint). Set your
-API key before running:
+Both scripts call the OpenAI API (or any Azure OpenAI-compatible endpoint). The figure 5-6 LLM evaluator needs two additional packages that are not part of
+the core environment:
+
+```bash
+pip install openai tooluniverse
+```
+
+Set your API key before running:
 
 ```bash
 export OPENAI_API_KEY="your-key-here"
