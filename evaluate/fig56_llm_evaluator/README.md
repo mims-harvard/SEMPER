@@ -109,10 +109,4 @@ python llm_elo_tournament.py \
 **Output:** One JSON per cell type in `--output_dir` with the final Elo-ranked
 protein list, including fields: `protein`, `similarity`, `elo`, `start_elo`,
 `matches_played`.
-
-**Tool dependency:** `llm_elo_tournament.py` requires the `tooluniverse` package
-and its OpenTargets MCP tool for live Gene Ontology lookups:
-
-```bash
-pip install tooluniverse
 ```
