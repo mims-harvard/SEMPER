@@ -206,7 +206,7 @@ SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) compu
 ## Code and Data Availability
 
 - **Code** — this repository, MIT License.
-- **Model weights** — [[HuggingFace]](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see Using the released weights).
+- **Model weights** — [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see Using the released weights).
 - **Docs** - the SEMPER project website is available at https://zitniklab.hms.harvard.edu/SEMPER/
 ---
 
