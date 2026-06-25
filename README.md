@@ -205,9 +205,12 @@ SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) compu
 
 ## Code and Data Availability
 
-- **Code** — this repository, MIT License.
-- **Model weights** — [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see Using the released weights).
-- **Docs** - the SEMPER project website is available at https://zitniklab.hms.harvard.edu/SEMPER/
+- **Code** — this repository, released under the MIT License.
+- **Model weights** — available on [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see *Using the released weights*).
+- **Training data** — the adult human CNS single-cell atlas, the 442 cell type-specific PPI networks, and the cellular/tissue metagraph are not publicly available. They are collaborator-controlled under a data use agreement and are available from [collaborator / contact] on reasonable request.
+- **Derived embeddings** — not released, as they are derived one-to-one from and would reconstitute the restricted atlas.
+- **Project website** — https://zitniklab.hms.harvard.edu/SEMPER/
+  
 ---
 
 ## Citation
