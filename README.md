@@ -48,7 +48,7 @@ SEMPER was trained on the following inputs:
 
 ---
 
-## Usage
+## Training
 
 Components 1 and 2 can be run in parallel. Component 3 requires outputs from both.
 
@@ -155,6 +155,18 @@ Key arguments:
 - `joint_projected.pth` — concatenated joint embeddings per cluster `{ct_idx -> tensor[n, 1024]}`
 - `esm_proj_embeddings.pt` — flat projected ESM tensor `[N_proteins, 512]`
 - `esm_proj_ids.json` — ordered protein ID list corresponding to the flat tensor
+
+---
+
+## Using the released weights
+
+The weights on HuggingFace reproduce the trained PPI graph-transformer and
+contrastive projection heads from the paper. They are specific to the CNS atlas
+SEMPER was trained on, so they are intended
+for reproducing the published model (e.g., once the source atlas is available),
+**not** as a general-purpose protein embedder. To apply SEMPER to a different
+organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
+networks (see *Training*).
 
 ---
 
