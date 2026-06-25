@@ -222,11 +222,12 @@ SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) compu
 If you use SEMPER in your research, please cite:
 
 ```bibtex
-@article{semper2025,
-  title   = {},
-  author  = {},
+@article{semper2026,
+  title   = {SEMPER: System-Scale Multimodal Protein Embedding Representations},
+  author  = {Dong, Amy and Li, Michelle M. and {[co-authors]} and Zitnik, Marinka},
   journal = {},
-  year    = {2025}
+  year    = {2026},
+  url     = {}
 }
 ```
 
