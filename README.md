@@ -4,7 +4,7 @@
 [![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#)
 [![Code](https://img.shields.io/badge/Code-SEMPER-purple)](https://github.com/mims-harvard/SEMPER)
 [![Model](https://img.shields.io/badge/HuggingFace-SEMPER-yellow)](https://huggingface.co/mims-harvard/SEMPER)
-[![License](https://img.shields.io/badge/License-MIT-lightgreen)]([https://huggingface.co/mims-harvard/SEMPER](https://opensource.org/license/MIT))
+[![License](https://img.shields.io/badge/License-MIT-lightgreen)](https://opensource.org/license/MIT)
 
 ## Overview
 
