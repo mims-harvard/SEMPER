@@ -1,6 +1,11 @@
 # SEMPER
 
-**SEMPER** (**S**ingle-cell **E**mbeddings from **M**ultimodal **P**rotein **E**ncoder **R**epresentations) is a multimodal deep learning framework for generating cell type-aware protein representations by jointly modeling protein interaction network topology and amino acid sequence.
+[![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](zitniklab.hms.harvard.edu/SEMPER/)
+[![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#)
+[![Code](https://img.shields.io/badge/Code-SEMPER-purple)](https://github.com/mims-harvard/SEMPER)
+[![Model](https://img.shields.io/badge/HuggingFace-SEMPER-yellow)](https://huggingface.co/mims-harvard/SEMPER)
+
+**SEMPER** (**S**ingle-cell **E**mbeddings from **M**ultimodal **P**rotein **E**ncoder **R**epresentations) is a multimodal deep learning model for generating cell type-aware protein representations by jointly modeling protein interaction network topology and amino acid sequence.
 
 SEMPER learns a shared latent space that bridges a protein's intrinsic evolutionary sequence identity (via a frozen ESM-Cambrian language model) with its dynamic, cell type-specific topological context (via a multi-scale PPI Graph Transformer), yielding embeddings optimized for downstream biomedical tasks across diverse CNS cell types and tissues.
 
