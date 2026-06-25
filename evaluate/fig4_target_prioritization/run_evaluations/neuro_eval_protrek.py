@@ -5,11 +5,6 @@ import numpy as np
 import pandas as pd
 import torch
 
-
-# ----------------------------
-# ID normalization
-# ----------------------------
-
 def norm_ensp(x: Any) -> str:
     if x is None:
         return ""
@@ -46,9 +41,6 @@ def strip_9606_prefix(d: dict) -> dict:
 
 
 def to_torch_dict(d: dict) -> Dict[str, torch.Tensor]:
-    """
-    Convert {ensp: np/tensor/list} to {ensp: torch.FloatTensor[D]} on CPU.
-    """
     out: Dict[str, torch.Tensor] = {}
     for k, v in d.items():
         pid = norm_ensp(k)
@@ -70,11 +62,6 @@ def to_torch_dict(d: dict) -> Dict[str, torch.Tensor]:
         raise RuntimeError("No ProTrek embeddings parsed after normalization.")
     return out
 
-
-# ----------------------------
-# Metrics
-# ----------------------------
-
 def apr_at_k(ranked_hgnc: List[str], relevant_set: set, k: int) -> float:
     num_relevant_in_data = len(relevant_set.intersection(ranked_hgnc))
     if num_relevant_in_data == 0:
@@ -94,11 +81,6 @@ def cosine_rank_candidates(E_all: torch.Tensor, seed_vecs: torch.Tensor) -> torc
     E = E_all / (E_all.norm(dim=1, keepdim=True) + 1e-12)
     S = seed_vecs / (seed_vecs.norm(dim=1, keepdim=True) + 1e-12)
     return (E @ S.t()).mean(dim=1)
-
-
-# ----------------------------
-# Main evaluation
-# ----------------------------
 
 def main():
     ap = argparse.ArgumentParser()
@@ -120,8 +102,7 @@ def main():
                     help="Optional cap on candidate universe size per cluster (0 = no cap).")
 
     args = ap.parse_args()
-
-    # Load seedplan
+    
     with open(args.seedplan, "r") as f:
         seedplan = json.load(f)
     clusters = seedplan["clusters"]
@@ -150,24 +131,18 @@ def main():
         "ok_trials": 0
     }
 
-# ---------------------------------------------------------
-    # GLOBAL UNIVERSE SETUP
     # Instead of per-cluster universes, we use ALL loaded proteins
-    # ---------------------------------------------------------
     global_cand = list(emb_dict.keys())
     print(f"[INFO] Building global candidate tensor with {len(global_cand)} proteins...")
     
-    # Pre-stacking this once saves massive amounts of compute
     E_all_global = torch.stack([emb_dict[e] for e in global_cand]).to(device)
     cand_hgnc_global = [ensp_to_hgnc.get(e, None) for e in global_cand]
 
     with torch.inference_mode():
         for cluster_id, payload in clusters.items():
-            # We explicitly ignore payload["universe_ensp"] to prevent data leakage.
             positives = [norm_ensp(x) for x in payload["positive_ensp"]]
             trials = payload["trials"]
 
-            # Relevant HGNC set from positives (these are the true interactions we want to find)
             relevant_hgnc = set()
             for e in positives:
                 h = ensp_to_hgnc.get(e)
@@ -188,7 +163,6 @@ def main():
 
                 seed_vecs = torch.stack([emb_dict[e] for e in seeds_present]).to(device)
 
-                # Score against the ENTIRE GLOBAL UNIVERSE
                 scores = cosine_rank_candidates(E_all_global, seed_vecs)
 
                 # Exclude the seeds themselves from ranking
@@ -224,7 +198,7 @@ def main():
                         "k": k,
                         "hits_at_k": hits_k,
                         "apr_at_k": apr_k,
-                        "n_candidates": len(idxs), # This will now be ~20k (global) instead of local cluster size
+                        "n_candidates": len(idxs),
                         "n_seeds_used": len(seeds_present),
                         "n_relevant_hgnc": len(relevant_hgnc),
                     })
