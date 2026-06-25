@@ -35,19 +35,6 @@ conda activate semper
 
 ---
 
-## Data
-
-SEMPER was trained on the following inputs:
-
-| Input | Description |
-|---|---|
-| Background interactome | Global human reference PPI network |
-| Cell type-specific PPI networks | One edgelist per CNS cell type |
-| BTO metagraph | Cell type / tissue hierarchy edgelist |
-| Protein sequences | Canonical amino acid sequences (FASTA) retrieved via Ensembl and UniProt |
-
----
-
 ## Training
 
 Components 1 and 2 can be run in parallel. Component 3 requires outputs from both.
@@ -163,6 +150,21 @@ bash run_contrastive.sh
 
 ---
 
+## Evaluation
+
+Scripts to reproduce the paper's analyses are in [`evaluate/`](evaluate/), organized by figure, each with its own README:
+
+| Folder | Figure | Analysis |
+|---|---|---|
+| [`fig2_embedding_space/`](evaluate/fig2_embedding_space) | 2 | Embedding-space structure: pairwise similarity, GO dispersion, UMAP + Leiden enrichment |
+| [`fig3_protein_complexes/`](evaluate/fig3_protein_complexes) | 3 | Zero-shot cell type-specific protein complex identification |
+| [`fig4_target_prioritization/`](evaluate/fig4_target_prioritization) | 4 | Zero-shot therapeutic target retrieval across five neurodegenerative diseases |
+| [`fig56_llm_evaluator/`](evaluate/fig56_llm_evaluator) | 5–6 | LLM-augmented reranking and Elo tournament (requires `pip install openai tooluniverse`) |
+
+These scripts depend on SEMPER embeddings and cell type-specific PPI networks derived from the controlled-access CNS atlas. They are provided for transparency of methodology; exact reproduction requires access to that data (see [Code and Data Availability](#code-and-data-availability)).
+
+---
+
 ## Experiment Tracking (optional)
 
 Component 1 logs training and validation metrics to [Weights & Biases](https://wandb.ai). Tracking is optional.
@@ -184,18 +186,6 @@ bash run_ppi_gt.sh
 
 ---
 
-## Using the released weights
-
-The weights on HuggingFace reproduce the trained PPI graph-transformer and
-contrastive projection heads from the paper. They are specific to the CNS atlas
-SEMPER was trained on, so they are intended
-for reproducing the published model (e.g., once the source atlas is available),
-**not** as a general-purpose protein embedder. To apply SEMPER to a different
-organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
-networks (see *Training*).
-
----
-
 ## Hardware
 
 SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) computing cluster.
@@ -208,7 +198,28 @@ SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) compu
 
 ---
 
+## Using the released weights
+
+The weights on HuggingFace reproduce the trained PPI graph-transformer and
+contrastive projection heads from the paper. They are specific to the CNS atlas
+SEMPER was trained on, so they are intended
+for reproducing the published model (e.g., once the source atlas is available),
+**not** as a general-purpose protein embedder. To apply SEMPER to a different
+organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
+networks (see *Training*).
+
+---
+
 ## Code and Data Availability
+
+SEMPER was trained on the following inputs:
+
+| Input | Description |
+|---|---|
+| Background interactome | Global human reference PPI network |
+| Cell type-specific PPI networks | One edgelist per CNS cell type |
+| BTO metagraph | Cell type / tissue hierarchy edgelist |
+| Protein sequences | Canonical amino acid sequences (FASTA) retrieved via Ensembl and UniProt |
 
 - **Code** — this repository, released under the MIT License.
 - **Model weights** — available on [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see *Using the released weights*).
