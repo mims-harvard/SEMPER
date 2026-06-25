@@ -1,34 +1,4 @@
 #!/usr/bin/env python3
-"""
-neuro_eval_graphlets_global_ct_network.py
-
-Global graphlet-orbit (ORCA) evaluator in the SAME "CT network" candidate setting:
-- Seeds still come from seedplan trials (per cluster/cell type).
-- Candidates come from the *cell-type network protein set* for that cluster, derived from the
-  same SEMPER/PINNACLE labels_dict (so universe is CT-specific, not ProTrek).
-- Embeddings are global graphlet orbits (transposenet_orbits.txt + transposenet_nodes.json),
-  then subset to CT candidates.
-- Positives come from an OpenTargets disease gene JSON (HGNC list), intersected with CT candidates.
-
-Example:
-python neuro_eval_graphlets_global_ct_network.py \
-  --seedplan neuro_seedplan.protrek_intersection.json \
-  --ensp_json /n/holylfs06/LABS/mzitnik_lab/Lab/adong/TransposeNetv3_data/TransposeNet_v3/ENSP_to_pref.json \
-  --pd_gene_file /n/holylfs06/LABS/mzitnik_lab/Lab/adong/PINNACLE_newTransposeNet_DDP_tests/PD_genelist_similarity_test/neurodegen_disease/raw_targets_EFO_0000618.json \
-  --ot_key clinically_relevant_targets \
-  --label_dict /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/.../pinnacle_projected_labels.txt \
-  --node-map /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/fig3_CORUMcomplexes/transposenet_nodes.json \
-  --orbits /n/holylfs06/LABS/mzitnik_lab/Lab/adong/CORUM_benchmarking/protrek_analysis/graphlets_train/transposenet_orbits.txt \
-  --model_name Graphlets_ORCA \
-  --out_prefix neuro_GraphletsORCA_global_ctnet_OTpos \
-  --device cpu \
-  --k_values 5 10 25 \
-  --skip_if_missing_seed
-
-Notes:
-- This script intentionally ignores payload["universe_ensp"] and payload["positive_ensp"].
-- It uses label_dict to define CT candidate proteins, seedplan ONLY for seed trials, and OT for positives.
-"""
 
 import argparse
 import json
@@ -38,11 +8,6 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 import pandas as pd
 import torch
-
-
-# ----------------------------
-# ID normalization
-# ----------------------------
 
 def norm_ensp(x: Any) -> str:
     if x is None:
@@ -63,24 +28,11 @@ def norm_hgnc(x: Any) -> str:
         return ""
     return str(x).strip().upper()
 
-
-# ----------------------------
-# Load OpenTargets disease genes (HGNC)
-# ----------------------------
-
 def load_ot_json(pd_gene_file: str) -> dict:
     with open(pd_gene_file, "r") as f:
         return json.load(f)
 
-
-# ----------------------------
-# Load CT protein lists from labels_dict
-# ----------------------------
-
 def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, List[str]]:
-    """
-    Returns: cluster_id(str) -> list of ENSP proteins in that CT network.
-    """
     with open(label_dict_path, "r") as f:
         labels_raw = f.read()
     labels_raw = labels_raw.replace("'", "\"")
@@ -149,10 +101,6 @@ def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, Lis
     return out
 
 
-# ----------------------------
-# Graphlets loading (ORCA global)
-# ----------------------------
-
 def load_node_map(node_map_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     with open(node_map_path, "r") as f:
         node_map = json.load(f)
@@ -162,10 +110,6 @@ def load_node_map(node_map_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
 
 
 def load_orbits_dict(orbits_path: str, idx_to_protein: Dict[int, str]) -> Dict[str, torch.Tensor]:
-    """
-    ORCA orbit counts: row i corresponds to node i (0-based).
-    Returns dict: {ENSP -> torch.FloatTensor[n_orbits]}
-    """
     mat = np.loadtxt(orbits_path)
     if mat.ndim == 1:
         mat = mat.reshape(1, -1)
@@ -189,10 +133,6 @@ def load_orbits_dict(orbits_path: str, idx_to_protein: Dict[int, str]) -> Dict[s
     return out
 
 
-# ----------------------------
-# Metrics / ranking
-# ----------------------------
-
 def apr_at_k(ranked_hgnc: List[str], relevant_set: set, k: int) -> float:
     num_relevant_in_data = len(relevant_set.intersection(ranked_hgnc))
     if num_relevant_in_data == 0:
@@ -212,10 +152,6 @@ def cosine_rank_candidates(E_all: torch.Tensor, seed_vecs: torch.Tensor) -> torc
     S = seed_vecs / (seed_vecs.norm(dim=1, keepdim=True) + 1e-12)
     return (E @ S.t()).mean(dim=1)
 
-
-# ----------------------------
-# Main
-# ----------------------------
 
 def main():
     ap = argparse.ArgumentParser(description="Evaluate global graphlets (ORCA) on CT-network candidates, seeds from seedplan, positives from OT HGNC.")
@@ -241,7 +177,6 @@ def main():
 
     args = ap.parse_args()
 
-    # seedplan (seeds only)
     with open(args.seedplan, "r") as f:
         seedplan = json.load(f)
     clusters = seedplan["clusters"]
