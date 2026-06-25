@@ -212,18 +212,11 @@ networks (see [Training](#training))).
 
 ## Code and Data Availability
 
-SEMPER was trained on the following inputs:
-
-| Input | Description |
-|---|---|
-| Background interactome | Global human reference PPI network |
-| Cell type-specific PPI networks | One edgelist per CNS cell type |
-| BTO metagraph | Cell type / tissue hierarchy edgelist |
-| Protein sequences | Canonical amino acid sequences (FASTA) retrieved via Ensembl and UniProt |
+SEMPER consumes three inputs derived from an adult human CNS single-cell atlas — a background interactome with 442 cell type-specific PPI networks, a BTO metagraph of cell type/tissue organization, and canonical protein sequences (retrieved via Ensembl and UniProt). Availability of each artifact:
 
 - **Code** — this repository, released under the MIT License.
 - **Model weights** — available on [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see *Using the released weights*).
-- **Training data** — the adult human CNS single-cell atlas, the 442 cell type-specific PPI networks, and the cellular/tissue metagraph are not publicly available. They are collaborator-controlled under a data use agreement and are available from [collaborator / contact] on reasonable request.
+- **Training data** — the CNS single-cell atlas, the 442 cell type-specific PPI networks, and the cellular/tissue metagraph are not publicly available. They are collaborator-controlled under a data use agreement and are available from [collaborator / contact] on reasonable request.
 - **Derived embeddings** — not released, as they are derived one-to-one from and would reconstitute the restricted atlas.
 - **Project website** — https://zitniklab.hms.harvard.edu/SEMPER/
   
