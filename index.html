@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEMPER — System-Scale Multimodal Protein Embedding Representations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white:  #ffffff;
+      --bg:     #fafaf9;
+      --ink:    #111110;
+      --ink-2:  #3a3a38;
+      --ink-3:  #6b6b68;
+      --rule:   #e5e4e0;
+      --link:   #0b66e0;
+      --serif:  'Source Serif 4', Georgia, serif;
+      --sans:   'Source Sans 3', system-ui, sans-serif;
+      --mono:   'JetBrains Mono', monospace;
+      --max:    780px;
+      --wide:   1040px;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+ 
+    .wrap      { max-width: var(--max);  margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: var(--wide); margin: 0 auto; padding: 0 24px; }
+ 
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .inner {
+      max-width: var(--wide); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    nav .brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; }
+    nav .links { display: flex; gap: 24px; }
+    nav .links a { font-size: 0.83rem; color: var(--ink-3); font-weight: 400; letter-spacing: 0.02em; }
+    nav .links a:hover { color: var(--ink); text-decoration: none; }
+ 
+    /* ── Header ── */
+    header { padding: 80px 0 64px; border-bottom: 1px solid var(--rule); }
+    header .wrap { max-width: var(--max); }
+    .venue-line {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      font-weight: 400; line-height: 1.2; color: var(--ink);
+      margin-bottom: 28px; max-width: 680px;
+    }
+    .author-block { margin-bottom: 28px; }
+    .author-block .authors { font-size: 0.95rem; color: var(--ink-2); margin-bottom: 4px; line-height: 1.6; }
+    .author-block .affiliations { font-size: 0.82rem; color: var(--ink-3); }
+ 
+    /* ── Buttons ── */
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; font-family: var(--sans); font-size: 0.83rem;
+      font-weight: 600; letter-spacing: 0.01em; border-radius: 4px;
+      transition: all 0.12s; cursor: pointer;
+    }
+    .btn-dark  { background: var(--ink); color: #fff; border: 1.5px solid var(--ink); }
+    .btn-dark:hover  { background: #333; border-color: #333; text-decoration: none; }
+    .btn-light { background: var(--white); color: var(--ink); border: 1.5px solid var(--rule); }
+    .btn-light:hover { border-color: var(--ink-3); text-decoration: none; }
+ 
+    /* ── Sections ── */
+    section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 400; line-height: 1.3; margin-bottom: 20px;
+    }
+    h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+    p { color: var(--ink-2); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    p.lead { color: var(--ink); font-size: 1.05rem; }
+ 
+    /* ── Figures — no border on image, rule only above caption ── */
+    figure { margin: 40px 0; background: var(--white); }
+    figure img { width: 100%; display: block; }
+    figcaption {
+      padding: 14px 0;
+      font-size: 0.82rem; color: var(--ink-3); line-height: 1.55;
+      border-top: 1px solid var(--rule);
+    }
+    figcaption strong { color: var(--ink-2); }
+ 
+    /* ── Code ── */
+    pre {
+      background: #f6f5f2; border: 1px solid var(--rule); border-radius: 4px;
+      font-family: var(--mono); font-size: 0.8rem; line-height: 1.65;
+      padding: 20px 24px; overflow-x: auto; margin: 24px 0; color: var(--ink);
+    }
+    code { font-family: var(--mono); font-size: 0.85em; }
+    p code, li code {
+      background: var(--bg); border: 1px solid var(--rule);
+      padding: 1px 5px; border-radius: 3px; font-size: 0.82em;
+    }
+ 
+    /* ── Repo tree ── */
+    .repo-tree {
+      font-family: var(--mono); font-size: 0.8rem; line-height: 1.7; color: var(--ink-2);
+      padding: 20px 24px; background: var(--bg); border: 1px solid var(--rule);
+      border-radius: 4px; margin: 20px 0;
+    }
+    .repo-tree .dir  { color: var(--ink); font-weight: 500; }
+    .repo-tree .note { color: var(--ink-3); }
+ 
+    /* ── Citation ── */
+    .cite-block { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin-top: 24px; }
+    .cite-block .cite-header {
+      padding: 10px 18px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-3); background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+    .cite-block pre { margin: 0; border: none; border-radius: 0; background: var(--white); }
+ 
+    /* ── Authors grid ── */
+    .author-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px; border: 1px solid var(--rule); border-radius: 4px;
+      overflow: hidden; margin-top: 24px; background: var(--rule);
+    }
+    .author-card { background: var(--white); padding: 18px 20px; }
+    .author-card .name { font-size: 0.93rem; font-weight: 600; margin-bottom: 2px; color: var(--ink); }
+    .author-card .role { font-size: 0.78rem; color: var(--ink-3); }
+    .author-card a { color: var(--ink); }
+    .author-card a:hover { text-decoration: underline; }
+ 
+    /* ── Results carousel ── */
+    .tab-radio { display: none; }
+ 
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+      margin-bottom: 36px;
+    }
+    .tab-bar label {
+      padding: 10px 18px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--ink-3);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      letter-spacing: 0.01em;
+      transition: color 0.12s;
+      white-space: nowrap;
+    }
+    .tab-bar label:hover { color: var(--ink); }
+ 
+    /* active tab */
+    #tab1:checked ~ .tab-bar label[for="tab1"],
+    #tab2:checked ~ .tab-bar label[for="tab2"],
+    #tab3:checked ~ .tab-bar label[for="tab3"],
+    #tab4:checked ~ .tab-bar label[for="tab4"],
+    #tab5:checked ~ .tab-bar label[for="tab5"] {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+ 
+    /* panels — all hidden by default */
+    .tab-panel { display: none; }
+ 
+    #tab1:checked ~ .tab-panels #panel1,
+    #tab2:checked ~ .tab-panels #panel2,
+    #tab3:checked ~ .tab-panels #panel3,
+    #tab4:checked ~ .tab-panels #panel4,
+    #tab5:checked ~ .tab-panels #panel5 { display: block; }
+ 
+    @media (max-width: 640px) {
+      .tab-bar label { padding: 8px 10px; font-size: 0.76rem; }
+    }
+ 
+    /* ── Footer ── */
+    footer { padding: 40px 24px; text-align: center; font-size: 0.8rem; color: var(--ink-3); border-top: 1px solid var(--rule); }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--ink); }
+ 
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav .links { display: none; }
+      header { padding: 52px 0 44px; }
+    }
+  </style>
+</head>
+<body>
+ 
+<nav>
+  <div class="inner">
+    <span class="brand">SEMPER</span>
+    <div class="links">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#results">Results</a>
+      <a href="#code">Code</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ── Header ── -->
+<header>
+  <div class="wrap">
+    <div class="venue-line">
+      <!-- VENUE: update when known -->
+      Preprint · 2026
+    </div>
+    <h1>SEMPER: System-Scale Multimodal Protein Embedding Representations</h1>
+    <div class="author-block">
+      <div class="authors">
+        Amy Dong,
+        <a href="https://michellemli.com/">Michelle M. Li</a>,
+        XXX, XXX, XXX,
+        <a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a>
+      </div>
+      <div class="affiliations">
+        Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University ·
+        Department of Biomedical Informatics, Harvard Medical School
+      </div>
+    </div>
+    <div class="btn-row">
+      <a href="#" class="btn btn-dark">
+        <!-- LINK: replace # with DOI or bioRxiv URL -->
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Paper
+      </a>
+      <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-light">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Code
+      </a>
+      <a href="#" class="btn btn-light">
+        <!-- LINK: replace # with Figshare DOI -->
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Embeddings
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── Overview ── -->
+<section id="overview">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p class="lead">
+      Proteins carry out cellular functions largely through their interactions with other proteins. Because the set of proteins expressed differs from one cell type to the next, a given protein can engage different partners depending on its cellular context. This context dependence is well documented but difficult to represent computationally, and it is particularly relevant in the central nervous system (CNS), whose diversity of neuronal and glial cell types has been linked to the cell type-specific vulnerability observed across neurodegenerative diseases. Yet existing protein representation methods capture only part of the picture: sequence-based models assign each protein a single, context-free embedding, while network-based models incorporate cellular context but set sequence information aside.
+    </p>
+    <p>
+      SEMPER learns cell type-aware protein embeddings that combine both. A frozen hybrid graph transformer encodes each protein's context within cell type-specific protein–protein interaction (PPI) networks and a metagraph of cellular and tissue organization, and a frozen protein sequence encoder represents its amino acid sequence; a symmetric InfoNCE objective aligns the two into a shared latent space. Trained across 442 cell types of the human CNS, SEMPER assigns the same protein a distinct embedding in each cellular context, so that its representation reflects where in the brain it acts.
+    </p>
+    <p>
+      
+Across our analyses, this embedding space recovers cellular and functional organization: proteins cluster by cell type and by shared function, multifunctional proteins spread across contexts as expected, and cell type-specific protein complexes are recovered more accurately than by the baselines we tested. Building on these representations, SEMPER can prioritize candidate therapeutic targets for five neurodegenerative diseases in a zero-shot setting, and its embedding-derived signals can be combined with large language model reasoning to refine those rankings. These predictions are associative and intended to support hypothesis generation rather than replace experimental validation.
+    </p>
+  </div>
+</section>
+
+<!-- ── Architecture ── -->
+<section id="architecture">
+  <div class="wrap">
+    <h2>Architecture</h2>
+    <p>
+      SEMPER integrates three inputs derived from an adult human CNS single-cell
+      transcriptomic atlas: 1D protein sequences, 442 cell type-specific
+      protein–protein interaction (PPI) networks, and a hierarchical metagraph
+      of cellular and tissue organization. A frozen protein sequence encoder and a
+      frozen hybrid graph transformer encode each input independently; trainable
+      adaptors project both into a shared latent space aligned by a symmetric
+      InfoNCE contrastive loss.
+    </p>
+
+    <figure>
+      <img src="figures/figure1.png" alt="SEMPER architecture and downstream applications" />
+      <figcaption>
+        <strong>Fig. 1 | SEMPER architecture and applications.</strong>
+        <strong>(a)</strong> SEMPER architecture. SEMPER integrates three inputs derived from an adult human CNS single-cell transcriptomic atlas: 1D protein sequences, 442 cell type-specific protein–protein interaction (PPI) networks, and a hierarchical metagraph of cellular and tissue organization. A frozen protein sequence encoder encodes protein sequences; a frozen hybrid graph transformer encodes each protein's context within the cell type-specific PPI networks and CNS metagraph. Trainable adaptors project both encoder outputs into a shared embedding space, where a symmetric InfoNCE contrastive loss aligns each protein's sequence embedding with its cell type-specific context embeddings.
+        <strong>(b–d)</strong> Downstream applications of the multimodal representations.
+        <strong>(b)</strong> Identification of cell type-specific protein complex members from the SEMPER embedding space.
+        <strong>(c)</strong> Zero-shot prioritization of candidate targets within a given cell type, based on embedding similarity to a seed protein.
+        <strong>(d)</strong> LLM evaluator-based target prioritization, in which an LLM reranks SEMPER-seeded candidates through pairwise tournaments.
+        <strong>(e)</strong> Hits@10 for candidate target retrieval across neurodegenerative diseases as a function of total model parameters (log scale), for SEMPER trained with different sequence backbones (ESM-2 8M/35M/150M, ESM-3, ESM-C 300M/600M) and for existing cell type-agnostic and cell type-aware methods.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+  <!-- ── Results ── -->
+<section id="results">
+  <div class="wrap"><h2>Results</h2></div>
+ 
+  <!-- radios, tab-bar, and tab-panels must all be direct children of section -->
+  <input type="radio" name="fig" id="tab1" class="tab-radio" checked />
+  <input type="radio" name="fig" id="tab2" class="tab-radio" />
+  <input type="radio" name="fig" id="tab3" class="tab-radio" />
+  <input type="radio" name="fig" id="tab4" class="tab-radio" />
+  <input type="radio" name="fig" id="tab5" class="tab-radio" />
+ 
+  <div class="tab-bar wrap">
+    <label for="tab1">Embedding space</label>
+    <label for="tab2">Protein complexes</label>
+    <label for="tab3">Target prioritization</label>
+    <label for="tab4">LLM-augmented</label>
+    <label for="tab5">Elo tournament</label>
+  </div>
+ 
+  <div class="tab-panels wrap">
+ 
+      <div class="tab-panel" id="panel1">
+        <p>Cell type context and biological function structure the SEMPER latent space.
+        Protein embeddings from the same CNS cell type cluster together, proteins
+        sharing Gene Ontology terms are embedded closer than expected under a random
+        null, and Leiden community detection within a single cell type recovers
+        functionally coherent modules. SEMPER embeddings also correlate with
+        protein co-abundance patterns from the human brain more strongly than
+        any other tissue, and extreme multifunctional proteins show higher
+        centroid dispersion than the background proteome.</p>
+        <figure>
+          <img src="figures/figure2.jpg" alt="SEMPER embedding space analyses" />
+          <figcaption>
+            <strong>Fig. 2 | Cell type context and biological function structure the SEMPER latent space.</strong>
+            <strong>(a)</strong> Mean pairwise cosine similarity of protein embeddings within the same cell type (intra-cell-type, blue) compared to embeddings of the same proteins sampled across different cell types (inter-cell-type, grey), across 30 CNS superclusters. <em>n</em> denotes the number of cell types per supercluster.
+            <strong>(b–d)</strong> Distribution of mean pairwise squared Euclidean distance between SEMPER embeddings of proteins sharing a Gene Ontology (GO) term, for <strong>(b)</strong> Biological Process, <strong>(c)</strong> Cellular Component, and <strong>(d)</strong> Molecular Function. Solid blue lines mark the mean distance; dashed red lines mark the random null.
+            <strong>(e)</strong> UMAP projection of SEMPER embeddings for 3,035 proteins active in dopaminergic (DA) neurons. Colors correspond to 15 Leiden clusters. Selected clusters are annotated with enriched GO terms.
+            <strong>(f)</strong> Centroid dispersion for extreme multifunctional (EMF) proteins (<em>n</em>&thinsp;=&thinsp;243, red) vs. all other proteins (<em>n</em>&thinsp;=&thinsp;15,115, grey). Dashed lines mark group means.
+          </figcaption>
+        </figure>
+      </div>
+ 
+      <div class="tab-panel" id="panel2">
+        <p>For a candidate protein complex, SEMPER retrieves cell type-specific embeddings
+        for all member proteins and scores them by mean pairwise cosine similarity,
+        ranked against randomly sampled decoys via AUPRC. SEMPER outperforms all
+        baselines across four definitions of cell type-specific complex.</p>
+        <figure>
+          <img src="figures/figure3.png" alt="Zero-shot protein complex identification" />
+          <figcaption>
+            <strong>Fig. 3 | Zero-shot identification of cell type-specific protein complexes.</strong>
+            <strong>(a)</strong> Zero-shot evaluation framework. For a candidate protein complex, SEMPER computes mean pairwise cosine similarity across member proteins and ranks true complexes against randomly sampled decoys via AUPRC.
+            <strong>(b)</strong> Four operational definitions of cell type-specific protein complexes: co-expressed and physically interacting in the PPI network, co-expressed only, co-expressed and HPA co-localized, and co-expressed and brain co-abundant.
+            <strong>(c–f)</strong> AUPRC of SEMPER (orange) and existing methods (blue) under each definition. Each point represents a single CNS cell type.
+          </figcaption>
+        </figure>
+      </div>
+ 
+      <div class="tab-panel" id="panel3">
+        <p>For each CNS cell type, a random seed set of proteins from clinical trials
+        for a given neurodegenerative disease is used as input to SEMPER. All other
+        actively expressed proteins are ranked by mean cosine similarity to the seed
+        embeddings. SEMPER consistently recovers more held-out clinical targets in
+        the top-K than all benchmarked models across five diseases.</p>
+        <figure>
+          <img src="figures/figure4.png" alt="Zero-shot target prioritization Hits@K" />
+          <figcaption>
+            <strong>Fig. 4 | Zero-shot retrieval of candidate therapeutic targets across neurodegenerative diseases.</strong>
+            <strong>(a)</strong> Evaluation framework. For each CNS cell type, a random seed set of clinical trial candidate proteins is used as input to SEMPER; all other expressed proteins are ranked by cosine similarity to the seed embeddings.
+            <strong>(b)</strong> Five neurodegenerative diseases evaluated, with candidate targets from completed Phase 2, Phase 3, and Phase 4 clinical trials as ground truth.
+            <strong>(c–g)</strong> Hits@10 for <strong>(c)</strong> Parkinson's disease, <strong>(d)</strong> Alzheimer's disease, <strong>(e)</strong> multiple sclerosis, <strong>(f)</strong> Huntington's disease, and <strong>(g)</strong> amyotrophic lateral sclerosis. Each point is the mean Hits@10 across 100 bootstrapped seed samples per CNS cell type for cell type-aware methods; solid circles for cell type-agnostic methods.
+          </figcaption>
+        </figure>
+      </div>
+ 
+      <div class="tab-panel" id="panel4">
+        <p>Combining SEMPER's embedding-based retrieval with a pointwise LLM evaluator
+        that scores each candidate on a 1–5 biological relevance scale — weighted
+        equally with SEMPER's similarity score — improves retrieval of essential
+        dopaminergic neuron genes and clinical trial targets across all five diseases.</p>
+        <figure>
+          <img src="figures/figure5.png" alt="LLM-augmented SEMPER pointwise evaluator" />
+          <figcaption>
+            <strong>Fig. 5 | Performance of LLM-augmented SEMPER on zero-shot nomination of essential genes and candidate targets.</strong>
+            <strong>(a–c)</strong> Illustration of LLM-only, SEMPER-only, and LLM-augmented SEMPER. After SEMPER retrieves the top 100 candidates, an LLM evaluator generates biological rationales and scores on a 1–5 scale; the final ranking combines the normalized LLM score with SEMPER's similarity score.
+            <strong>(d)</strong> Experimental workflow for identifying essential genes in hESC-derived dopaminergic (DA) neurons.
+            <strong>(e)</strong> Performance retrieving essential DA neuron genes (Hits@5, @10, @25).
+            <strong>(f)</strong> Venn diagram of top 25 candidate DA genes per approach.
+            <strong>(g–k)</strong> Top-10 hits for candidate targets across five neurodegenerative diseases.
+          </figcaption>
+        </figure>
+      </div>
+ 
+      <div class="tab-panel" id="panel5">
+        <p>A Swiss-system Elo tournament further refines SEMPER's top-100 candidates
+        through pairwise head-to-head evaluation by an LLM augmented with live Gene
+        Ontology data retrieval, improving Hits@10 across most CNS cell types and
+        all five diseases.</p>
+        <figure>
+          <img src="figures/figure6.jpg" alt="Tool-augmented Elo tournament reprioritization" />
+          <figcaption>
+            <strong>Fig. 6 | Tool-augmented LLM evaluator for reprioritizing SEMPER candidates across five neurodegenerative diseases.</strong>
+            <strong>(a)</strong> SEMPER's embedding-based retrieval of cell type-specific candidates.
+            <strong>(b)</strong> Tool-augmented Elo tournament. The top 100 candidates are seeded with Elo ratings (1100–1500) proportional to similarity scores. Candidates enter a multi-round Swiss-system tournament; an LLM evaluator augmented with live Gene Ontology lookup determines a winner per pairing and updates Elo ratings to produce the final reprioritized list.
+            <strong>(c–g)</strong> Slopegraphs of Hits@10 per CNS cell type for SEMPER alone vs. SEMPER + LLM evaluator, across all five diseases.
+          </figcaption>
+        </figure>
+      </div>
+ 
+  </div><!-- .tab-panels -->
+</section>
+ 
+<!-- ── Code ── -->
+<section id="code">
+  <div class="wrap">
+    <h2>Code &amp; Data</h2>
+    <p>
+      The full SEMPER codebase is available on GitHub under the MIT License.
+      Pre-trained embeddings and required data files are hosted on Figshare.
+    </p>
+    <div class="btn-row" style="margin-bottom: 28px;">
+      <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-dark">GitHub Repository</a>
+      <a href="#" class="btn btn-light">Pre-trained Embeddings</a>
+      <a href="https://github.com/mims-harvard/semper/tree/main/evaluate" class="btn btn-light">Evaluate</a>
+    </div>
+    <pre># 1. Clone and set up environment
+git clone https://github.com/mims-harvard/SEMPER
+cd SEMPER
+conda env create -f environment.yml && conda activate semper
+pip install torch-scatter torch-sparse torch-cluster torch-geometric \
+    -f https://data.pyg.org/whl/torch-2.1.0+cu118.html
+
+# 2. Download pre-trained embeddings from Figshare (link above)
+#    Place esm_projected.pth and esm_projected_labels.txt in outputs/contrastive/
+
+# 3. Reproduce paper evaluations
+cd evaluate/
+# See evaluate/README.md for full usage of each script</pre>
+
+    <div class="repo-tree">
+      <span class="dir">SEMPER/</span><br>
+      ├── <span class="dir">ppi_gt/</span>          <span class="note"># Stage 1a: PPI Graph Transformer encoder</span><br>
+      ├── <span class="dir">esm/</span>              <span class="note"># Stage 1b: protein sequence encoder + data acquisition</span><br>
+      ├── <span class="dir">contrastive/</span>      <span class="note"># Stage 2: contrastive alignment (InfoNCE)</span><br>
+      ├── <span class="dir">evaluate/</span>         <span class="note"># All paper analyses, organized by figure</span><br>
+      ├── environment.yml<br>
+      └── README.md
+    </div>
+  </div>
+</section>
+
+<!-- ── Citation ── -->
+<section id="citation">
+  <div class="wrap">
+    <h2>Citation</h2>
+    <p>If you use SEMPER in your research, please cite:</p>
+    <div class="cite-block">
+      <div class="cite-header">BibTeX</div>
+      <pre>@article{semper2026,
+  title   = {SEMPER: System-Scale Multimodal Protein Embedding Representations},
+  author  = {Dong, Amy and Li, Michelle M. and {[co-authors]} and Zitnik, Marinka},
+  journal = {},
+  year    = {2026},
+  url     = {}
+}</pre>
+    </div>
+
+    <h2 style="margin-top: 56px;">Team</h2>
+    <div class="author-grid">
+      <div class="author-card">
+        <div class="name">Amy Dong</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name"><a href="https://michellemli.com/">Michelle M. Li</a></div>
+        <div class="role">Harvard Medical School</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name">XXX</div>
+        <div class="role">Harvard University</div>
+      </div>
+      <div class="author-card">
+        <div class="name"><a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a></div>
+        <div class="role">Harvard Medical School</div>
+      </div>
+    </div>
+    <p style="margin-top: 32px; font-size: 0.85rem;">
+      Questions? Open a <a href="https://github.com/mims-harvard/SEMPER/issues">GitHub issue</a>
+      or contact <a href="mailto:marinka@hms.harvard.edu">marinka@hms.harvard.edu</a>.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    SEMPER is an open-science academic research project ·
+<a href="https://zitniklab.hms.harvard.edu/">Zitnik Lab</a> ·
+Harvard Medical School · <a href="https://github.com/mims-harvard/SEMPER">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
