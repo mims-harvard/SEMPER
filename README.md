@@ -52,20 +52,17 @@ SEMPER/
 
 ## Installation
 
-**Requirements:** Linux, CUDA 11.8, conda.
+**Requirements:** Linux, NVIDIA GPU with CUDA 11.8, conda.
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/mims-harvard/SEMPER.git
 cd SEMPER
 
-# 2. Create and activate the conda environment
+# 2. Create and activate the environment (installs PyTorch, PyG, and all
+#    dependencies for data prep, training, and figures 2-4)
 conda env create -f environment.yml
 conda activate semper
-
-# 3. Install PyTorch Geometric wheels matched to PyTorch 2.1.0 + CUDA 11.8
-pip install torch-scatter torch-sparse torch-cluster torch-geometric \
-    -f https://data.pyg.org/whl/torch-2.1.0+cu118.html
 ```
 
 ---
