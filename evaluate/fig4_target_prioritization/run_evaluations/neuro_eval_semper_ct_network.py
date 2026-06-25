@@ -1,29 +1,4 @@
 #!/usr/bin/env python3
-"""
-neuro_eval_semper_ct_network.py
-
-SEMPER-ESM / SEMPER-ESMCLIP evaluator using:
-- Seeds from seedplan JSON (same as before)
-- Candidates from SEMPER cell-type-specific embedding space (NOT ProTrek universe)
-- Positives from an OpenTargets-style disease gene JSON (HGNC list), mapped into each CT candidate set
-
-Example:
-python neuro_eval_semper_ct_network.py \
-  --seedplan neuro_seedplan.protrek_intersection.json \
-  --ensp_json /n/holylfs06/LABS/mzitnik_lab/Lab/adong/TransposeNetv3_data/TransposeNet_v3/ENSP_to_pref.json \
-  --pd_gene_file /n/holylfs06/LABS/mzitnik_lab/Lab/adong/PINNACLE_newTransposeNet_DDP_tests/PD_genelist_similarity_test/neurodegen_disease/raw_targets_EFO_0000618.json \
-  --embed_path /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/.../esm_projected.pth \
-  --label_dict /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/.../esm_projected_labels.txt \
-  --model_name SEMPER_ESMCLIP \
-  --out_prefix neuro_SEMPER_ESMCLIP_ctnet_OTpos \
-  --device cuda \
-  --k_values 5 10 25 \
-  --skip_if_missing_seed
-
-Notes:
-- This script intentionally ignores payload["universe_ensp"] and payload["positive_ensp"].
-- It uses seedplan ONLY for seed assignment (trials).
-"""
 
 import argparse
 import json
@@ -34,10 +9,6 @@ import numpy as np
 import pandas as pd
 import torch
 
-
-# ----------------------------
-# ID normalization
-# ----------------------------
 
 def norm_ensp(x: Any) -> str:
     if x is None:
@@ -59,11 +30,6 @@ def norm_hgnc(x: Any) -> str:
     s = str(x).strip().upper()
     return s
 
-
-# ----------------------------
-# Load OpenTargets disease genes (HGNC)
-# ----------------------------
-
 def load_ot_hgnc_set(pd_gene_file: str) -> set:
     """
     Expected JSON like:
@@ -75,18 +41,7 @@ def load_ot_hgnc_set(pd_gene_file: str) -> set:
         d = json.load(f)
     return d
 
-
-# ----------------------------
-# Load SEMPER-style embeddings
-# ----------------------------
-
 def load_celltype_embeddings(embed_path: str, label_dict_path: str) -> Dict[str, Dict[str, torch.Tensor]]:
-    """
-    Robust loader:
-    - Uses the EXACT 'Cell Type' string from labels_dict to index the protein list
-    - Handles cell types like: 'CCI_10', 'CCI_cluster:0', 'CCI_cluster:123'
-    - Returns per_cell keyed by normalized cluster id: '0', '1', '10', '123', ...
-    """
     embed = torch.load(embed_path, map_location="cpu")
 
     with open(label_dict_path, "r") as f:
@@ -174,11 +129,6 @@ def load_celltype_embeddings(embed_path: str, label_dict_path: str) -> Dict[str,
         raise RuntimeError(f"No celltype embeddings loaded from {embed_path} with labels {label_dict_path}")
     return per_cell
 
-
-# ----------------------------
-# Ranking + metrics
-# ----------------------------
-
 def apr_at_k(ranked_hgnc: List[str], relevant_set: set, k: int) -> float:
     num_relevant_in_data = len(relevant_set.intersection(ranked_hgnc))
     if num_relevant_in_data == 0:
@@ -201,11 +151,6 @@ def cosine_rank_candidates(E_all: torch.Tensor, seed_vecs: torch.Tensor) -> torc
 
 def safe_mean(x: List[float]) -> float:
     return float(np.mean(x)) if len(x) else float("nan")
-
-
-# ----------------------------
-# Main
-# ----------------------------
 
 def main():
     ap = argparse.ArgumentParser(description="Evaluate SEMPER-ESM/ESMCLIP using CT-network candidates + OT positives, seeds from seedplan.")
@@ -232,8 +177,7 @@ def main():
                     help="Optional cap on candidate pool size per cluster (0 = no cap).")
 
     args = ap.parse_args()
-
-    # seedplan (seeds only)
+  
     with open(args.seedplan, "r") as f:
         seedplan = json.load(f)
     clusters = seedplan["clusters"]
@@ -346,7 +290,6 @@ def main():
                     hits_k = sum(1 for g in top_k if g in relevant_hgnc)
                     apr_k = apr_at_k(ranked_hgnc, relevant_hgnc, k)
 
-                    # optional recovery_pct definition (consistent across universes):
                     denom = min(k, len(relevant_hgnc)) if len(relevant_hgnc) > 0 else 0
                     recovery_pct = (100.0 * hits_k / denom) if denom > 0 else 0.0
 
