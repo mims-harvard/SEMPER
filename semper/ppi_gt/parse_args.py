@@ -18,7 +18,7 @@ def get_args():
     parser.add_argument("--loader", type=str, default="graphsaint", choices=["neighbor", "graphsaint"], help="Loader for minibatching.")
 
     # Hyperparameters
-    parser.add_argument("--feat_mat", type=int, default=2048, help="Random Gaussian vectors of shape (1 x 2048)")
+    parser.add_argument("--feat_mat", type=int, default=512, help="Random Gaussian vectors of shape (1 x 2048)")
     parser.add_argument("--output", type=int, default=8, help="Output size")
     parser.add_argument("--hidden", type=int, default=16, help="Hidden size")
     parser.add_argument("--lr", type=float, default=0.001, help="Learning rate")
@@ -28,7 +28,7 @@ def get_args():
     parser.add_argument("--theta", type=float, default=0.1, help="Theta (for PPI loss)")
     parser.add_argument("--lmbda", type=float, default=0.01, help="Lambda (for center loss function)")
     parser.add_argument("--lr_cent", type=float, default=0.01, help="Learning rate for center loss")
-    parser.add_argument("--batch_size", type=int, default=64, help="Batch size")
+    parser.add_argument("--batch_size", type=int, default=32, help="Batch size")
     parser.add_argument("--norm", type=str, default=None, help="Type of normalization layer to use in up-pooling")
     parser.add_argument("--pc_att_channels", type=int, default=8, help="Pooling attention channels")
 
