@@ -20,7 +20,7 @@ The pipeline has two parts for each panel:
 data/
 ├── filtered_complexes_min3.csv           # CORUM complexes with ≥3 ENSP members
 │                                         # https://mips.helmholtz-muenchen.de/corum/
-├── ppi_edgelists/                        # Cell type-specific PPI edgelists (Figshare)
+├── ppi_edgelists/                        # Cell type-specific PPI edgelists
 │   └── <N>_edgelist.txt                  # 442 files, one per CNS cell type
 ├── ensp_id2vec_mean.pkl.gz               # ProTrek ENSP→vec map
 │                                         # Defines the allowed protein universe
@@ -28,7 +28,7 @@ data/
 │                                         # https://www.proteinatlas.org/about/download
 ├── cohorts_combined_brain_tumor_avg_outer_prob.csv  # [panel f] Laman Trip brain scores
 │                                         # https://doi.org/10.1038/s41467-022-34544-2
-│   # Embeddings (Figshare):
+│   # Embeddings:
 ├── esm_projected.pth / esm_projected_labels.txt   # SEMPER
 ├── ppi_gt_embed.pth / ppi_gt_labels.txt           # PPI-GT
 ├── pinnacle_embed.pth / pinnacle_labels.txt        # PINNACLE
