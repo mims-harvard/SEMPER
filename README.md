@@ -158,18 +158,6 @@ Key arguments:
 
 ---
 
-## Using the released weights
-
-The weights on HuggingFace reproduce the trained PPI graph-transformer and
-contrastive projection heads from the paper. They are specific to the CNS atlas
-SEMPER was trained on, so they are intended
-for reproducing the published model (e.g., once the source atlas is available),
-**not** as a general-purpose protein embedder. To apply SEMPER to a different
-organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
-networks (see *Training*).
-
----
-
 ## Experiment Tracking (optional)
 
 Component 1 logs training and validation metrics to [Weights & Biases](https://wandb.ai). Tracking is optional.
@@ -188,6 +176,18 @@ bash run_ppi_gt.sh
 export WANDB_MODE=disabled
 bash run_ppi_gt.sh
 ```
+
+---
+
+## Using the released weights
+
+The weights on HuggingFace reproduce the trained PPI graph-transformer and
+contrastive projection heads from the paper. They are specific to the CNS atlas
+SEMPER was trained on, so they are intended
+for reproducing the published model (e.g., once the source atlas is available),
+**not** as a general-purpose protein embedder. To apply SEMPER to a different
+organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
+networks (see *Training*).
 
 ---
 
