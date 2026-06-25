@@ -61,7 +61,8 @@ cd ppi_gt/
 bash run_ppi_gt.sh
 ```
 
-Key arguments:
+<details>
+<summary>Full argument list</summary>
 
 | Argument | Description | Default |
 |---|---|---|
@@ -80,6 +81,8 @@ Key arguments:
 | `--lr_cent` | Center loss learning rate | `0.01` |
 | `--dropout` | Dropout rate | `0.5` |
 | `--save_prefix` | Output directory for embeddings | — |
+
+</details>
 
 **Outputs** (written to `--save_prefix`):
 - `_protein_embed.pth` — per-cluster protein embeddings `{ct_idx -> tensor[n_proteins, D]}`
@@ -107,7 +110,8 @@ The pipeline stratifies protein IDs into ENSP (Ensembl Protein) and UniProt Entr
 bash run_esm.sh
 ```
 
-Key arguments for `generate_ESMC_embeds.py`:
+<details>
+<summary>Full argument list for `generate_ESMC_embeds.py`:</summary>
 
 | Argument | Description | Default |
 |---|---|---|
@@ -115,6 +119,8 @@ Key arguments for `generate_ESMC_embeds.py`:
 | `--out_embeds` | Output path for embedding tensor (.pt) | — |
 | `--out_index` | Output path for protein index (.pkl) | — |
 | `--batch_size` | Sequences per inference batch | `16` |
+
+</details>
 
 **Outputs:**
 - `protein_esmc_600m.pt` — embedding tensor `[N_proteins, 1152]`
@@ -131,7 +137,8 @@ cd contrastive/
 bash run_contrastive.sh
 ```
 
-Key arguments:
+<details>
+<summary>Full arguments:</summary>
 
 | Argument | Description | Default |
 |---|---|---|
@@ -147,6 +154,8 @@ Key arguments:
 | `--epochs` | Training epochs | `200` |
 | `--lr` | Learning rate | `1e-4` |
 | `--temperature` | InfoNCE temperature τ | `0.07` |
+
+</details>
 
 **Outputs** (written to `--save_dir`):
 - `clip_mlps.ckpt` — projection head checkpoint (weights + config)
