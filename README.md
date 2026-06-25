@@ -190,15 +190,24 @@ Key arguments:
 
 ---
 
-## Experimental Tracking
+## Experiment Tracking (optional)
 
-SEMPER uses [Weights & Biases](https://wandb.ai) for experiment tracking and hyperparameter search. Before running Component 1, log in with:
+Component 1 logs training and validation metrics to [Weights & Biases](https://wandb.ai). Tracking is optional.
+
+**To enable it**, set your W&B entity (team or username) and log in once:
 
 ```bash
-wandb login
+export WANDB_ENTITY=your-entity   # omit to use your account's default entity
+wandb login                       # first run only
+bash run_ppi_gt.sh
 ```
 
-Set your W&B entity in `ppi_gt/train.py` or disable tracking by removing the `wandb` calls if preferred.
+**To run without W&B** — no account or login required — disable it with the standard environment variable:
+
+```bash
+export WANDB_MODE=disabled
+bash run_ppi_gt.sh
+```
 
 ---
 
