@@ -20,36 +20,6 @@ SEMPER integrates three inputs derived from an adult human CNS single-cell trans
 
 ---
 
-## Repository Structure
-
-```
-SEMPER/
-├── environment.yml              # Conda environment
-│
-├── ppi_gt/                      # Component 1: PPI Graph Transformer encoder
-│   ├── train.py                 # Main training loop (DDP)
-│   ├── model.py                 # PPIGT model architecture
-│   ├── conv.py                  # PCTConv and PPIConv graph convolutions
-│   ├── loss.py                  # Link prediction + center loss
-│   ├── center_loss.py           # CenterLoss module
-│   ├── minibatch_utils.py       # GraphSAINT batch generation
-│   ├── generate_input.py        # Data loading
-│   ├── utils.py                 # Metrics, plotting, embedding utilities
-│   ├── parse_args.py            # CLI arguments
-│   └── run_ppi_gt.sh            # Example training script
-│
-├── esm/                         # Component 2: ESM-C sequence encoder
-│   ├── fetch_sequences.py       # Sequence acquisition pipeline (Ensembl + UniProt)
-│   ├── generate_ESMC_embeds.py  # ESM-Cambrian inference + embedding extraction
-│   └── run_esm.sh               # Example inference script
-│
-└── contrastive/                 # Component 3: Multimodal contrastive alignment
-    ├── train_contrastive_MLP.py # Projection head training (symmetric InfoNCE)
-    └── run_contrastive.sh       # Example training script
-```
-
----
-
 ## Installation
 
 **Requirements:** Linux, NVIDIA GPU with CUDA 11.8, conda.
