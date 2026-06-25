@@ -3,6 +3,8 @@
 This directory contains all scripts to reproduce the analyses in the SEMPER paper,
 organized by figure. Each subfolder has its own README with detailed usage instructions.
 
+These scripts require SEMPER embeddings and cell type-specific PPI networks derived from a controlled-access CNS atlas (see Availability). They are provided for transparency of the evaluation methodology; exact reproduction requires access to that data.
+
 ---
 
 ## Structure
