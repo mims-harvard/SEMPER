@@ -52,7 +52,7 @@ SEMPER was trained on the following inputs:
 
 Components 1 and 2 can be run in parallel. Component 3 requires outputs from both.
 
-### Component 1 — PPI Graph Transformer
+### PPI Graph Transformer
 
 Trains the multi-scale graph transformer encoder on cell type-specific PPI networks and the BTO metagraph using GraphSAINT minibatch sampling and DDP across 4 GPUs.
 
@@ -90,7 +90,7 @@ bash run_ppi_gt.sh
 
 ---
 
-### Component 2 — ESM-C Sequence Encoder
+### ESM-C Sequence Encoder
 
 **Step 1:** Fetch canonical amino acid sequences from Ensembl and UniProt.
 
@@ -128,9 +128,9 @@ bash run_esm.sh
 
 ---
 
-### Component 3 — Contrastive Alignment
+### Contrastive Alignment
 
-Trains two lightweight MLP projection heads that align PPI graph embeddings and ESM-C sequence embeddings into a shared latent space via symmetric InfoNCE loss. Requires outputs from both Component 1 and Component 2.
+Trains two lightweight MLP projection heads that align PPI graph embeddings and ESM-C sequence embeddings into a shared latent space via symmetric InfoNCE loss. Requires embeddings from the above ESM-C and PPI Graph Transformer.
 
 ```bash
 cd contrastive/
