@@ -1,39 +1,4 @@
 #!/usr/bin/env python3
-"""
-neuro_eval_graphlets_ct_orbits_ct_network.py
-
-Cell-type-specific graphlet-orbit (ORCA) evaluator in the SAME "CT network" candidate setting:
-- Seeds: from seedplan trials (per cluster).
-- Candidates: the *cell-type network protein set* for that cluster, derived from a SEMPER/PINNACLE labels_dict.
-- Embeddings: CT-specific ORCA orbit files: <ct_label>_nodes.json + <ct_label>_orbits.txt (one per CT).
-- Positives: OpenTargets disease gene JSON (HGNC list), intersected with CT candidates for that cluster.
-
-This matches the "Semper universe vs ProTrek universe are very different" fix:
-we do NOT use payload["universe_ensp"] nor payload["positive_ensp"].
-
-Example:
-python neuro_eval_graphlets_ct_orbits_ct_network.py \
-  --seedplan neuro_seedplan.protrek_intersection.json \
-  --ensp_json /n/holylfs06/LABS/mzitnik_lab/Lab/adong/TransposeNetv3_data/TransposeNet_v3/ENSP_to_pref.json \
-  --pd_gene_file /n/holylfs06/LABS/mzitnik_lab/Lab/adong/PINNACLE_newTransposeNet_DDP_tests/PD_genelist_similarity_test/neurodegen_disease/raw_targets_EFO_0000618.json \
-  --ot_key clinically_relevant_targets \
-  --label_dict /n/holylfs06/LABS/mzitnik_lab/Lab/adong/SEMPER_v3TransposeNet_tests/.../pinnacle_projected_labels.txt \
-  --ct-orbits-dir /n/holylfs06/LABS/mzitnik_lab/Lab/adong/CORUM_benchmarking/protrek_analysis/graphlets_train/per_ct/ \
-  --ct-suffix _edgelist \
-  --model_name Graphlets_ORCA_CT \
-  --out_prefix neuro_GraphletsORCA_CT_ctnet_OTpos \
-  --device cpu \
-  --k_values 5 10 25 \
-  --skip_if_missing_seed
-
-Directory expectation (ct-orbits-dir):
-  <ct_label>_nodes.json
-  <ct_label>_orbits.txt
-
-where ct_label defaults to: f"{cluster_id}{ct_suffix}".
-So cluster "10" -> "10_edgelist_nodes.json" and "10_edgelist_orbits.txt".
-"""
-
 import argparse
 import json
 import os
@@ -44,11 +9,6 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 import pandas as pd
 import torch
-
-
-# ----------------------------
-# ID normalization
-# ----------------------------
 
 def norm_ensp(x: Any) -> str:
     if x is None:
@@ -69,19 +29,9 @@ def norm_hgnc(x: Any) -> str:
         return ""
     return str(x).strip().upper()
 
-
-# ----------------------------
-# Load OpenTargets disease genes (HGNC)
-# ----------------------------
-
 def load_ot_json(pd_gene_file: str) -> dict:
     with open(pd_gene_file, "r") as f:
         return json.load(f)
-
-
-# ----------------------------
-# Load CT protein lists from labels_dict
-# ----------------------------
 
 def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, List[str]]:
     """
@@ -154,11 +104,6 @@ def load_ct_protein_lists_from_label_dict(label_dict_path: str) -> Dict[str, Lis
         raise RuntimeError(f"Could not parse any CT protein lists from {label_dict_path}")
     return out
 
-
-# ----------------------------
-# Metrics / ranking
-# ----------------------------
-
 def apr_at_k(ranked_hgnc: List[str], relevant_set: set, k: int) -> float:
     num_relevant_in_data = len(relevant_set.intersection(ranked_hgnc))
     if num_relevant_in_data == 0:
@@ -178,11 +123,6 @@ def cosine_rank_candidates(E_all: torch.Tensor, seed_vecs: torch.Tensor) -> torc
     S = seed_vecs / (seed_vecs.norm(dim=1, keepdim=True) + 1e-12)
     return (E @ S.t()).mean(dim=1)
 
-
-# ----------------------------
-# Load CT-specific ORCA orbits
-# ----------------------------
-
 def load_node_map(node_map_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     with open(node_map_path, "r") as f:
         node_map = json.load(f)
@@ -192,10 +132,6 @@ def load_node_map(node_map_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
 
 
 def load_orbits_dict(orbits_path: str, idx_to_protein: Dict[int, str]) -> Dict[str, torch.Tensor]:
-    """
-    ORCA orbit counts: row i corresponds to node i (0-based).
-    Returns {ENSP -> torch.FloatTensor[D]} for a single cell type.
-    """
     mat = np.loadtxt(orbits_path)
     if mat.ndim == 1:
         mat = mat.reshape(1, -1)
@@ -215,14 +151,6 @@ def load_orbits_dict(orbits_path: str, idx_to_protein: Dict[int, str]) -> Dict[s
 
 
 def load_all_ct_orbits_dicts(ct_orbits_dir: str) -> Dict[str, Dict[str, torch.Tensor]]:
-    """
-    Expect files in ct_orbits_dir:
-      <ct_label>_nodes.json
-      <ct_label>_orbits.txt
-
-    Returns:
-      ct_to_emb[ct_label][ensp] = torch.FloatTensor[D]
-    """
     ct_to_emb: Dict[str, Dict[str, torch.Tensor]] = {}
     nodes_jsons = sorted(glob(os.path.join(ct_orbits_dir, "*_nodes.json")))
     if not nodes_jsons:
@@ -253,10 +181,6 @@ def cluster_id_to_ct_label(cluster_id: str, suffix: str) -> str:
     return f"{s}{suffix}"
 
 
-# ----------------------------
-# Main
-# ----------------------------
-
 def main():
     ap = argparse.ArgumentParser(description="Evaluate CT-specific graphlets (ORCA) on CT-network candidates, seeds from seedplan, positives from OT HGNC.")
 
@@ -281,7 +205,6 @@ def main():
 
     args = ap.parse_args()
 
-    # seedplan (seeds only)
     with open(args.seedplan, "r") as f:
         seedplan = json.load(f)
     clusters = seedplan["clusters"]
