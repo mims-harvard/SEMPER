@@ -52,7 +52,7 @@ SEMPER was trained on the following inputs:
 
 Components 1 and 2 can be run in parallel. Component 3 requires outputs from both.
 
-### PPI Graph Transformer
+### 1 · PPI Graph Transformer
 
 Trains the multi-scale graph transformer encoder on cell type-specific PPI networks and the BTO metagraph using GraphSAINT minibatch sampling and DDP across 4 GPUs.
 
@@ -88,9 +88,7 @@ bash run_ppi_gt.sh
 - `_protein_embed.pth` — per-cluster protein embeddings `{ct_idx -> tensor[n_proteins, D]}`
 - `_labels_dict.txt` — label dictionary mapping cluster indices to cell type names
 
----
-
-### ESM-C Sequence Encoder
+### 2 · ESM-C Sequence Encoder
 
 **Step 1:** Fetch canonical amino acid sequences from Ensembl and UniProt.
 
@@ -126,9 +124,7 @@ bash run_esm.sh
 - `protein_esmc_600m.pt` — embedding tensor `[N_proteins, 1152]`
 - `protein_esmc_600m.pkl` — index mapping `{protein_id -> tensor_index}`
 
----
-
-### Contrastive Alignment
+### 3 · Contrastive Alignment
 
 Trains two lightweight MLP projection heads that align PPI graph embeddings and ESM-C sequence embeddings into a shared latent space via symmetric InfoNCE loss. Requires embeddings from the above ESM-C and PPI Graph Transformer.
 
