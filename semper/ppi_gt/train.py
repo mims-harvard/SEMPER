@@ -72,7 +72,8 @@ eps = 10e-4
 # Log in to WandB
 wandb.login()
 
-wandb.init(config = hparams_raw, project = "ppigt", entity = "XXX")
+#input for W&B tracking
+#wandb.init(config = hparams_raw, project = "ppigt", entity = "XXX")
 
 hparams = wandb.config
 
