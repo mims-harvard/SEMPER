@@ -19,7 +19,7 @@ The pipeline has two parts:
 
 ```
 data/
-├── esm_projected.pth / esm_projected_labels.txt   # SEMPER (Figshare)
+├── esm_projected.pth / esm_projected_labels.txt   # SEMPER
 ├── ppi_gt_embed.pth / ppi_gt_labels.txt           # PPI-GT
 ├── pinnacle_embed.pth / pinnacle_labels.txt        # PINNACLE
 ├── protein_esmc_600m.pkl / protein_esmc_600m.pt   # ESM-C
