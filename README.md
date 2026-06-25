@@ -1,4 +1,4 @@
-# SEMPER
+# SEMPER: SystEm-scale Multimodal ProtEin Representations
 
 [![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](zitniklab.hms.harvard.edu/SEMPER/)
 [![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#)
@@ -6,19 +6,17 @@
 [![Model](https://img.shields.io/badge/HuggingFace-SEMPER-yellow)](https://huggingface.co/mims-harvard/SEMPER)
 [![License](https://img.shields.io/badge/License-MIT-lightgreen)]([https://huggingface.co/mims-harvard/SEMPER](https://opensource.org/license/MIT))
 
-**SEMPER** (**S**ingle-cell **E**mbeddings from **M**ultimodal **P**rotein **E**ncoder **R**epresentations) is a multimodal deep learning model for generating cell type-aware protein representations by jointly modeling protein interaction network topology and amino acid sequence.
+Proteins carry out cellular functions largely through their interactions with other proteins. Because the set of proteins expressed differs from one cell type to the next, a given protein can engage different partners depending on its cellular context. This context dependence is well documented but difficult to represent computationally, and it is particularly relevant in the central nervous system (CNS), whose diversity of neuronal and glial cell types has been linked to the cell type-specific vulnerability observed across neurodegenerative diseases. Yet existing protein representation methods capture only part of the picture: sequence-based models assign each protein a single, context-free embedding, while network-based models incorporate cellular context but set sequence information aside.
 
-SEMPER learns a shared latent space that bridges a protein's intrinsic evolutionary sequence identity (via a frozen ESM-Cambrian language model) with its dynamic, cell type-specific topological context (via a multi-scale PPI Graph Transformer), yielding embeddings optimized for downstream biomedical tasks across diverse CNS cell types and tissues.
+**SEMPER** (**S**yst**E**m-scale **M**ultimodal **P**rot**E**in **R**epresentations) is a multimodal deep learning model that learns cell type-aware protein embeddings that combine both. A frozen hybrid graph transformer encodes each protein's context within cell type-specific protein–protein interaction (PPI) networks and a metagraph of cellular and tissue organization, and a frozen protein sequence encoder represents its amino acid sequence; a symmetric InfoNCE objective aligns the two into a shared latent space. Trained across 442 cell types of the human CNS, SEMPER assigns the same protein a distinct embedding in each cellular context, so that its representation reflects where in the brain it acts.
+
+Across our analyses, this embedding space recovers cellular and functional organization: proteins cluster by cell type and by shared function, multifunctional proteins spread across contexts as expected, and cell type-specific protein complexes are recovered more accurately than by the baselines we tested. Building on these representations, SEMPER can prioritize candidate therapeutic targets for five neurodegenerative diseases in a zero-shot setting, and its embedding-derived signals can be combined with large language model reasoning to refine those rankings. These predictions are associative and intended to support hypothesis generation rather than replace experimental validation.
 
 ---
 
 ## Overview
 
-SEMPER consists of three sequential components:
-
-1. PPI-GT Encoder: Multi-scale graph transformer trained on cell type-specific PPI networks + BTO metagraph
-2. Frozen ESM-Cambrian (600M) sequence embeddings extracted from canonical amino acid sequences
-3. Symmetric InfoNCE alignment of both modalities into a shared cell type-aware latent space
+SEMPER integrates three inputs derived from an adult human CNS single-cell transcriptomic atlas: 1D protein sequences, 442 cell type-specific protein–protein interaction (PPI) networks, and a hierarchical metagraph of cellular and tissue organization. A frozen protein sequence encoder and a frozen hybrid graph transformer encode each input independently; trainable adaptors project both into a shared latent space aligned by a symmetric InfoNCE contrastive loss.
 
 ---
 
