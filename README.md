@@ -1,6 +1,6 @@
 # SEMPER: SystEm-scale Multimodal ProtEin Representations
 
-[![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](zitniklab.hms.harvard.edu/SEMPER/)
+[![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](https://zitniklab.hms.harvard.edu/SEMPER/)
 [![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#)
 [![Code](https://img.shields.io/badge/Code-SEMPER-purple)](https://github.com/mims-harvard/SEMPER)
 [![Model](https://img.shields.io/badge/HuggingFace-SEMPER-yellow)](https://huggingface.co/mims-harvard/SEMPER)
