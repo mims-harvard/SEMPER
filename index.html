@@ -61,8 +61,6 @@
     }
     h3 { font-family: var(--sans); font-weight: 600; font-size: 1.15rem; margin: 28px 0 8px; }
     p { margin: 0 0 14px; }
-    ul { margin: 0 0 14px; padding-left: 22px; }
-    li { margin-bottom: 6px; }
     #abstract p { text-align: justify; hyphens: auto; }
 
     figure { margin: 22px 0 26px; }
@@ -279,14 +277,11 @@
 
 <section id="data">
   <h2>Data and code</h2>
-  <ul>
-    <li><b>Code:</b> <a href="https://github.com/mims-harvard/SEMPER">GitHub</a>, MIT License.</li>
-    <li><b>Model weights:</b> <a href="https://huggingface.co/mims-harvard/SEMPER">Hugging Face</a>. The weights are specific to the CNS atlas SEMPER was trained on; SEMPER is not a general-purpose protein embedder.</li>
-    <li><b>Training data and embeddings:</b> the CNS single-cell atlas, the 442 cell type-specific PPI networks, the metagraph and the atlas-derived protein embeddings are not publicly released.</li>
-    <li><b>Ground truth:</b> the lists used for evaluation are released as CSV files in the
-      <a href="https://github.com/mims-harvard/SEMPER/tree/main/data/ground_truth">GitHub repository</a>; see the folder's
-      <a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/README.md">README</a> for column definitions.</li>
-  </ul>
+  <p>
+    The cell type-specific interaction networks are not released. The ground-truth lists used for evaluation are in the
+    <a href="https://github.com/mims-harvard/SEMPER/tree/main/data/ground_truth">GitHub repository</a> as CSV files; see the folder's
+    <a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/README.md">README</a> for column definitions.
+  </p>
   <table class="stack">
     <thead><tr><th>Table</th><th>Contents</th><th class="num">Rows</th><th>Files</th></tr></thead>
     <tbody>
@@ -321,8 +316,7 @@
     </tbody>
   </table>
   <p>
-    Questions? Open a <a href="https://github.com/mims-harvard/SEMPER/issues">GitHub issue</a> or contact
-    <a href="mailto:marinka@hms.harvard.edu">marinka@hms.harvard.edu</a>.
+    Code is on <a href="https://github.com/mims-harvard/SEMPER">GitHub</a> (MIT License) and model weights are on <a href="https://huggingface.co/mims-harvard/SEMPER">Hugging Face</a>.
   </p>
 </section>
 
