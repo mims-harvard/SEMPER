@@ -3,524 +3,351 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEMPER — System-Scale Multimodal Protein Representations</title>
+  <title>SEMPER: Multimodal Protein Representations Across Human Brain Cell Types</title>
+  <meta name="description" content="SEMPER aligns a protein language model with protein–protein interaction networks from 442 cell types of the adult human brain, giving every protein a sequence-informed representation in each cell type in which it is expressed." />
+  <meta property="og:title" content="Multimodal protein representations across human brain cell types" />
+  <meta property="og:description" content="SEMPER: cell type-resolved, sequence-informed protein representations for 442 cell types of the adult human brain." />
+  <meta property="og:image" content="https://zitniklab.hms.harvard.edu/SEMPER/figures/figure1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --white:  #ffffff;
-      --bg:     #fafaf9;
-      --ink:    #111110;
-      --ink-2:  #3a3a38;
-      --ink-3:  #6b6b68;
-      --rule:   #e5e4e0;
-      --link:   #0b66e0;
-      --serif:  'Source Serif 4', Georgia, serif;
-      --sans:   'Source Sans 3', system-ui, sans-serif;
-      --mono:   'JetBrains Mono', monospace;
-      --max:    780px;
-      --wide:   1040px;
+      --ink:   #222;
+      --muted: #666;
+      --rule:  #ddd;
+      --link:  #a51c30;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans:  "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+      --mono:  Menlo, Consolas, monospace;
     }
- 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    * { box-sizing: border-box; }
     body {
-      font-family: var(--sans);
-      background: var(--white);
-      color: var(--ink);
-      font-size: 17px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
+      margin: 0; background: #fff; color: var(--ink);
+      font-family: var(--serif); font-size: 17px; line-height: 1.6;
     }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; height: auto; display: block; }
- 
-    .wrap      { max-width: var(--max);  margin: 0 auto; padding: 0 24px; }
-    .wrap-wide { max-width: var(--wide); margin: 0 auto; padding: 0 24px; }
- 
-    /* ── Nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.93);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--rule);
-    }
-    nav .inner {
-      max-width: var(--wide); margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 52px;
-    }
-    nav .brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; }
-    nav .links { display: flex; gap: 24px; }
-    nav .links a { font-size: 0.83rem; color: var(--ink-3); font-weight: 400; letter-spacing: 0.02em; }
-    nav .links a:hover { color: var(--ink); text-decoration: none; }
- 
-    /* ── Header ── */
-    header { padding: 80px 0 64px; border-bottom: 1px solid var(--rule); }
-    header .wrap { max-width: var(--max); }
-    .venue-line {
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px;
-    }
+    a { color: var(--link); }
+    img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+    .page { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    header { text-align: center; padding: 56px 0 32px; }
     h1 {
-      font-family: var(--serif);
-      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
-      font-weight: 400; line-height: 1.2; color: var(--ink);
-      margin-bottom: 28px; max-width: 680px;
+      font-family: var(--serif); font-weight: 600; font-size: 2.1rem;
+      line-height: 1.25; margin: 0 0 6px;
     }
-    .author-block { margin-bottom: 28px; }
-    .author-block .authors { font-size: 0.95rem; color: var(--ink-2); margin-bottom: 4px; line-height: 1.6; }
-    .author-block .affiliations { font-size: 0.82rem; color: var(--ink-3); line-height: 1.55; }
-    .author-block .authors sup { font-size: 0.62em; }
-    .author-block .corr { margin-top: 8px; }
- 
-    /* ── Buttons ── */
-    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px; font-family: var(--sans); font-size: 0.83rem;
-      font-weight: 600; letter-spacing: 0.01em; border-radius: 4px;
-      transition: all 0.12s; cursor: pointer;
+    .subtitle { font-family: var(--sans); font-size: 1.1rem; color: var(--muted); margin: 0 0 24px; }
+    .authors { font-family: var(--sans); font-size: 1.02rem; line-height: 1.7; margin: 0 0 10px; }
+    .authors span { white-space: nowrap; }
+    .affils { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin: 0 0 8px; }
+    .notes { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); margin: 0 0 24px; }
+    sup { font-size: 0.68em; line-height: 0; }
+
+    .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+    .links a {
+      font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+      color: #fff; background: #333; text-decoration: none;
+      padding: 6px 16px; border-radius: 4px;
     }
-    .btn-dark  { background: var(--ink); color: #fff; border: 1.5px solid var(--ink); }
-    .btn-dark:hover  { background: #333; border-color: #333; text-decoration: none; }
-    .btn-light { background: var(--white); color: var(--ink); border: 1.5px solid var(--rule); }
-    .btn-light:hover { border-color: var(--ink-3); text-decoration: none; }
-    .avail-list { margin: 0 0 8px 1.1rem; padding: 0; }
-    .avail-list li { margin: 0 0 6px; padding-left: 4px; line-height: 1.6; list-style: disc; }
- 
-    /* ── Sections ── */
-    section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
-    section:last-of-type { border-bottom: none; }
+    .links a:hover { background: #000; }
+
+    .teaser { margin: 8px 0 0; }
+
+    section { padding: 28px 0 8px; }
     h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-      font-weight: 400; line-height: 1.3; margin-bottom: 20px;
+      font-family: var(--sans); font-weight: 700; font-size: 1.45rem;
+      margin: 0 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--rule);
     }
-    h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: var(--ink); }
-    p { color: var(--ink-2); margin-bottom: 16px; }
-    p:last-child { margin-bottom: 0; }
-    p.lead { color: var(--ink); font-size: 1.05rem; }
- 
-    /* ── Figures — no border on image, rule only above caption ── */
-    figure { margin: 40px 0; background: var(--white); }
-    figure img { width: 100%; display: block; }
-    figcaption {
-      padding: 14px 0;
-      font-size: 0.82rem; color: var(--ink-3); line-height: 1.55;
-      border-top: 1px solid var(--rule);
-    }
-    figcaption strong { color: var(--ink-2); }
- 
-    /* ── Code ── */
+    h3 { font-family: var(--sans); font-weight: 600; font-size: 1.15rem; margin: 28px 0 8px; }
+    p { margin: 0 0 14px; }
+    #abstract p { text-align: justify; hyphens: auto; }
+
+    figure { margin: 22px 0 26px; }
+    figcaption { font-size: 0.9rem; line-height: 1.5; color: #444; margin-top: 10px; }
+
+    table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.95rem; margin: 10px 0 20px; }
+    thead tr { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    tbody tr:last-child { border-bottom: 2px solid var(--ink); }
+    th { font-weight: 600; text-align: left; }
+    th, td { padding: 6px 10px; vertical-align: top; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    td .dl { margin-right: 10px; white-space: nowrap; }
+
     pre {
-      background: #f6f5f2; border: 1px solid var(--rule); border-radius: 4px;
-      font-family: var(--mono); font-size: 0.8rem; line-height: 1.65;
-      padding: 20px 24px; overflow-x: auto; margin: 24px 0; color: var(--ink);
+      font-family: var(--mono); font-size: 0.82rem; line-height: 1.5;
+      background: #f5f5f5; padding: 14px 16px; overflow-x: auto; margin: 0 0 14px;
+      white-space: pre-wrap; word-break: break-word;
     }
-    code { font-family: var(--mono); font-size: 0.85em; }
-    p code, li code {
-      background: var(--bg); border: 1px solid var(--rule);
-      padding: 1px 5px; border-radius: 3px; font-size: 0.82em;
+    code { font-family: var(--mono); font-size: 0.88em; }
+    .copy {
+      font-family: var(--sans); font-size: 0.85rem; cursor: pointer;
+      background: none; border: none; color: var(--link); padding: 0; text-decoration: underline;
     }
- 
-    /* ── Repo tree ── */
-    .repo-tree {
-      font-family: var(--mono); font-size: 0.8rem; line-height: 1.7; color: var(--ink-2);
-      padding: 20px 24px; background: var(--bg); border: 1px solid var(--rule);
-      border-radius: 4px; margin: 20px 0;
+
+    footer {
+      margin-top: 40px; padding: 20px 0 40px; border-top: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 0.88rem; color: var(--muted); text-align: center;
     }
-    .repo-tree .dir  { color: var(--ink); font-weight: 500; }
-    .repo-tree .note { color: var(--ink-3); }
- 
-    /* ── Citation ── */
-    .cite-block { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin-top: 24px; }
-    .cite-block .cite-header {
-      padding: 10px 18px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-3); background: var(--bg);
-      border-bottom: 1px solid var(--rule);
-    }
-    .cite-block pre { margin: 0; border: none; border-radius: 0; background: var(--white); }
- 
-    /* ── Authors grid ── */
-    .author-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1px; border: 1px solid var(--rule); border-radius: 4px;
-      overflow: hidden; margin-top: 24px; background: var(--rule);
-    }
-    .author-card { background: var(--white); padding: 18px 20px; }
-    .author-card .name { font-size: 0.93rem; font-weight: 600; margin-bottom: 2px; color: var(--ink); }
-    .author-card .role { font-size: 0.78rem; color: var(--ink-3); }
-    .author-card a { color: var(--ink); }
-    .author-card a:hover { text-decoration: underline; }
- 
-    /* ── Results carousel ── */
-    .tab-radio { display: none; }
- 
-    .tab-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-bottom: 2px solid var(--rule);
-      margin-bottom: 36px;
-    }
-    .tab-bar label {
-      padding: 10px 18px;
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--ink-3);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      letter-spacing: 0.01em;
-      transition: color 0.12s;
-      white-space: nowrap;
-    }
-    .tab-bar label:hover { color: var(--ink); }
- 
-    /* active tab */
-    #tab1:checked ~ .tab-bar label[for="tab1"],
-    #tab2:checked ~ .tab-bar label[for="tab2"],
-    #tab3:checked ~ .tab-bar label[for="tab3"],
-    #tab4:checked ~ .tab-bar label[for="tab4"],
-    #tab5:checked ~ .tab-bar label[for="tab5"] {
-      color: var(--ink);
-      border-bottom-color: var(--ink);
-    }
- 
-    /* panels — all hidden by default */
-    .tab-panel { display: none; }
- 
-    #tab1:checked ~ .tab-panels #panel1,
-    #tab2:checked ~ .tab-panels #panel2,
-    #tab3:checked ~ .tab-panels #panel3,
-    #tab4:checked ~ .tab-panels #panel4,
-    #tab5:checked ~ .tab-panels #panel5 { display: block; }
- 
+    footer a { color: var(--muted); }
+
     @media (max-width: 640px) {
-      .tab-bar label { padding: 8px 10px; font-size: 0.76rem; }
-    }
- 
-    /* ── Footer ── */
-    footer { padding: 40px 24px; text-align: center; font-size: 0.8rem; color: var(--ink-3); border-top: 1px solid var(--rule); }
-    footer a { color: var(--ink-3); }
-    footer a:hover { color: var(--ink); }
- 
-    /* ── Responsive ── */
-    @media (max-width: 640px) {
-      nav .links { display: none; }
-      header { padding: 52px 0 44px; }
+      body { font-size: 16px; }
+      .page { padding: 0 16px; }
+      header { padding: 36px 0 24px; }
+      h1 { font-size: 1.6rem; }
+      #abstract p { text-align: left; }
+      .stack thead { display: none; }
+      .stack tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+      .stack tbody tr:first-child { border-top: 2px solid var(--ink); }
+      .stack td { display: block; padding: 2px 0; }
+      .stack td:first-child { font-weight: 600; }
+      .stack td.num { text-align: left; color: var(--muted); }
+      .stack td.num::before { content: "Rows: "; }
     }
   </style>
 </head>
 <body>
- 
-<nav>
-  <div class="inner">
-    <span class="brand">SEMPER</span>
-    <div class="links">
-      <a href="#overview">Overview</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#results">Results</a>
-      <a href="#code">Code</a>
-      <a href="#citation">Citation</a>
-    </div>
-  </div>
-</nav>
 
+<div class="page">
 
-<!-- ── Header ── -->
 <header>
-  <div class="wrap">
-    <div class="venue-line">
-      <!-- VENUE: update when known -->
-      Preprint · 2026
-    </div>
-    <h1>SEMPER: System-Scale Multimodal Protein Representations</h1>
-    <div class="author-block">
-      <div class="authors">
-        Amy Dong<sup>1</sup>,
-        <a href="https://michellemli.com/">Michelle M. Li</a><sup>1,&dagger;</sup>,
-        Kerr Ding<sup>2</sup>,
-        Sumaiya Nazeen<sup>3,4</sup>,
-        Ayush Noori<sup>1,3,5</sup>,
-        Yepeng Huang<sup>1</sup>,
-        Dylan Ritter<sup>3,6</sup>,
-        Jalwa Afroz<sup>3,6</sup>,
-        Alexander B. H. Henderson<sup>3,4</sup>,
-        Lorenz Studer<sup>3,6</sup>,
-        Yunan Luo<sup>2</sup>,
-        Vikram Khurana<sup>3,4,7,8</sup>,
-        Giovanni Parmigiani<sup>9,10,11</sup>,
-        <a href="https://zitniklab.hms.harvard.edu/">Marinka Zitnik</a><sup>1,3,7,12,13,&dagger;</sup>
-      </div>
-      <div class="affiliations">
-        <sup>1</sup>Department of Biomedical Informatics, Harvard Medical School, Boston, MA, USA<br>
-        <sup>2</sup>School of Computational Science and Engineering, Georgia Institute of Technology, Atlanta, GA, USA<br>
-        <sup>3</sup>Aligning Science Across Parkinson&rsquo;s (ASAP) Collaborative Research Network, Chevy Chase, MD, USA<br>
-        <sup>4</sup>Department of Neurology, Brigham and Women&rsquo;s Hospital, Boston, MA, USA<br>
-        <sup>5</sup>Department of Engineering Science, University of Oxford, Oxford, UK<br>
-        <sup>6</sup>The Center for Stem Cell Biology, Memorial Sloan Kettering Cancer Center, New York, NY, USA<br>
-        <sup>7</sup>Broad Institute of MIT and Harvard, Cambridge, MA, USA<br>
-        <sup>8</sup>Harvard Stem Cell Institute, Cambridge, MA, USA<br>
-        <sup>9</sup>Department of Medical Oncology, Dana-Farber Cancer Institute, Boston, MA, USA<br>
-        <sup>10</sup>Department of Data Science, Dana-Farber Cancer Institute, Boston, MA, USA<br>
-        <sup>11</sup>Harvard T.H. Chan School of Public Health, Boston, MA, USA<br>
-        <sup>12</sup>Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University, MA, USA<br>
-        <sup>13</sup>Harvard Data Science Initiative, Cambridge, MA, USA
-        <div class="corr">
-          <sup>&dagger;</sup>Correspondence:
-          <a href="mailto:marinka@hms.harvard.edu">marinka@hms.harvard.edu</a>
-        </div>
-      </div>
-    </div>
-    <div class="btn-row">
-      <a href="#" class="btn btn-dark">
-        <!-- LINK: replace # with DOI or bioRxiv URL -->
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        Paper
-      </a>
-      <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-light">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        Code
-      </a>
-      <a href="https://huggingface.co/mims-harvard/SEMPER" class="btn btn-light">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        Model
-      </a>
-    </div>
+  <h1>Multimodal protein representations across human brain cell types</h1>
+  <p class="subtitle">SEMPER</p>
+  <p class="authors">
+    <span>Amy Dong<sup>1,*</sup>,</span> <span>Michelle M. Li<sup>1,2,*</sup>,</span> <span>Kerr Ding<sup>3</sup>,</span>
+    <span>Sumaiya Nazeen<sup>1,4,5,8</sup>,</span> <span>Ayush Noori<sup>1,4,6</sup>,</span> <span>Yepeng Huang<sup>1</sup>,</span>
+    <span>Shanghua Gao<sup>1</sup>,</span> <span>Dylan Ritter<sup>4,7</sup>,</span> <span>Jalwa Afroz<sup>4,7</sup>,</span>
+    <span>Alexander B. H. Henderson<sup>4,5</sup>,</span> <span>Lorenz Studer<sup>4,7</sup>,</span> <span>Yunan Luo<sup>3</sup>,</span>
+    <span>Vikram Khurana<sup>4,5,8,9</sup>,</span> <span>Giovanni Parmigiani<sup>10,11,12</sup>,</span>
+    <span>Marinka Zitnik<sup>1,4,8,13,14,&dagger;</sup></span>
+  </p>
+  <p class="affils">
+    <sup>1</sup>Harvard Medical School,
+    <sup>2</sup>Carnegie Mellon University,
+    <sup>3</sup>Georgia Institute of Technology,
+    <sup>4</sup>Aligning Science Across Parkinson&rsquo;s (ASAP) Collaborative Research Network,
+    <sup>5</sup>Brigham and Women&rsquo;s Hospital,
+    <sup>6</sup>University of Oxford,
+    <sup>7</sup>Memorial Sloan Kettering Cancer Center,
+    <sup>8</sup>Broad Institute of MIT and Harvard,
+    <sup>9</sup>Harvard Stem Cell Institute,
+    <sup>10</sup>Department of Medical Oncology, Dana-Farber Cancer Institute,
+    <sup>11</sup>Department of Data Science, Dana-Farber Cancer Institute,
+    <sup>12</sup>Harvard T.H. Chan School of Public Health,
+    <sup>13</sup>Kempner Institute, Harvard University,
+    <sup>14</sup>Harvard Data Science Initiative
+  </p>
+  <p class="notes">
+    <sup>*</sup>Equal contribution. <sup>&dagger;</sup>Correspondence:
+    <a href="mailto:marinka@hms.harvard.edu">marinka@hms.harvard.edu</a>
+  </p>
+  <div class="links">
+    <!-- TODO: add the Paper link once the article URL exists:
+    <a href="PAPER_URL">Paper</a>
+    -->
+    <a href="https://github.com/mims-harvard/SEMPER">Code</a>
+    <a href="https://huggingface.co/mims-harvard/SEMPER">Model</a>
+    <a href="#data">Data</a>
+    <a href="#cite">BibTeX</a>
   </div>
 </header>
 
-<!-- ── Overview ── -->
-<section id="overview">
-  <div class="wrap">
-    <h2>Overview</h2>
-    <p class="lead">
-      Proteins carry out cellular functions largely through their interactions with other proteins. Because the set of proteins expressed differs from one cell type to the next, a given protein can engage different partners depending on its cellular context. This context dependence is well documented but difficult to represent computationally, and it is particularly relevant in the central nervous system (CNS), whose diversity of neuronal and glial cell types has been linked to the cell type-specific vulnerability observed across neurodegenerative diseases. Yet existing protein representation methods capture only part of the picture: sequence-based models assign each protein a single, context-free embedding, while network-based models incorporate cellular context but set sequence information aside.
-    </p>
-    <p>
-      SEMPER learns cell type-aware protein embeddings that combine both. A frozen hybrid graph transformer encodes each protein's context within cell type-specific protein–protein interaction (PPI) networks and a metagraph of cellular and tissue organization, and a frozen protein sequence encoder represents its amino acid sequence; a symmetric InfoNCE objective aligns the two into a shared latent space. Trained across 442 cell types of the human CNS, SEMPER assigns the same protein a distinct embedding in each cellular context, so that its representation reflects where in the brain it acts.
-    </p>
-    <p>
-      
-Across our analyses, this embedding space recovers cellular and functional organization: proteins cluster by cell type and by shared function, multifunctional proteins spread across contexts as expected, and cell type-specific protein complexes are recovered more accurately than by the baselines we tested. Building on these representations, SEMPER can prioritize candidate therapeutic targets for five neurodegenerative diseases in a zero-shot setting, and its embedding-derived signals can be combined with large language model reasoning to refine those rankings. These predictions are associative and intended to support hypothesis generation rather than replace experimental validation.
-    </p>
-  </div>
+<figure class="teaser">
+  <a href="figures/figure1.png"><img src="figures/figure1.png" alt="Overview of SEMPER: architecture, applications, and comparison with protein language model backbones" /></a>
+  <figcaption>
+    <b>Figure 1.</b>
+    (a) SEMPER takes protein sequences, 442 cell type-specific PPI networks and a cell&ndash;tissue metagraph of the CNS. A frozen protein language model and a frozen hybrid graph transformer encode them, and trainable adaptors align the two in a shared space with a symmetric InfoNCE loss.
+    (b&ndash;d) Applications: cell type-specific protein complex prediction, zero-shot drug target prioritization, and reranking of SEMPER candidates with a large language model.
+    (e) Hits@10 for zero-shot target retrieval with ESM-2, ESM-3 and ESM-C alone (open squares) and with SEMPER built on each (filled squares).
+  </figcaption>
+</figure>
+
+<section id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    The central nervous system (CNS) comprises diverse cell types whose molecular context shapes the roles of the proteins they express. Characterizing these context-specific protein functions is important for understanding cellular processes and identifying disease-relevant therapeutic targets. Computational models offer a scalable way to study these roles, with protein language models and interactome- or single-cell-based models capturing complementary information from protein sequences and cellular network contexts.
+    To capture these complementary sources of information in one model, we introduce SEMPER, a multimodal representation learning model that aligns protein language model representations with protein-protein interaction networks from 442 cell types of the adult human brain, giving each protein a sequence-informed representation in every cell type in which it is expressed.
+    We show that SEMPER representations predict cell type-specific protein complexes and predict genes essential to the survival of dopaminergic neurons, measured in a genome-wide CRISPR screen. In zero-shot retrieval, SEMPER recovers clinically pursued drug targets for five neurodegenerative diseases at higher rates than existing cell type-specific models. To further improve target recovery, we combine SEMPER with a large language model that reasons over protein functional annotations. The combination recovers more targets, with SEMPER providing experimentally derived cellular context that complements the literature-based reasoning of the large language model.
+  </p>
 </section>
 
-<!-- ── Architecture ── -->
-<section id="architecture">
-  <div class="wrap">
-    <h2>Architecture</h2>
-    <p>
-      SEMPER integrates three inputs derived from an adult human CNS single-cell
-      transcriptomic atlas: 1D protein sequences, 442 cell type-specific
-      protein–protein interaction (PPI) networks, and a hierarchical metagraph
-      of cellular and tissue organization. A frozen protein sequence encoder and a
-      frozen hybrid graph transformer encode each input independently; trainable
-      adaptors project both into a shared latent space aligned by a symmetric
-      InfoNCE contrastive loss.
-    </p>
-
-    <figure>
-      <img src="figures/figure1.png" alt="SEMPER architecture and downstream applications" />
-      <figcaption>
-        <strong>Fig. 1 | SEMPER architecture and applications.</strong>
-        <strong>(a)</strong> SEMPER architecture. SEMPER integrates three inputs derived from an adult human CNS single-cell transcriptomic atlas: 1D protein sequences, 442 cell type-specific protein–protein interaction (PPI) networks, and a hierarchical metagraph of cellular and tissue organization. A frozen protein sequence encoder encodes protein sequences; a frozen hybrid graph transformer encodes each protein's context within the cell type-specific PPI networks and CNS metagraph. Trainable adaptors project both encoder outputs into a shared embedding space, where a symmetric InfoNCE contrastive loss aligns each protein's sequence embedding with its cell type-specific context embeddings.
-        <strong>(b–d)</strong> Downstream applications of the multimodal representations.
-        <strong>(b)</strong> Identification of cell type-specific protein complex members from the SEMPER embedding space.
-        <strong>(c)</strong> Zero-shot prioritization of candidate targets within a given cell type, based on embedding similarity to a seed protein.
-        <strong>(d)</strong> LLM evaluator-based target prioritization, in which an LLM reranks SEMPER-seeded candidates through pairwise tournaments.
-        <strong>(e)</strong> Hits@10 for candidate target retrieval across neurodegenerative diseases as a function of total model parameters (log scale), for SEMPER trained with different sequence backbones (ESM-2 8M/35M/150M, ESM-3, ESM-C 300M/600M) and for existing cell type-agnostic and cell type-aware methods.
-      </figcaption>
-    </figure>
-  </div>
+<section id="method">
+  <h2>Method</h2>
+  <p>
+    The networks come from a single-nucleus RNA sequencing atlas of the adult human brain (about 3.37 million nuclei from 112 anatomical locations). Intersecting each cell type's expressed genes with a cell type-agnostic interactome gives 442 cell type-specific PPI networks, and a metagraph of 599 cell types and tissues records how they relate. In total there are 15,487 proteins and 1,256,780 protein&ndash;cell type pairs.
+  </p>
+  <p>
+    A graph transformer encodes each protein's interactions in each cell type, and ESM encodes its sequence. Both encoders are frozen. Trainable adaptors project the two into a shared space, where a symmetric InfoNCE loss pulls a protein's sequence embedding toward its cell type-specific network embeddings. The result is one representation per protein per cell type, tied to the protein's sequence.
+  </p>
 </section>
 
-  <!-- ── Results ── -->
 <section id="results">
-  <div class="wrap"><h2>Results</h2></div>
- 
-  <!-- radios, tab-bar, and tab-panels must all be direct children of section -->
-  <input type="radio" name="fig" id="tab1" class="tab-radio" checked />
-  <input type="radio" name="fig" id="tab2" class="tab-radio" />
-  <input type="radio" name="fig" id="tab3" class="tab-radio" />
-  <input type="radio" name="fig" id="tab4" class="tab-radio" />
-  <input type="radio" name="fig" id="tab5" class="tab-radio" />
- 
-  <div class="tab-bar wrap">
-    <label for="tab1">Embedding space</label>
-    <label for="tab2">Protein complexes</label>
-    <label for="tab3">Target prioritization</label>
-    <label for="tab4">LLM-augmented</label>
-    <label for="tab5">Elo tournament</label>
-  </div>
- 
-  <div class="tab-panels wrap">
- 
-      <div class="tab-panel" id="panel1">
-        <p>Cell type context and biological function structure the SEMPER latent space.
-        Protein embeddings from the same CNS cell type cluster together, proteins
-        sharing Gene Ontology terms are embedded closer than expected under a random
-        null, and Leiden community detection within a single cell type recovers
-        functionally coherent modules. SEMPER embeddings also correlate with
-        protein co-abundance patterns from the human brain more strongly than
-        any other tissue, and extreme multifunctional proteins show higher
-        centroid dispersion than the background proteome.</p>
-        <figure>
-          <img src="figures/figure2.jpg" alt="SEMPER embedding space analyses" />
-          <figcaption>
-            <strong>Fig. 2 | Cell type context and biological function structure the SEMPER latent space.</strong>
-            <strong>(a)</strong> Mean pairwise cosine similarity of protein embeddings within the same cell type (intra-cell-type, blue) compared to embeddings of the same proteins sampled across different cell types (inter-cell-type, grey), across 30 CNS superclusters. <em>n</em> denotes the number of cell types per supercluster.
-            <strong>(b–d)</strong> Distribution of mean pairwise squared Euclidean distance between SEMPER embeddings of proteins sharing a Gene Ontology (GO) term, for <strong>(b)</strong> Biological Process, <strong>(c)</strong> Cellular Component, and <strong>(d)</strong> Molecular Function. Solid blue lines mark the mean distance; dashed red lines mark the random null.
-            <strong>(e)</strong> UMAP projection of SEMPER embeddings for 3,035 proteins active in dopaminergic (DA) neurons. Colors correspond to 15 Leiden clusters. Selected clusters are annotated with enriched GO terms.
-            <strong>(f)</strong> Centroid dispersion for extreme multifunctional (EMF) proteins (<em>n</em>&thinsp;=&thinsp;243, red) vs. all other proteins (<em>n</em>&thinsp;=&thinsp;15,115, grey). Dashed lines mark group means.
-          </figcaption>
-        </figure>
-      </div>
- 
-      <div class="tab-panel" id="panel2">
-        <p>For a candidate protein complex, SEMPER retrieves cell type-specific embeddings
-        for all member proteins and scores them by mean pairwise cosine similarity,
-        ranked against randomly sampled decoys via AUPRC. SEMPER outperforms all
-        baselines across four definitions of cell type-specific complex.</p>
-        <figure>
-          <img src="figures/figure3.png" alt="Zero-shot protein complex identification" />
-          <figcaption>
-            <strong>Fig. 3 | Zero-shot identification of cell type-specific protein complexes.</strong>
-            <strong>(a)</strong> Zero-shot evaluation framework. For a candidate protein complex, SEMPER computes mean pairwise cosine similarity across member proteins and ranks true complexes against randomly sampled decoys via AUPRC.
-            <strong>(b)</strong> Four operational definitions of cell type-specific protein complexes: co-expressed and physically interacting in the PPI network, co-expressed only, co-expressed and HPA co-localized, and co-expressed and brain co-abundant.
-            <strong>(c–f)</strong> AUPRC of SEMPER (orange) and existing methods (blue) under each definition. Each point represents a single CNS cell type.
-          </figcaption>
-        </figure>
-      </div>
- 
-      <div class="tab-panel" id="panel3">
-        <p>For each CNS cell type, a random seed set of proteins from clinical trials
-        for a given neurodegenerative disease is used as input to SEMPER. All other
-        actively expressed proteins are ranked by mean cosine similarity to the seed
-        embeddings. SEMPER consistently recovers more held-out clinical targets in
-        the top-K than all benchmarked models across five diseases.</p>
-        <figure>
-          <img src="figures/figure4.png" alt="Zero-shot target prioritization Hits@K" />
-          <figcaption>
-            <strong>Fig. 4 | Zero-shot retrieval of candidate therapeutic targets across neurodegenerative diseases.</strong>
-            <strong>(a)</strong> Evaluation framework. For each CNS cell type, a random seed set of clinical trial candidate proteins is used as input to SEMPER; all other expressed proteins are ranked by cosine similarity to the seed embeddings.
-            <strong>(b)</strong> Five neurodegenerative diseases evaluated, with candidate targets from completed Phase 2, Phase 3, and Phase 4 clinical trials as ground truth.
-            <strong>(c–g)</strong> Hits@10 for <strong>(c)</strong> Parkinson's disease, <strong>(d)</strong> Alzheimer's disease, <strong>(e)</strong> multiple sclerosis, <strong>(f)</strong> Huntington's disease, and <strong>(g)</strong> amyotrophic lateral sclerosis. Each point is the mean Hits@10 across 100 bootstrapped seed samples per CNS cell type for cell type-aware methods; solid circles for cell type-agnostic methods.
-          </figcaption>
-        </figure>
-      </div>
- 
-      <div class="tab-panel" id="panel4">
-        <p>Combining SEMPER's embedding-based retrieval with a pointwise LLM evaluator
-        that scores each candidate on a 1–5 biological relevance scale — weighted
-        equally with SEMPER's similarity score — improves retrieval of essential
-        dopaminergic neuron genes and clinical trial targets across all five diseases.</p>
-        <figure>
-          <img src="figures/figure5.png" alt="LLM-augmented SEMPER pointwise evaluator" />
-          <figcaption>
-            <strong>Fig. 5 | Performance of LLM-augmented SEMPER on zero-shot nomination of essential genes and candidate targets.</strong>
-            <strong>(a–c)</strong> Illustration of LLM-only, SEMPER-only, and LLM-augmented SEMPER. After SEMPER retrieves the top 100 candidates, an LLM evaluator generates biological rationales and scores on a 1–5 scale; the final ranking combines the normalized LLM score with SEMPER's similarity score.
-            <strong>(d)</strong> Experimental workflow for identifying essential genes in hESC-derived dopaminergic (DA) neurons.
-            <strong>(e)</strong> Performance retrieving essential DA neuron genes (Hits@5, @10, @25).
-            <strong>(f)</strong> Venn diagram of top 25 candidate DA genes per approach.
-            <strong>(g–k)</strong> Top-10 hits for candidate targets across five neurodegenerative diseases.
-          </figcaption>
-        </figure>
-      </div>
- 
-      <div class="tab-panel" id="panel5">
-        <p>A Swiss-system Elo tournament further refines SEMPER's top-100 candidates
-        through pairwise head-to-head evaluation by an LLM augmented with live Gene
-        Ontology data retrieval, improving Hits@10 across most CNS cell types and
-        all five diseases.</p>
-        <figure>
-          <img src="figures/figure6.jpg" alt="Tool-augmented Elo tournament reprioritization" />
-          <figcaption>
-            <strong>Fig. 6 | Tool-augmented LLM evaluator for reprioritizing SEMPER candidates across five neurodegenerative diseases.</strong>
-            <strong>(a)</strong> SEMPER's embedding-based retrieval of cell type-specific candidates.
-            <strong>(b)</strong> Tool-augmented Elo tournament. The top 100 candidates are seeded with Elo ratings (1100–1500) proportional to similarity scores. Candidates enter a multi-round Swiss-system tournament; an LLM evaluator augmented with live Gene Ontology lookup determines a winner per pairing and updates Elo ratings to produce the final reprioritized list.
-            <strong>(c–g)</strong> Slopegraphs of Hits@10 per CNS cell type for SEMPER alone vs. SEMPER + LLM evaluator, across all five diseases.
-          </figcaption>
-        </figure>
-      </div>
- 
-  </div><!-- .tab-panels -->
-</section>
- 
-<!-- ── Code ── -->
-<section id="code">
-  <div class="wrap">
-    <h2>Code &amp; Data</h2>
-    <p>
-      The full SEMPER codebase is available on GitHub under the MIT License, and
-      trained model weights are released on HuggingFace. Because SEMPER's inputs
-      derive from a controlled-access CNS atlas, the underlying data and the
-      atlas-derived embeddings are not redistributed — see availability below.
-    </p>
-    <div class="btn-row" style="margin-bottom: 28px;">
-      <a href="https://github.com/mims-harvard/SEMPER" class="btn btn-dark">GitHub Repository</a>
-      <a href="https://huggingface.co/mims-harvard/SEMPER" class="btn btn-light">Model Weights</a>
-      <a href="https://github.com/mims-harvard/SEMPER/tree/main/evaluate" class="btn btn-light">Evaluate</a>
-    </div>
-    <pre># 1. Clone and set up environment
-git clone https://github.com/mims-harvard/SEMPER
-cd SEMPER
-conda env create -f environment.yml && conda activate semper
+  <h2>Results</h2>
 
-# 2. Train SEMPER on your own cell type-specific PPI networks
-#    (see README for the three-component pipeline)
+  <h3 id="embeddings">Organization by cell type and function</h3>
+  <p>
+    Across all 30 CNS superclusters, proteins from the same cell type are more similar to each other than to proteins from other cell types (one-sided Mann&ndash;Whitney U, BH-adjusted <i>P</i>&nbsp;&lt;&nbsp;0.001). Proteins that share a Gene Ontology term sit closer together than chance in all three GO domains. In dopaminergic neurons the embeddings separate into 15 modules, among them mitochondrial respiration, autophagy&ndash;lysosomal regulation, excitatory synapses and axon guidance. SEMPER similarities also correlate with protein co-abundance from an independent proteomics atlas, more strongly in brain than in the 10 other tissues.
+  </p>
+  <figure>
+    <a href="figures/figure2.png"><img src="figures/figure2.png" alt="SEMPER embedding space organized by cell type and biological function" loading="lazy" /></a>
+    <figcaption>
+      <b>Figure 2.</b>
+      (a) Mean cosine similarity of protein pairs within (blue) and between (grey) cell types, across 30 CNS superclusters.
+      (b&ndash;d) Mean pairwise cosine distance between proteins sharing a GO Biological Process, Cellular Component or Molecular Function term, compared with a random null (dashed red).
+      (e) UMAP of 3,035 proteins active in dopaminergic neurons, colored by 15 Leiden clusters.
+      (f) Spearman correlation between SEMPER similarities and protein co-abundance in 11 human tissues, across 221 cell types.
+    </figcaption>
+  </figure>
 
-# 3. Reproduce paper evaluations
-cd evaluate/
-# See evaluate/README.md for full usage of each script</pre>
+  <h3 id="complexes">Cell type-specific protein complexes</h3>
+  <p>
+    We test 298 CNS-relevant CORUM complexes (<a href="#data">Supplementary Table 4</a>). A complex is counted as present in a cell type under four definitions: co-expression, co-expression plus physical interaction, co-expression plus brain co-abundance, and co-expression plus subcellular colocalization. Each complex is scored by the mean pairwise similarity of its subunits and ranked against size-matched decoys. SEMPER has a higher AUPRC than PINNACLE, ORCA-CT and PPI-GT under all four definitions (one-sided Wilcoxon signed-rank, all <i>P</i>&nbsp;&lt;&nbsp;10<sup>&minus;12</sup>), and its median cell type is above every cell type-agnostic baseline, including ProTrek-Seq.
+  </p>
+  <figure>
+    <a href="figures/figure3.png"><img src="figures/figure3.png" alt="Zero-shot identification of protein complexes across CNS cell types" loading="lazy" /></a>
+    <figcaption>
+      <b>Figure 3.</b>
+      (a) The four definitions of a cell type-specific complex.
+      (b&ndash;e) AUPRC of SEMPER (orange) and baselines (blue) under each definition. Each point is one cell type for cell type-specific methods, or a single value for cell type-agnostic methods.
+    </figcaption>
+  </figure>
 
-    <ul class="avail-list">
-      <li><strong>Code</strong> — this repository, MIT License.</li>
-      <li><strong>Model weights</strong> — released on
-        <a href="https://huggingface.co/mims-harvard/SEMPER">HuggingFace</a>
-        (specific to the CNS atlas SEMPER was trained on; not a general-purpose embedder).</li>
-      <li><strong>Training data and model embeddings</strong> — the CNS single-cell
-        atlas, the 442 cell type-specific PPI networks, and the metagraph are not
-        publicly released.</li>
-    </ul>
-  </div>
+  <h3 id="targets">Clinically pursued drug targets</h3>
+  <p>
+    For Parkinson's disease, Alzheimer's disease, multiple sclerosis, Huntington's disease and ALS, we take the protein-coding genes targeted by drugs that completed Phase 2 or entered Phase 3 or 4 trials (<a href="#data">Supplementary Table 6</a>). In each cell type SEMPER is given 15 known targets and ranks the remaining expressed proteins by similarity; we report how many held-out targets land in the top ten, averaged over 100 seed sets.
+  </p>
+  <table>
+    <thead><tr><th>Disease</th><th class="num">Targets</th><th class="num">Phase 2</th><th class="num">Phase 3</th><th class="num">Phase 4</th><th>File</th></tr></thead>
+    <tbody>
+      <tr><td>Parkinson's disease</td><td class="num">97</td><td class="num">45</td><td class="num">18</td><td class="num">34</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_PD.csv">PD.csv</a></td></tr>
+      <tr><td>Alzheimer's disease</td><td class="num">130</td><td class="num">73</td><td class="num">48</td><td class="num">9</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_AD.csv">AD.csv</a></td></tr>
+      <tr><td>Multiple sclerosis</td><td class="num">166</td><td class="num">47</td><td class="num">56</td><td class="num">63</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_MS.csv">MS.csv</a></td></tr>
+      <tr><td>Huntington's disease</td><td class="num">86</td><td class="num">18</td><td class="num">67</td><td class="num">1</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_HD.csv">HD.csv</a></td></tr>
+      <tr><td>ALS</td><td class="num">98</td><td class="num">71</td><td class="num">17</td><td class="num">10</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_ALS.csv">ALS.csv</a></td></tr>
+    </tbody>
+  </table>
+  <p>
+    SEMPER recovers more targets than PINNACLE, PPI-GT and ORCA-CT in all five diseases (paired one-sided Wilcoxon, all <i>P</i>&nbsp;&lt;&nbsp;10<sup>&minus;21</sup>), with the highest recovery in Huntington's disease (mean Hits@10 of 7.0 over 129 cell types). ProTrek-Seq, which is cell type-agnostic, has a higher mean in PD, AD and MS, but it gives a protein the same representation everywhere, so it cannot say in which cell types targets are easiest to find. SEMPER also improves on each ESM backbone it is built on (Figure 1e).
+  </p>
+  <figure>
+    <a href="figures/figure4.png"><img src="figures/figure4.png" alt="Zero-shot prediction of clinically pursued drug targets for neurodegenerative diseases" loading="lazy" /></a>
+    <figcaption>
+      <b>Figure 4.</b>
+      (a) Evaluation setup and number of targets by trial phase for each disease.
+      (b&ndash;f) Hits@10 for PD, AD, MS, HD and ALS. Each point is the mean over 100 seed sets in one cell type for cell type-specific methods, or a single mean for cell type-agnostic methods.
+    </figcaption>
+  </figure>
+
+  <h3 id="essential">Essential genes in dopaminergic neurons</h3>
+  <p>
+    A genome-wide CRISPR/Cas9 screen in human iPSC-derived midbrain dopaminergic neurons gives a set of essential genes that is not described in the literature. We compare an LLM prompted with example genes, SEMPER retrieval, and an LLM that rescores SEMPER's top 100 candidates. SEMPER beats the LLM at every cutoff (Hits@25 1.8 vs 1.1, Hits@50 3.4 vs 2.7, Hits@75 4.9 vs 4.1), and the LLM rescoring raises Hits@75 to 5.9. The two pick different genes: the LLM favors well-studied neuronal genes, while SEMPER ranks regulators of G-protein signaling, mitochondrial respiration and protein trafficking (<a href="#data">Supplementary Table 8</a>).
+  </p>
+  <figure>
+    <a href="figures/figure5.png"><img src="figures/figure5.png" alt="Prediction of essential genes and clinically pursued targets with SEMPER and a large language model" loading="lazy" /></a>
+    <figcaption>
+      <b>Figure 5.</b>
+      (a&ndash;c) The three strategies: LLM only, SEMPER, and SEMPER+LLM.
+      (d) Essential-gene recovery in dopaminergic neurons (Hits@25/50/75).
+      (e) Overlap of top-3 candidates across strategies.
+      (f&ndash;j) Hits@25 for clinically pursued targets in the ten highest-recovery cell types per disease.
+    </figcaption>
+  </figure>
+
+  <h3 id="reasoning">Combining SEMPER with a language model</h3>
+  <p>
+    When the LLM scores genes one at a time, it tends to rank AD and ALS targets below genes with a similar mechanism. We instead run a pairwise tournament: SEMPER similarities set the starting Elo ratings of its top 100 candidates, and over five rounds the LLM compares neighboring genes after retrieving their GO annotations through a tool call. This raises mean Hits@25 from 8.3 (SEMPER) to 9.0 across 50 disease&ndash;cell type pairs (Wilcoxon <i>P</i>&nbsp;=&nbsp;6.4&nbsp;&times;&nbsp;10<sup>&minus;9</sup>); the LLM alone reaches 4.7. For example, the glutamate receptor targets <i>GRIA2</i> and <i>GRIA3</i> move above <i>CAMK2A</i> in AD, and the sodium channel targets <i>SCN1A</i> and <i>SCN2A</i> move above calcium channel genes in ALS.
+  </p>
+  <figure>
+    <a href="figures/figure6.png"><img src="figures/figure6.png" alt="SEMPER with a large language model tournament predicts clinically pursued drug targets" loading="lazy" /></a>
+    <figcaption>
+      <b>Figure 6.</b>
+      (a) LLM prompted with seed targets and cell type context.
+      (b) SEMPER retrieval.
+      (c) Swiss-system Elo tournament over SEMPER's top 100 candidates using GO annotations.
+      (d&ndash;h) Hits@25 for the LLM alone, SEMPER, and SEMPER with the tournament, in the ten highest-recovery cell types per disease. Asterisks mark clinically pursued targets.
+    </figcaption>
+  </figure>
+
+  <h3>Limitations</h3>
+  <p>
+    SEMPER is limited by the coverage of the single-cell atlas, so representations in sparsely sampled cell types are less reliable. It does not include peripheral immune cells, which leaves many MS targets outside its candidate set. The benchmark measures recovery of targets that are already being pursued, not discovery of new ones, and similarity in the embedding space is associative; predictions need experimental follow-up.
+  </p>
 </section>
 
-<!-- ── Citation ── -->
-<section id="citation">
-  <div class="wrap">
-    <h2>Citation</h2>
-    <p>If you use SEMPER in your research, please cite:</p>
-    <div class="cite-block">
-      <div class="cite-header">BibTeX</div>
-      <pre>@article{semper2026,
-  title   = {SEMPER: Multimodal protein representations for neurological target assessment},
-  author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
-  journal = {},
-  year    = {2026},
-  url     = {}
+<section id="data">
+  <h2>Data and code</h2>
+  <p>
+    The cell type-specific interaction networks are not released. The ground-truth lists used for evaluation are in the
+    <a href="https://github.com/mims-harvard/SEMPER/tree/main/data/ground_truth">GitHub repository</a> as CSV files; see the folder's
+    <a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/README.md">README</a> for column definitions.
+  </p>
+  <table class="stack">
+    <thead><tr><th>Table</th><th>Contents</th><th class="num">Rows</th><th>Files</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Supplementary Table 4</td>
+        <td>CNS-relevant CORUM protein complexes with subunits and GO annotations (Figure 3)</td>
+        <td class="num">298</td>
+        <td>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table4_CNS_protein_complexes.csv">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table4_CNS_protein_complexes.csv" download>csv</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Supplementary Table 6</td>
+        <td>Clinically pursued drug targets for PD, AD, MS, HD and ALS, with trial phase, ChEMBL/DrugBank drugs and therapeutic intent (Figures 4&ndash;6)</td>
+        <td class="num">577</td>
+        <td>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_all.csv">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table6_clinical_targets_all.csv" download>csv</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table6_clinical_targets.xlsx" download>xlsx</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Supplementary Table 8</td>
+        <td>Dopaminergic neuron essential genes in the top 3 of the LLM, SEMPER or SEMPER+LLM (Figure 5e)</td>
+        <td class="num">26</td>
+        <td>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table8_DA_essential_genes_top3.csv">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table8_DA_essential_genes_top3.csv" download>csv</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Code is on <a href="https://github.com/mims-harvard/SEMPER">GitHub</a> (MIT License) and model weights are on <a href="https://huggingface.co/mims-harvard/SEMPER">Hugging Face</a>.
+  </p>
+</section>
+
+<section id="cite">
+  <h2>Citation</h2>
+  <pre id="bibtex">@article{dong2026semper,
+  title   = {Multimodal protein representations across human brain cell types},
+  author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Gao, Shanghua and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
+  year    = {2026}
 }</pre>
-    </div>
-
-    <p style="margin-top: 32px; font-size: 0.85rem;">
-      Questions? Open a <a href="https://github.com/mims-harvard/SEMPER/issues">GitHub issue</a>
-      or contact <a href="mailto:marinka@hms.harvard.edu">marinka@hms.harvard.edu</a>.
-    </p>
-  </div>
+  <button class="copy" type="button" id="copy-bib">Copy BibTeX</button>
 </section>
 
 <footer>
-  <div>
-    SEMPER is an open-science academic research project ·
-<a href="https://zitniklab.hms.harvard.edu/">Zitnik Lab</a> ·
-Harvard Medical School · <a href="https://github.com/mims-harvard/SEMPER">GitHub</a>
-  </div>
+  <a href="https://zitniklab.hms.harvard.edu/">Zitnik Lab</a>, Harvard Medical School
 </footer>
+
+</div>
+
+<script>
+  document.getElementById('copy-bib').addEventListener('click', function () {
+    var btn = this, text = document.getElementById('bibtex').textContent;
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {});
+    } else {
+      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+      ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta);
+    }
+  });
+</script>
 
 </body>
 </html>
