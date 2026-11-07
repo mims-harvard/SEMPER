@@ -4,7 +4,7 @@ Build the small, shareable demo dataset in tutorial/demo_data/.
 
 The real SEMPER inputs (442 cell type networks from the adult human brain atlas)
 are not redistributed. The demo instead builds four synthetic "cell type" networks
-from the public TransposeNet interactome, so every step of the pipeline can be run
+from the TransposeNet 2 interactome, so every step of the pipeline can be run
 end to end in minutes. The demo networks are not biological cell types, and results
 on them are not comparable to the paper.
 
@@ -15,9 +15,6 @@ Construction
   3. Each demo cell type keeps a random --keep_frac of the pool; its network is the
      largest connected component of the induced subgraph.
   4. The metagraph links the cell types to two mock brain regions under a root.
-
-Inputs are public: TransposeNet (Figshare doi:10.6084/m9.figshare.33717070), the
-released PD target table, the repo's ENSP -> gene map, and Ensembl/UniProt sequences.
 """
 
 import argparse

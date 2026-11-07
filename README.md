@@ -253,7 +253,7 @@ released (see below), so they can be run on representations trained with the cod
 
 - **Code:** this repository, MIT License.
 - **Benchmark datasets:** [`data/benchmarks/`](data/benchmarks), see [above](#released-benchmark-datasets).
-- **Interactome:** TransposeNet is available at [Figshare](https://doi.org/10.6084/m9.figshare.33717070).
+- **Interactome:** TransposeNet 2 will be available at Figshare (doi:[10.6084/m9.figshare.33717070](https://doi.org/10.6084/m9.figshare.33717070)).
 - **Cell type networks, representations and model weights:** the 442 cell type PPI networks, the metagraph, and the SEMPER representations and model weights derived from them are not released. The weights are specific to these networks, so to apply SEMPER to another atlas, tissue or organism, retrain on your own networks with the code above.
 - **Project website:** https://zitniklab.hms.harvard.edu/SEMPER/
 
