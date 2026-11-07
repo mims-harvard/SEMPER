@@ -102,7 +102,7 @@ disease with the targets under the key `clinically_relevant_targets`. They were 
 from the same Open Targets release and contain the targets in the CSVs.
 
 | File | Disease |
-|---|---|---|---|
+|---|---|
 | `AD_targets_MONDO_0004975.json` | Alzheimer's disease |
 | `PD_targets_MONDO_0005180.json` | Parkinson's disease |
 | `MS_targets_MONDO_0005301.json` | Multiple sclerosis |
