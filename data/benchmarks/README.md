@@ -101,13 +101,13 @@ lists that the evaluation scripts read for Figs. 4–6 (`--pd_gene_file`), one J
 disease with the targets under the key `clinically_relevant_targets`. They were produced
 from the same Open Targets release and contain the targets in the CSVs.
 
-| File | Disease | Targets | Not in the CSV |
+| File | Disease |
 |---|---|---|---|
-| `AD_targets_MONDO_0004975.json` | Alzheimer's disease | 133 | ADRA2A, ADRA2B, GLP1R |
-| `PD_targets_MONDO_0005180.json` | Parkinson's disease | 98 | SCN7A |
-| `MS_targets_MONDO_0005301.json` | Multiple sclerosis | 168 | HRH2, KCND3 |
-| `HD_targets_MONDO_0007739.json` | Huntington's disease | 86 | |
-| `ALS_targets_MONDO_0004976.json` | Amyotrophic lateral sclerosis | 99 | SCN7A |
+| `AD_targets_MONDO_0004975.json` | Alzheimer's disease |
+| `PD_targets_MONDO_0005180.json` | Parkinson's disease |
+| `MS_targets_MONDO_0005301.json` | Multiple sclerosis |
+| `HD_targets_MONDO_0007739.json` | Huntington's disease |
+| `ALS_targets_MONDO_0004976.json` | Amyotrophic lateral sclerosis |
 
 Use these files to reproduce the paper's results. The JSONs also list
 `all_associated_genes` and `all_druggable_targets` from the same Open Targets query.
