@@ -116,7 +116,7 @@ protein representation model.
 |---|---|---|
 | [Cell type-specific protein complexes](data/benchmarks/protein_complexes) | 547 CNS-relevant CORUM complexes and, for each of four complex definitions (transcriptional co-expression, structural connectivity, protein co-abundance, spatial colocalization), the complexes present in each brain cell type with the ten size-matched decoys per complex used for evaluation | Fig. 3, Supplementary Tables 4–5 |
 | [Clinically pursued targets](data/benchmarks/clinical_targets) | Targets of drugs and compounds in completed Phase 2 or in Phase 3–4 trials for Alzheimer's disease (130), Parkinson's disease (97), multiple sclerosis (166), Huntington's disease (86) and ALS (98) from the Open Targets Platform. Each target has its clinical phase, ChEMBL/DrugBank drugs, pharmacological action and curated therapeutic intent | Figs. 4–6, Supplementary Table 6 |
-| [Dopaminergic neuron essential genes](data/benchmarks/da_neuron_essential_genes) | 693 genes essential to the survival of human iPSC-derived midbrain dopaminergic neurons, from a genome-wide CRISPR/Cas9 screen (Nazeen et al., 2025) | Fig. 5 |
+| [Dopaminergic neuron essential genes](data/benchmarks/da_neuron_essential_genes) | 693 genes essential to the survival of human iPSC-derived midbrain dopaminergic neurons, from a genome-wide CRISPR/Cas9 screen (Nazeen et al., 2026) | Fig. 5 |
 
 See the [dataset README](data/benchmarks/README.md) for column descriptions and sources.
 

@@ -1,6 +1,6 @@
 # SEMPER benchmark datasets
 
-Ground-truth sets used to evaluate SEMPER in the paper. They contain no SEMPER
+Benchmark datasets used to evaluate SEMPER in the paper. They contain no SEMPER
 outputs and can be used to benchmark any protein representation model.
 
 | Folder | Contents | Paper |
@@ -32,7 +32,13 @@ All complexes in these files come from `cns_complexes_547.csv`. Each present com
 decoys drawn from the same cell type's network with the same number of subunits, and no decoy
 matches a CORUM complex. A cell type is evaluated (scored by AUPRC in Fig. 3 and
 Supplementary Table 5) when it has at least five present complexes (co-expression,
-connectivity) or at least three (co-abundance, colocalization).
+connectivity) or at least three (co-abundance, colocalization). The scripts that built these files are in
+[`evaluate/fig3_protein_complexes/prepare_complexes/`](../../evaluate/fig3_protein_complexes/prepare_complexes). `prepare_coexpressed.py` builds `transcriptional_coexpression`,
+`prepare_ppi_connected.py` builds `structural_connectivity`, `prepare_coabundance.py`
+builds `protein_coabundance` and `prepare_hpa_colocalized.py` builds
+`spatial_colocalization`. The [Figure 3 README](../../evaluate/fig3_protein_complexes/README.md)
+gives the commands and inputs. These scripts need the 442 cell type networks, which are not
+released, so the files here are provided ready to use.
 
 `<definition>_complexes.csv`, one row per complex:
 
@@ -93,8 +99,7 @@ the Open Targets release is in [`data_prep/parse_opentargets/`](../../data_prep/
 [`analysis_target_lists/`](clinical_targets/analysis_target_lists) holds the exact target
 lists that the evaluation scripts read for Figs. 4–6 (`--pd_gene_file`), one JSON per
 disease with the targets under the key `clinically_relevant_targets`. They were produced
-from the same Open Targets release and contain the targets in the CSVs above plus seven
-genes that have no row in the curated tables.
+from the same Open Targets release and contain the targets in the CSVs.
 
 | File | Disease | Targets | Not in the CSV |
 |---|---|---|---|
@@ -111,6 +116,6 @@ Use these files to reproduce the paper's results. The JSONs also list
 
 `da_neuron_essential_genes.csv` has one column, `gene_symbol`, listing the 693 genes
 identified as essential to the survival of human iPSC-derived midbrain dopaminergic neurons
-in the genome-wide CRISPR/Cas9 screen of Nazeen et al., *Cell Genomics* (2025). SEMPER retrieves these genes
+in the genome-wide CRISPR screen of Nazeen et al., *Cell Genomics* (2026). SEMPER retrieves these genes
 from the dopaminergic neuron representation (cell type 395) given seed sets of 20 essential
 genes (Methods). Please cite Nazeen et al. when using this list.
