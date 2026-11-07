@@ -15,11 +15,13 @@ Every step uses the same scripts as the paper, run with fewer epochs.
 
 The paper's 442 cell type networks come from the adult human brain atlas and are not
 redistributed. [`demo_data/`](demo_data) instead holds four synthetic "cell type"
-networks of about 370 proteins and 5,000 interactions each. Their interactions are real:
-they come from the TransposeNet 2 interactome (confidence ≥ 0.5), in the
-neighbourhood of the Parkinson's disease targets. The "cell types" are not: each is a
-random 75% of that neighbourhood. A two-region metagraph and the proteins' sequences
-complete the inputs. [`make_demo_data.py`](make_demo_data.py) shows exactly how it was built.
+networks of about 365 proteins and 3,500 interactions each. Their interactions are real
+and come from the public [STRING](https://string-db.org) interactome (v12.0, human
+physical interactions with combined score ≥ 0.4, CC BY 4.0), in the 500-protein
+neighbourhood of the Parkinson's disease targets. The "cell types" are synthetic, and each
+is a random 75% of that neighbourhood. A two-region metagraph and the proteins' sequences
+from STRING complete the inputs. [`make_demo_data.py`](make_demo_data.py) shows exactly how
+it was built.
 
 Because the demo cell types are random subsets of one neighbourhood, the numbers and
 figures are not comparable to the paper. The tutorial checks that the code runs and shows
@@ -27,8 +29,8 @@ what each step and each analysis produces.
 
 ```
 demo_data/
-├── human_background.csv              # interactome restricted to demo proteins (protein1, protein2, weight, source)
-├── protein_sequences.fasta           # 488 sequences (4 proteins have none and get the mean projection)
+├── human_background.csv              # STRING interactions among the demo proteins (protein1, protein2, weight)
+├── protein_sequences.fasta           # 492 sequences, one per demo protein
 ├── demo_superclusters.csv            # groups the demo cell types by mock region, for the Fig. 2a analogue
 └── networks/
     ├── ppi_edgelists/{0..3}_edgelist.txt   # one edgelist per cell type (ENSP IDs)
@@ -52,10 +54,10 @@ conda activate semper
 bash tutorial/run_tutorial.sh
 ```
 
-On one NVIDIA A100 (40 GB) the full run takes about 10 minutes: ESM-C embeddings 1.5–3
-minutes (plus the one-time weight download), graph transformer pretraining about 4.5
-minutes, contrastive alignment, seed planning and retrieval about 1 minute, and the
-figures about 2 minutes. Weights & Biases logging is disabled by default
+On one NVIDIA A100 (40 GB) the full run takes 5 to 10 minutes. ESM-C embeddings take
+about 1.5 minutes (plus the one-time weight download), graph transformer pretraining about
+3 minutes, contrastive alignment, seed planning and retrieval under 1 minute, and the
+figures about 1 minute. Weights & Biases logging is disabled by default
 (`WANDB_MODE=disabled`). Epochs can be changed with
 `PPI_EPOCHS=... CLIP_EPOCHS=... bash tutorial/run_tutorial.sh`. Step 6 alone can be rerun
 with `bash tutorial/run_figures.sh`.
@@ -66,7 +68,7 @@ All outputs go to `outputs/tutorial/`:
 
 | Step | Output | Contents |
 |---|---|---|
-| 1 | `esm/protein_esmc_600m.pt`, `.pkl` | ESM-C embeddings `[488, 1152]` and protein index |
+| 1 | `esm/protein_esmc_600m.pt`, `.pkl` | ESM-C embeddings `[492, 1152]` and protein index |
 | 2 | `ppi_gt/_protein_embed.pth`, `_labels_dict.txt` | Graph transformer embeddings `{cell type -> [n_proteins, 64]}` |
 | 3 | `contrastive/clip_mlps.ckpt`, `*_projected.pth` | Projection heads and aligned sequence and network projections (512-d) |
 | 3 | `semper/semper_embed.pth`, `semper_labels.txt` | **SEMPER representations** `{cell type -> [n_proteins, 512]}`, t = 0.10 |
@@ -80,8 +82,8 @@ Step 5 ends by printing a table like this one (values vary slightly from run to 
 Mean Hits@k over demo cell types and trials (demo data, not comparable to the paper):
 k                5     10     25
 model
-SEMPER         4.08  7.49  14.71
-Sequence_only  3.95  7.29  14.60
+SEMPER         3.90  7.29  14.50
+Sequence_only  3.92  7.20  14.69
 ```
 
 `SEMPER` uses the SEMPER representations, and `Sequence_only` uses the aligned sequence
@@ -122,7 +124,7 @@ enrichment of each module is written to `figures/fig2e_demo_enrichment.csv`.
 ([`evaluate/fig3_protein_complexes/`](../evaluate/fig3_protein_complexes)). The released CNS
 complexes whose subunits are all in a demo cell type network, each with ten size-matched
 decoys from the same network, scored by mean pairwise cosine similarity. Each dot is the
-AUPRC in one demo cell type (overall AUPRC about 0.70 for SEMPER and 0.63 for the sequence
+AUPRC in one demo cell type (overall AUPRC about 0.68 for SEMPER and 0.61 for the sequence
 projection alone).
 
 ![Fig. 3b analogue](expected_figures/fig3b_demo_auprc.png)

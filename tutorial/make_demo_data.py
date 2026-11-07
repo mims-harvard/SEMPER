@@ -4,12 +4,17 @@ Build the small, shareable demo dataset in tutorial/demo_data/.
 
 The real SEMPER inputs (442 cell type networks from the adult human brain atlas)
 are not redistributed. The demo instead builds four synthetic "cell type" networks
-from the TransposeNet 2 interactome, so every step of the pipeline can be run
-end to end in minutes. The demo networks are not biological cell types, and results
-on them are not comparable to the paper.
+from the public STRING interactome (v12.0, human physical interactions, CC BY 4.0),
+so every step of the pipeline can be run end to end in minutes. The demo networks
+are not biological cell types, and results on them are not comparable to the paper.
+
+Inputs (from https://string-db.org/cgi/download?species_text=Homo+sapiens)
+  9606.protein.physical.links.v12.0.txt.gz   (--background)
+  9606.protein.sequences.v12.0.fa.gz         (--fasta)
 
 Construction
-  1. Keep TransposeNet edges with weight >= --min_weight.
+  1. Keep STRING edges with combined score >= --min_weight (0.4 is STRING's
+     medium confidence).
   2. Start from the Parkinson's disease targets present in the network and grow a
      protein pool by breadth-first search to --pool_size proteins.
   3. Each demo cell type keeps a random --keep_frac of the pool; its network is the
@@ -18,6 +23,7 @@ Construction
 """
 
 import argparse
+import gzip
 import json
 import os
 import random
@@ -32,12 +38,14 @@ def parse_args():
     here = os.path.dirname(os.path.abspath(__file__))
     repo = os.path.dirname(here)
     ap = argparse.ArgumentParser(description="Build the SEMPER tutorial demo dataset.")
-    ap.add_argument("--background", required=True, help="TransposeNet human_background.csv (protein1, protein2, weight).")
-    ap.add_argument("--fasta", required=True, help="FASTA with sequences for the background proteins (ENSP IDs).")
+    ap.add_argument("--background", required=True,
+                    help="STRING links file (protein1 protein2 combined_score, space separated, may be gzipped) "
+                         "or a CSV with columns protein1, protein2, weight in [0, 1].")
+    ap.add_argument("--fasta", required=True, help="FASTA with sequences for the background proteins (ENSP IDs, with or without the 9606. prefix; may be gzipped).")
     ap.add_argument("--targets_csv", default=os.path.join(repo, "data/benchmarks/clinical_targets/PD_clinical_targets.csv"))
     ap.add_argument("--ensp_json", default=os.path.join(repo, "evaluate/data/ensp_to_gene.json"))
     ap.add_argument("--out_dir", default=os.path.join(here, "demo_data"))
-    ap.add_argument("--min_weight", type=float, default=0.5)
+    ap.add_argument("--min_weight", type=float, default=0.4)
     ap.add_argument("--pool_size", type=int, default=500)
     ap.add_argument("--n_celltypes", type=int, default=4)
     ap.add_argument("--keep_frac", type=float, default=0.75)
@@ -49,8 +57,12 @@ def main():
     args = parse_args()
     rng = random.Random(args.seed)
 
-    bg = pd.read_csv(args.background)
-    bg = bg[bg["weight"] >= args.min_weight]
+    if args.background.endswith((".txt", ".txt.gz")):  # STRING links file
+        bg = pd.read_csv(args.background, sep=" ")
+        bg["weight"] = bg.pop("combined_score") / 1000
+    else:
+        bg = pd.read_csv(args.background)
+    bg = bg[bg["weight"] >= args.min_weight][["protein1", "protein2", "weight"]]
     G = nx.from_pandas_edgelist(bg, "protein1", "protein2")
     G.remove_edges_from(nx.selfloop_edges(G))
 
@@ -96,11 +108,18 @@ def main():
 
     # Background restricted to proteins used in the demo networks
     bg_demo = bg[bg["protein1"].isin(used) & bg["protein2"].isin(used)]
-    bg_demo.to_csv(os.path.join(args.out_dir, "human_background.csv"))
+    bg_demo.to_csv(os.path.join(args.out_dir, "human_background.csv"), index=False)
 
     # Sequences for the demo proteins
     wanted = {n.replace("9606.", "") for n in used}
-    records = [r for r in SeqIO.parse(args.fasta, "fasta") if r.id in wanted]
+    opener = gzip.open if args.fasta.endswith(".gz") else open
+    with opener(args.fasta, "rt") as f:
+        records = []
+        for r in SeqIO.parse(f, "fasta"):
+            r.id = r.id.replace("9606.", "")
+            r.description = ""
+            if r.id in wanted:
+                records.append(r)
     SeqIO.write(records, os.path.join(args.out_dir, "protein_sequences.fasta"), "fasta")
     print(f"{len(used)} proteins, {len(bg_demo)} background edges, {len(records)} sequences -> {args.out_dir}")
 

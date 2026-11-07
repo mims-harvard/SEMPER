@@ -90,8 +90,8 @@ OpenAI or OpenAI API key.
 For reproducibility, we provide a demo dataset and a [tutorial](tutorial) that runs the
 full SEMPER pipeline end to end. The demo dataset has four mock cell type networks. Each
 is a random 75% subset of a 500-protein neighbourhood of the Parkinson's disease targets
-in the TransposeNet interactome, so the interactions are real but the cell types are
-synthetic. The tutorial trains SEMPER on these networks, runs
+in the public STRING interactome (v12.0, human physical interactions), so the
+interactions are real but the cell types are synthetic. The tutorial trains SEMPER on these networks, runs
 zero-shot target retrieval, and makes paper-style versions of Figs. 2a, 2b–d, 2e, 3b and 4. After installing both environments, run it from the
 repository root with
 
