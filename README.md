@@ -7,25 +7,28 @@
 
 ## Overview
 
-The same protein can play different roles in different cell types, because the
-proteins it interacts with depend on which proteins each cell type expresses. Protein
-language models capture what a protein's sequence encodes but give it a single,
-context-free representation. Interactome- and single-cell-based models capture cellular
-context but leave the sequence aside.
+The central nervous system (CNS) comprises diverse cell types whose molecular context
+shapes the roles of the proteins they express. Characterizing these context-specific
+protein functions is important for understanding cellular processes and identifying
+disease-relevant therapeutic targets. Protein language models and interactome- or
+single-cell-based models capture complementary information from protein sequences and
+cellular network contexts.
 
 **SEMPER** (**S**yst**E**m-scale **M**ultimodal **P**rot**E**in **R**epresentations)
-combines both. It aligns a frozen protein language model (ESM-C 600M) with a frozen
-graph transformer trained on protein–protein interaction (PPI) networks from **442 cell
-types of the adult human brain**, using a symmetric InfoNCE loss on two small projection
-heads. Each protein then has a sequence-informed representation in every cell type in
-which it is expressed (1,256,780 protein–cell type representations of 15,487 proteins).
+captures both in one model. It aligns protein language model representations with
+protein–protein interaction (PPI) networks from **442 cell types of the adult human
+brain**, giving each protein a sequence-informed representation in every cell type in
+which it is expressed. A frozen protein language model (ESM-C 600M) and a frozen graph
+transformer trained on these networks are aligned with a symmetric InfoNCE loss on two
+small projection heads, giving 1,256,780 protein–cell type representations of 15,487
+proteins.
 
-In the paper, SEMPER representations
+SEMPER representations:
 
 - predict cell type-specific protein complexes,
-- recover genes essential to the survival of dopaminergic neurons, measured in a genome-wide CRISPR screen,
+- predict genes essential to the survival of dopaminergic neurons, measured in a genome-wide CRISPR screen,
 - recover clinically pursued drug targets for five neurodegenerative diseases in zero-shot retrieval, at higher rates than existing cell type-specific models, and
-- improve target recovery further when combined with a large language model that reasons over protein functional annotations.
+- recover more targets when combined with a large language model that reasons over protein functional annotations, with SEMPER providing experimentally derived cellular context that complements the literature-based reasoning of the large language model.
 
 <p align="center">
 <img src="img/semper_overview.png" width="900" alt="SEMPER overview">
