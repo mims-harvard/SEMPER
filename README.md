@@ -51,7 +51,7 @@ SEMPER/
 │   ├── ppi_gt/             #   2. PPI graph transformer pretraining (multi-GPU DDP)
 │   └── contrastive/        #   3. contrastive alignment + final SEMPER representations
 ├── tutorial/               # end-to-end run on a small demo dataset (start here)
-├── data/benchmarks/        # released ground-truth datasets
+├── data/benchmarks/        # benchmark datasets used in the paper
 ├── data_prep/              # building cell type PPI networks and parsing Open Targets
 ├── evaluate/               # scripts behind each figure of the paper
 ├── img/                    # figures for this README
@@ -87,24 +87,30 @@ OpenAI or OpenAI API key.
 
 ## Tutorial
 
-To check that everything works, run the full pipeline on the demo dataset. It trains
-SEMPER on four small demo networks, runs zero-shot target retrieval, and makes
-paper-style versions of Figs. 2a, 2b–d, 2e, 3b and 4 with the same scripts as the paper.
-It takes about 10 minutes on one NVIDIA A100 GPU:
+For reproducibility, we provide a demo dataset and a [tutorial](tutorial) that runs the
+full SEMPER pipeline end to end. The demo dataset has four mock cell type networks. Each
+is a random 75% subset of a 500-protein neighbourhood of the Parkinson's disease targets
+in the TransposeNet interactome, so the interactions are real but the cell types are
+synthetic. The tutorial trains SEMPER on these networks, runs
+zero-shot target retrieval, and makes paper-style versions of Figs. 2a, 2b–d, 2e, 3b and 4. After installing both environments, run it from the
+repository root with
 
 ```bash
 bash tutorial/run_tutorial.sh
 ```
 
-The [tutorial README](tutorial/README.md) explains each step, shows the expected outputs
-and figures, and describes how to run SEMPER on your own networks.
+Outputs are written to `outputs/tutorial/`. The [tutorial README](tutorial/README.md)
+explains each step, shows the expected outputs and figures to compare against, and
+describes how to run SEMPER on your own networks. Because the cell types are synthetic,
+the demo results show that the code runs and are not comparable to the paper's results.
 
 ---
 
 ## Released benchmark datasets
 
-[`data/benchmarks/`](data/benchmarks) contains the ground truth used to evaluate SEMPER.
-These files can be used to benchmark any protein representation model:
+[`data/benchmarks/`](data/benchmarks) contains the benchmark datasets used to evaluate
+SEMPER in the paper. They contain no SEMPER outputs, so they can be used to benchmark any
+protein representation model.
 
 | Dataset | Contents | Paper |
 |---|---|---|
