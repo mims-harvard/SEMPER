@@ -208,7 +208,8 @@ def plot_nature_style_hits(
     plot_title = DISEASE_TITLES.get(disease, disease)
     ax.set_title(plot_title, pad=15)
 
-    ax.set_ylim(0, 10.2)
+    # Ceiling = k, the theoretical max Top-k Hits (Hits@25 -> 0..25).
+    ax.set_ylim(0, k)
 
     ax.set_xticks(range(len(model_order)))
     ax.set_xticklabels(model_order, rotation=rotate_xticks, ha="right")

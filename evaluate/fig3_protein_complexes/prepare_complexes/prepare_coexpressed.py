@@ -2,7 +2,7 @@
 """
 prepare_coexpressed.py
 -----------------------
-Panel d: end-to-end data preparation for zero-shot complex identification
+Panel b: end-to-end data preparation for zero-shot complex identification
 using the definition: complex members are CO-EXPRESSED in the cell type
 (all members present in the cell type's PPI node set, no edge requirement).
 
@@ -191,7 +191,9 @@ def main():
     ap.add_argument("--complexes",         required=True)
     ap.add_argument("--members-col",       default="subunits_ensp")
     ap.add_argument("--ppi-dir",           required=True)
-    ap.add_argument("--protrek-pkl",       required=True)
+    ap.add_argument("--protrek-pkl",       default=None,
+                    help="ProTrek ENSP->vec pickle.gz restricting the protein universe (as in the paper); "
+                         "if omitted, all proteins in the PPI networks are allowed")
     ap.add_argument("--out-dir",           required=True)
     ap.add_argument("--keep-cols",         default="complex_name,subunits_ensp")
     ap.add_argument("--files-like",        default=None)
@@ -207,7 +209,15 @@ def main():
     posneg_csv   = os.path.join(args.out_dir, "posneg.csv")
     summary_json = os.path.join(args.out_dir, "posneg_summary.json")
 
-    allowed = set(norm_ensp(k) for k in load_pickle_gz(args.protrek_pkl).keys())
+    if args.protrek_pkl:
+        allowed = set(norm_ensp(k) for k in load_pickle_gz(args.protrek_pkl).keys())
+    else:
+        allowed = set()
+        for fn in os.listdir(args.ppi_dir):
+            if fn.endswith("_edgelist.txt"):
+                with open(os.path.join(args.ppi_dir, fn)) as f:
+                    for line in f:
+                        allowed.update(norm_ensp(t) for t in line.split()[:2])
     step1_assign(args.complexes, args.members_col, args.ppi_dir,
                  args.files_like, args.keep_cols, assign_csv)
     step2_generate(assign_csv, args.ppi_dir, allowed,

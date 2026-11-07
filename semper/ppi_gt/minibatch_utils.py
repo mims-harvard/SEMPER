@@ -304,13 +304,15 @@ def generate_batch(data_dict, metapaths, edge_attr_dict, mask, batch_size, devic
 
 
 #Call split_loader_for_ddp in generate_batch if DDP is enabled.
-def split_loader_for_ddp(loader_dict, rank, world_size=4):
+def split_loader_for_ddp(loader_dict, rank, world_size=None):
      """Split the data loaders across devices for DDP."""
+     if world_size is None:
+         world_size = torch.distributed.get_world_size() if torch.distributed.is_initialized() else 1
      split_loaders = {}
      for key, loader in loader_dict.items():
          # Split the batches in the loader
          data = list(loader)  # Convert to list for indexing
-         split_data = data[rank::4]  # Select a subset based on rank
+         split_data = data[rank::world_size]  # Select a subset based on rank
          split_loaders[key] = split_data
      return split_loaders
 

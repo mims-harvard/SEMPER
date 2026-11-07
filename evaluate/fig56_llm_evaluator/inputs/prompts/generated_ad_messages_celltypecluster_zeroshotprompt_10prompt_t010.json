@@ -1,0 +1,402 @@
+[
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG2, SCN5A, SV2A, CACNA1B, GRIN2B, GABRA2, SCN8A, ABL1, GRIN1, CD38, SCN9A, CACNA1D, SRC, SCN2A, FLNA that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA5, BCR, GRIN2A, ADORA1, GRIA2, HMGCR, CACNA1C, GABBR2, GABRB3, MAPT, CHRM3, HTR2C, HTR4, GRIA1, SCN3A that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA4, PAH, GRIA3, BCR, GABBR2, ADORA1, SCN9A, GABBR2, HMGCR, SCN9A, GABBR2, SCN8A, SV2A, GRIN1, SCN2A that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, GABRB3, GRIA1, CD38, GRIA3, GRIN1, ADORA1, GRIA1, SV2A, GRIA2, GRIN2A, GABRB3, HTR4, SCN2A, SCN5A that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PAH, GABRB3, GRIA3, GRIN1, SRC, HTR2C, GRIA4, SCN3A, SCN5A, CACNA1D, SCN8A, ADORA1, SCN8A, FLNA, ADORA1 that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BCR, ABL1, HTR4, SCN2A, CACNA1B, GRIA3, GRIA2, GRIA2, GRIA3, MAPT, GABBR2, SV2A, GABRA5, SCN9A, ADORA1 that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CACNA1B, CD38, GRIN2B, GABRB3, ABL1, HTR2C, SCN3A, CACNA1C, SCN9A, SCN5A, ABL1, HMGCR, GABRA2, SCN3A, GRIA4 that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR4, CHRM3, SCN9A, SCN2A, GRIA4, PAH, GABRA5, ADORA1, PAH, SV2A, CACNA1D, MAPT, ABL1, SCN5A, GABRB3 that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRB3, MAPT, FLNA, HTR4, GABRA5, HTR4, GRIA3, SCN3A, ADORA1, BCR, GRIA1, CACNA1B, BCR, SCN2A, SCN3A that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGCR, CHRM3, HMGCR, SCN3A, FLNA, ABL1, CD38, MAPT, GRIA2, CACNA1C, HTR2C, SCN8A, GRIN2B, SCN8A, SCN9A that are known targets for Alzheimers disease in celltype cluster:164, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRB3, CD38, GABRA2, GSK3B, CHRM3, CHRNA7, SCN9A, SCN3A, GRIN2A, GRIN1, BCR, GRIA4, MAPT, SCN1A, GRIN2B that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA1, GABRG3, GABRA5, GRIA3, ABL1, ADORA1, HTR4, SCN7A, GABBR2, CACNA1B, SCN8A, SCN5A, CACNA1D, PAH, GABRG2 that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, APP, FLNA, CACNA1C, HMGCR, GABRA5, PAH, CD38, GRIN1, GABRG3, SCN9A, FLNA, FLNA, GABRG2, APP that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGCR, SCN2A, GRIN2A, GABRB3, CACNA1D, PAH, GRIN2B, GABRG2, SCN8A, GABRB3, HMGCR, CACNA1B, SCN5A, GABBR2, CHRM3 that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSK3B, APP, GABRB3, HTR4, GRIN1, GABRG2, GABRA5, GABRA2, BCR, GABRA5, GABRA2, APP, PAH, CHRNA7, SCN1A that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PAH, GRIN2A, BCR, GRIA3, SCN5A, GABRA2, APP, CACNA1D, SCN8A, HMGCR, GABRA2, PAH, GABRB3, HTR4, CACNA1C that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, APP, SCN1A, PAH, GABRA2, GRIN2A, SCN3A, GRIA4, GABRG2, HTR4, GABRG2, GRIN1, GRIN2A, CHRM3, SCN8A that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, CACNA1D, SCN3A, CACNA1B, GABRG2, GRIN2A, APP, GABRG3, CACNA1C, CACNA1D, GRIA1, SCN8A, GABRG2, GSK3B, ADORA1 that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN5A, ADORA1, GRIN2B, APP, CHRNA7, GABBR2, APP, GRIA1, SCN5A, SCN9A, ABL1, CACNA1B, GABBR2, SCN2A, GRIN2A that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BCR, SCN5A, CD38, SCN2A, CHRNA7, CACNA1C, PAH, GABBR2, GABRB3, CACNA1B, APP, SCN5A, SCN7A, GABBR2, GABBR2 that are known targets for Alzheimers disease in celltype cluster:165, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, FLNA, SCN8A, HMGCR, GRIN3A, CHRM3, GABRA5, MAPT, BCR, CD38, GABRG3, GRIN2A, GSK3B, MAPK14, GRIA1 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2A, GABRB3, GRIA3, CHRM2, SCN1A, ADORA1, SCN3A, GRIN2B, GABBR2, HTR4, GRIA4, APP, ABL1, GRIA2, CACNA1B that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, PAH, GABRG2, CACNA1D, GABRA2, CACNA1C, GRIN1, GABRA1, CHRNA7, CD38, SCN9A, FLNA, GABRA5, GABRA1, SCN1A that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, MAPT, GABRG3, GRIN2A, GRIA1, MAPT, GABBR2, GABRG2, GRIA4, GRIA1, GRIN2B, SCN3A, GRIN1, GRIN2A, GABBR2 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, HTR2A, HTR2A, GRIN1, GSK3B, CACNA1D, SCN8A, CHRM2, CHRM2, GRIN2B, ABL1, CHRNA7, SCN9A, CHRM3, SCN1A that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, GABRG3, CHRNA7, GRIN3A, ADORA1, PAH, GSK3B, CACNA1B, GABRA2, CHRM2, GABRG2, PAH, PAH, APP, CHRM3 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, MAPT, SCN1A, GRIN2B, GABRG3, FLNA, SCN8A, SCN8A, GABRA2, GSK3B, ADORA1, CACNA1C, GRIN1, CHRM2, FLNA that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, GRIA2, GABRG2, CACNA1C, GABBR2, GRIN2A, CHRM3, APP, GABRG2, GRIN3A, HTR2A, HTR2A, APP, GABBR2, GABRA5 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, SCN3A, GRIN2B, GRIA3, PAH, CD38, GRIN2A, CACNA1D, GSK3B, GABRB3, GABRA2, CACNA1D, CHRM2, CHRM3, GABRA2 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MAPT, HMGCR, GRIN3A, GABRA1, HTR2A, GRIA1, CHRNA7, GABBR2, SCN3A, GSK3B, GSK3B, GRIN3A, SCN9A, HMGCR, GRIA1 that are known targets for Alzheimers disease in celltype cluster:166, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, GABRA2, PPARG, GABRG3, SCN1A, PDE9A, GABRG2, MMP7, GABRA5, SCN5A, GRIN2B, SCN8A, GRIA1, SCN9A, GABRB3 that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, PDE5A, CACNA1C, GABBR1, ALDH5A1, BCR, ADRA2C, GRIA2, GRIA4, SCN7A, SCN2A, HTR4, APP, DRD3, SCN3A that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, HTR3D, RXRG, CHRM1, HTR2C, HCRTR2, MAOB, CACNA1B, GRIA3, RARB, NR3C1, CACNA1B, HTR4, NR3C1, ALDH5A1 that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA3, PDE5A, APP, SCN1A, CACNA1B, NR3C1, MMP7, GRIN2B, HTR4, PDE5A, GABRA3, HTR3D, GABRA3, GABRG3, HCRTR2 that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR4, SCN8A, GABBR1, ADRA2C, SCN7A, GABRB3, RXRG, SCN5A, GABRG1, RXRG, MAOB, GABRA5, HTR3D, NR3C1, ADRA2C that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CACNA1B, CHRM1, HTR2C, GRIA2, PDE9A, ADRA2C, GABRG1, RARB, SCN1A, GRIA4, GRIA4, CACNA1C, GRIN2B, MAOB, HTR2C that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, DRD3, GABRA3, CHRM1, ADRA2C, MMP7, ALDH5A1, SCN7A, RXRG, HTR4, GABRG2, MAOB, ADRA2C, GABRA5, GRIN1 that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RXRG, SCN3A, RARB, GABRG3, GRIA3, MMP7, MMP7, SCN2A, CACNA1B, GABRA5, HTR3D, NR3C1, GRIA4, SCN7A, SCN3A that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA3, PPARG, MAOB, GABRB3, GABRA3, HCRTR2, GABRG2, BCR, ALDH5A1, GABRA2, GABRG1, CHRM1, CACNA1B, CACNA1B, CACNA1B that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG3, ADRA2C, HTR3D, SCN2A, SCN7A, PDE9A, MAOB, ALDH5A1, PDE5A, GRIA1, SCN7A, SCN9A, CACNA1B, GABRA5, HTR3D that are known targets for Alzheimers disease in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, SV2A, GABRA2, ACHE, CACNA1C, APP, CACNA1B, GSK3B, SCN2A, ESR2, GRIN1, BACE1, DRD2, GRIN2B, GRIA4 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CHRM3, GRIN2D, GRIA2, SCN3A, HCRTR2, NR3C1, GRIA1, CACNA1D, SCN1A, GABRG3, GRIN2C, HTR2A, GABRG2, SCN9A, AGER that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RARG, HMGCR, GRIN2B, AGER, SCN3A, HMGCR, CACNA1B, NR3C1, ACHE, CACNA1B, GABRA2, CACNA1D, GRIA1, SCN3A, NR3C1 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DRD2, APP, SCN3A, HCRTR2, GABRG2, CACNA1B, DRD2, GABRA3, SCN2A, DRD2, CACNA1C, ACHE, SCN3A, GRIN2B, SCN1A that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, DRD2, GABRA3, GRIA2, SCN1A, HTR2A, BACE1, ACHE, CACNA1D, AGER, GSK3B, GRIN2D, CHRM3, APP, CHRM3 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGCR, HMGCR, SCN9A, HTR2A, GABRA2, RARG, HMGCR, ESR2, SCN9A, GRIA1, GABRG2, CHRM3, CACNA1B, GRIN2B, BACE1 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA2, GABRG2, GABRG3, SV2A, CACNA1C, NR3C1, CACNA1B, DRD2, SV2A, GRIN2C, ACHE, GRIN2B, GABRG3, HMGCR, GSK3B that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GABRA2, SCN9A, HTR2A, NR3C1, GRIA4, GABRG3, SCN3A, GRIN2B, HMGCR, SCN1A, GRIN2B, HMGCR, SCN2A, GRIA4 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA2, GRIA1, AGER, NR3C1, CACNA1B, GSK3B, GRIN1, SV2A, NR3C1, CHRM3, APP, SCN2A, APP, GRIA1, GABRA2 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA2, HMGCR, RARG, NR3C1, GRIN2D, SCN9A, GABRG3, HTR2A, AGER, GABRA3, GSK3B, GRIA4, SCN1A, CACNA1D, GRIN1 that are known targets for Alzheimers disease in celltype cluster:309, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSK3B, HTR2C, ESR1, GRIN3A, GABRA1, GABRG3, GABRB3, ALDH5A1, GRIA4, HSD11B1, GABRG2, SCN3A, HCRTR2, MAOB, CHRM2 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, SCN8A, RXRB, GRIN2D, SV2A, GABRA3, IMPA1, CACNA1B, KIT, GRIN1, SCN9A, PDE9A, HMGCR, PGR, NR3C1 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ACHE, INSR, SCN7A, GABRA5, CACNA1D, SCN2A, CACNA1C, GABRA2, SCN1A, PDE5A, GRIN1, CHRM2, GRIN1, GABRA5, IMPA1 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, GABRA3, HSD11B1, PGR, GABRG2, PGR, CACNA1B, CHRM2, CACNA1D, GSK3B, HTR2C, GABRG3, CACNA1C, SCN3A, CACNA1B that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE5A, ESR1, KIT, GSK3B, SCN1A, HCRTR2, ESR1, ACHE, SCN3A, PDE9A, ESR1, SV2A, HTR2C, GABRB3, GABRB3 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RXRB, GABRG3, KIT, NR3C1, HSD11B1, GSK3B, GSK3B, NR3C1, SCN1A, PDE9A, GRIN2D, ALDH5A1, PGR, GRIN1, ACHE that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HCRTR2, GABRA3, GRIN2D, HSD11B1, ACHE, ACHE, GRIA4, SCN9A, PGR, ESR1, GRIN2D, HCRTR2, CACNA1C, NR3C1, PDE5A that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGCR, HSD11B1, GRIN1, GABRA3, SCN3A, GRIN3A, INSR, HCRTR2, SCN8A, GABRA5, CHRM2, GABRA2, ESR1, GRIN3A, GRIN1 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ESR1, GABRG3, ACHE, GABRG2, CACNA1D, RXRB, SCN1A, HSD11B1, CACNA1C, SCN3A, IMPA1, SV2A, INSR, PDE5A, IMPA1 that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA1, HSD11B1, CACNA1D, GABRA5, SCN3A, PDE5A, GRIN3A, GRIA4, HCRTR2, HCRTR2, SCN8A, PDE5A, PDE5A, GABRA5, PGR that are known targets for Alzheimers disease in celltype cluster:367, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CACNA1C, BACE1, BCR, HTR2C, PGR, GRIA3, GABRG2, DRD3, GABRB3, IFNAR2, MAOB, GRIA1, MAPT, HTR6, KIT that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA2, CACNA1B, APP, SCN2A, GRIN2B, GABRA1, SCN1A, CHRM3, SV2A, CNR1, SRC, GRIA4, GRIN3A, GRIN2A, ADRA2C that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSK3B, SCN8A, CACNA1D, SCN3A, SCN7A, SCN9A, ACHE, PLA2G7, HSD11B1, RARA, CHRM2, HMGCR, GABRA5, HTR3B, CHRNA4 that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABBR2, NR3C1, RARG, GABRG3, GABRA3, GRIN1, HTR6, GRIA3, CNR1, SCN3A, GABRB3, GRIN2A, GRIN1, HSD11B1, MAOB that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSK3B, BACE1, GABRA1, GABRA1, GSK3B, GABRA3, APP, MAPT, HSD11B1, GRIN1, SV2A, SCN3A, APP, IFNAR2, SCN2A that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2B, DRD3, HTR2C, SCN9A, HTR3B, CHRNA4, CNR1, CNR1, SCN1A, SCN7A, HTR3B, GABBR2, GRIN1, ACHE, MAPT that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NR3C1, RARA, GABRA5, GRIN3A, CNR1, GABRG2, APP, GRIN1, GRIN3A, BCR, GABRG2, ACHE, GRIA3, GABRG3, APP that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NR3C1, PGR, SCN9A, GABRA3, RARG, HSD11B1, GRIA4, GRIA2, GRIA3, SCN8A, IFNAR2, GRIA4, SCN3A, GRIA2, ACHE that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, ACHE, GABRA1, MAPT, GABRG3, SCN9A, CHRM3, GRIA3, HTR2C, RARA, CHRM3, GSK3B, GABRG3, CHRNA4, CACNA1C that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RARG, HMGCR, SRC, GABRB3, MAPT, GSK3B, HTR6, ADRA2C, ACHE, MAOB, SCN3A, RARG, CHRM2, PGR, DRD3 that are known targets for Alzheimers disease in celltype cluster:39, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA2, ADORA2B, GRIN3A, ESR1, SV2A, GRIN2D, HCRTR2, PDE9A, GABRB3, DRD2, PGR, SCN9A, NR3C1, GABRG3, GRIA2 that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MAPT, GABBR2, SRC, DRD3, GABRA5, GRIA3, CHRM3, GABRA1, ADORA1, SCN3A, APH1B, GABRA3, GRIA1, ABL1, MAOB that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2B, IMPA1, GRIN2C, HTR2C, GRIA4, GSK3B, CHRM2, SCN7A, SCN1A, CACNA1C, GRIN1, ALDH5A1, ACHE, SCN5A, SCN2A that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins INSR, SCN8A, CACNA1D, GABRG1, CACNA1B, GRIA1, GRIA2, GRIN1, GABRA3, GRIN2D, GRIN2B, GABRA1, CACNA1C, ADORA2B, MAOB that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CACNA1B, ACHE, IMPA1, SRC, GRIN1, GRIN3A, GRIA2, SCN2A, GRIN3A, IMPA1, GRIN2B, CACNA1C, DRD2, GABRA1, APH1B that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ESR1, GRIA3, GABRG3, ALDH5A1, PGR, DRD3, GRIN3A, GRIN2D, GRIN2B, GABBR2, ADORA1, ABL1, NR3C1, GRIN2D, ABL1 that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GRIN1, CACNA1D, MAOB, GABRA1, DRD3, ABL1, ADORA2B, ADORA2B, IMPA1, ESR1, GRIA1, DRD3, ABL1, CHRM2 that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, SCN8A, SCN9A, SCN1A, ACHE, PGR, ADORA2B, DRD2, GABRA3, CHRM3, GABRA2, GRIA2, SCN7A, IMPA1, SCN8A that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA1, PGR, GRIA4, IMPA1, GRIN2C, SCN7A, CACNA1B, GABRG3, GRIN2B, GABRA2, GRIN2D, GABRB3, ESR1, CACNA1B, GRIN3A that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, GRIN2C, GRIA2, GRIN2C, GABRA2, GRIA4, INSR, ABL1, SCN5A, HCRTR2, GRIA3, APH1B, CACNA1D, SCN2A, GABRA1 that are known targets for Alzheimers disease in celltype cluster:428, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CHRM2, GABRA1, GRIA4, PDE9A, SCN2A, GRIA2, MAOB, CACNA1B, GRIN2A, APP, GRIN2D, GABRB3, GABBR2, CHRNA4, CHRNA7 that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ACHE, CACNA1C, APH1B, RARB, GRIN3A, SCN7A, HMGCR, PSEN1, ABL1, GABRG3, SCN3A, IMPA1, GABBR1, GABRA2, SCN9A that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, CACNA1S, SCN1A, ADORA2B, PTGS2, CHRM3, NR3C1, GSK3B, ADORA1, GRIN2B, GRIA1, SRC, SCN8A, PSEN1, PTGS2 that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, PSEN1, GABRG1, SCN3A, CACNA1C, GABBR1, HMGCR, SCN8A, SCN2A, PTGS2, GABRB3, ADORA1, SCN7A, PTGS2, CHRNA4 that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABBR2, GRIA1, SCN8A, GRIN2A, SCN8A, GRIA2, MAOB, ACHE, NR3C1, GSK3B, SRC, GRIN2B, GRIA2, ACHE, GRIA2 that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA1, APH1B, CHRM3, SCN2A, MAOB, GRIA4, CHRNA4, GRIA2, CHRNA7, SCN9A, CACNA1S, GABBR1, GRIN3A, GRIA1, CACNA1B that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA1, CHRM3, GABRA2, HMGCR, GABRG3, ADORA1, CHRNA4, CHRNA4, GABRG3, GRIA1, GRIA2, GRIN2D, SCN2A, IMPA1, SCN9A that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CHRM3, PDE9A, GRIA1, ACHE, GRIN2B, CACNA1C, CHRM2, CHRNA7, GRIN3A, GRIN2A, GABRA2, RARB, GRIN2B, HMGCR, GABRA1 that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, HMGCR, GRIN2B, SCN9A, CACNA1C, CACNA1C, SCN8A, CACNA1B, SCN8A, CHRM3, GRIA2, PSEN1, HMGCR, MAOB, MAOB that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG3, SCN2A, MAOB, SCN9A, GABBR2, SRC, SCN9A, GABBR1, SCN3A, GABBR2, GABRA1, APP, CHRNA7, GRIN2D, RARB that are known targets for Alzheimers disease in celltype cluster:455, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BACE1, CHRM1, HMGCR, GRIA4, SV2A, PDE5A, GRIA3, HTR3E, MAPT, GRIN2A, KIT, SCN2A, SCN1A, HSD11B1, GRIN2B that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CNR1, CACNA1B, APP, SCN7A, GABRA5, GABRG3, PAH, IFNAR2, CHRM2, BCHE, HTR3B, ADORA2A, GABRG2, SCN8A, SCN9A that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA1, GABBR2, HTR6, GRIA1, GSK3B, SCN3A, GRIN3A, RXRG, GRIA2, GABRB3, CACNA1D, ADRA2C, CACNA1C, PTGS1, GRIN1 that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2C, CHRM3, HTR2C, GABRA1, APP, HSD11B1, IFNAR2, SCN7A, CACNA1B, SCN1A, CHRM3, SCN2A, BACE1, SCN8A, GRIN2A that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA1, RXRG, PAH, RXRG, GRIA2, CHRM2, MAPT, GABRB3, CHRM1, HMGCR, GABBR2, HTR3E, PAH, GRIA2, SCN8A that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins APP, SCN1A, BACE1, GABRG3, GRIA1, SCN8A, GRIA2, PTGS1, HTR3E, APP, PTGS1, CNR1, GRIN1, GRIN2C, HSD11B1 that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA5, CACNA1B, GRIN2B, SCN8A, CACNA1C, APP, HMGCR, ADORA2A, CACNA1C, BCHE, BCHE, GABRG3, GABRG2, CHRM2, SV2A that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MAPT, APP, CACNA1D, GABBR2, BACE1, PDE5A, KIT, CACNA1B, GRIN1, CACNA1D, SCN9A, HMGCR, GABRB3, GABRB3, IFNAR2 that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, HTR3E, GRIN1, GRIN2B, GRIN1, PAH, APP, SCN3A, HTR6, HTR2C, GABBR2, CACNA1D, HMGCR, SCN2A, PDE5A that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA2A, GRIN1, GRIN2A, PAH, PTGS1, PAH, PDE5A, CACNA1C, CACNA1D, GRIN2B, GABRG3, SCN7A, GABRG3, CACNA1D, GABRB3 that are known targets for Alzheimers disease in celltype cluster:75, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  }
+]

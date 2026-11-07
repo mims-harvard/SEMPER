@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import gzip
 import argparse
 import json
 import os
@@ -205,7 +206,7 @@ def main():
 
     args = ap.parse_args()
 
-    with open(args.seedplan, "r") as f:
+    with (gzip.open(args.seedplan, "rt") if args.seedplan.endswith(".gz") else open(args.seedplan, "r")) as f:
         seedplan = json.load(f)
     clusters = seedplan["clusters"]
 

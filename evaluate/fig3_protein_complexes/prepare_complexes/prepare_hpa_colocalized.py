@@ -273,7 +273,7 @@ def main():
     ap.add_argument("--ppi-dir",           required=True)
     ap.add_argument("--protrek-pkl",       required=True)
     ap.add_argument("--out-dir",           required=True)
-    ap.add_argument("--keep-cols",         default="ComplexID,Complex_name")
+    ap.add_argument("--keep-cols",         default="complex_id,complex_name")
     ap.add_argument("--files-like",        default=None)
     ap.add_argument("--neg-per-pos",       type=int, default=10)
     ap.add_argument("--neg-max-tries",     type=int, default=20000)

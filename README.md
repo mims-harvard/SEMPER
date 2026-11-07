@@ -1,240 +1,271 @@
-# SEMPER: SystEm-scale Multimodal ProtEin Representations
+# SEMPER: Multimodal protein representations across human brain cell types
 
 [![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](https://zitniklab.hms.harvard.edu/SEMPER/)
-[![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#)
+[![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#citation)
 [![Code](https://img.shields.io/badge/Code-SEMPER-purple)](https://github.com/mims-harvard/SEMPER)
-[![Model](https://img.shields.io/badge/HuggingFace-SEMPER-yellow)](https://huggingface.co/mims-harvard/SEMPER)
-[![License](https://img.shields.io/badge/License-MIT-lightgreen)](https://opensource.org/license/MIT)
+[![License](https://img.shields.io/badge/License-MIT-lightgreen)](LICENSE)
 
 ## Overview
 
-Proteins carry out cellular functions largely through their interactions with other proteins. Because the set of proteins expressed differs from one cell type to the next, a given protein can engage different partners depending on its cellular context. This context dependence is well documented but difficult to represent computationally, and it is particularly relevant in the central nervous system (CNS), whose diversity of neuronal and glial cell types has been linked to the cell type specific vulnerability observed across neurodegenerative diseases. Yet existing protein representation methods capture only part of the picture: sequence-based models assign each protein a single, context-free embedding, while network-based models incorporate cellular context but set sequence information aside.
+The same protein can play different roles in different cell types, because the
+proteins it interacts with depend on which proteins each cell type expresses. Protein
+language models capture what a protein's sequence encodes but give it a single,
+context-free representation. Interactome- and single-cell-based models capture cellular
+context but leave the sequence aside.
 
-**SEMPER** (**S**yst**E**m-scale **M**ultimodal **P**rot**E**in **R**epresentations) is a multimodal deep learning model that learns cell type-aware protein embeddings that combine both. A frozen hybrid graph transformer encodes each protein's context within cell type specific protein–protein interaction (PPI) networks and a metagraph of cellular and tissue organization, and a frozen protein sequence encoder represents its amino acid sequence; a symmetric InfoNCE objective aligns the two into a shared latent space. Trained across 442 cell types of the human CNS, SEMPER assigns the same protein a distinct embedding in each cellular context, so that its representation reflects where in the brain it acts.
+**SEMPER** (**S**yst**E**m-scale **M**ultimodal **P**rot**E**in **R**epresentations)
+combines both. It aligns a frozen protein language model (ESM-C 600M) with a frozen
+graph transformer trained on protein–protein interaction (PPI) networks from **442 cell
+types of the adult human brain**, using a symmetric InfoNCE loss on two small projection
+heads. Each protein then has a sequence-informed representation in every cell type in
+which it is expressed (1,256,780 protein–cell type representations of 15,487 proteins).
 
-Across our analyses, this embedding space recovers cellular and functional organization: proteins cluster by cell type and by shared function, multifunctional proteins spread across contexts as expected, and cell type specific protein complexes are recovered more accurately than by the baselines we tested. Building on these representations, SEMPER can prioritize candidate therapeutic targets for five neurodegenerative diseases in a zero-shot setting, and its embedding-derived signals can be combined with large language model reasoning to refine those rankings. These predictions are associative and intended to support hypothesis generation rather than replace experimental validation.
+In the paper, SEMPER representations
 
-SEMPER integrates three inputs derived from an adult human CNS single-cell transcriptomic atlas: 1D protein sequences, 442 cell type specific PPI networks, and a hierarchical metagraph of cellular and tissue organization. A frozen protein sequence encoder and a frozen hybrid graph transformer encode each input independently; trainable adaptors project both into a shared latent space aligned by a symmetric InfoNCE contrastive loss.
+- predict cell type-specific protein complexes,
+- recover genes essential to the survival of dopaminergic neurons, measured in a genome-wide CRISPR screen,
+- recover clinically pursued drug targets for five neurodegenerative diseases in zero-shot retrieval, at higher rates than existing cell type-specific models, and
+- improve target recovery further when combined with a large language model that reasons over protein functional annotations.
+
+<p align="center">
+<img src="img/semper_overview.png" width="900" alt="SEMPER overview">
+</p>
+
+**Figure 1.** (a) SEMPER aligns a protein language model and a hybrid graph transformer
+over cell type-specific PPI networks through trainable adaptors (frozen encoders shown with
+a snowflake). (b–d) Downstream tasks: protein complex membership prediction, zero-shot
+target assessment, and LLM-assisted target assessment. (e) SEMPER improves target
+retrieval (Hits@10) over the protein language model alone across six backbones.
+
+---
+
+## Repository layout
+
+```
+SEMPER/
+├── semper/                 # the model
+│   ├── esm/                #   1. ESM-C sequence embeddings
+│   ├── ppi_gt/             #   2. PPI graph transformer pretraining (multi-GPU DDP)
+│   └── contrastive/        #   3. contrastive alignment + final SEMPER representations
+├── tutorial/               # end-to-end run on a small demo dataset (start here)
+├── data/benchmarks/        # released ground-truth datasets
+├── data_prep/              # building cell type PPI networks and parsing Open Targets
+├── evaluate/               # scripts behind each figure of the paper
+├── img/                    # figures for this README
+├── environment.yml         # main environment (training, evaluation)
+└── environment_esm.yml     # ESM-C embedding environment
+```
 
 ---
 
 ## Installation
 
-**Requirements:** Linux, NVIDIA GPU with CUDA 11.8, conda.
+**Requirements:** Linux, an NVIDIA GPU with CUDA 11.8, and conda. Tested on Rocky Linux 8.10
+with NVIDIA H100 GPUs.
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/mims-harvard/SEMPER.git
 cd SEMPER
-
-# 2. Create and activate the environment (installs PyTorch, PyG, and all
-#    dependencies for data prep, training, and figures 2-4)
-conda env create -f environment.yml
-conda activate semper
+conda env create -f environment.yml       # about 30 minutes
+conda env create -f environment_esm.yml   # about 15 minutes
 ```
+
+SEMPER uses two environments, matching the ones used for the paper:
+
+| Environment | File | Used for | Key versions |
+|---|---|---|---|
+| `semper` | `environment.yml` | Network encoder pretraining, contrastive alignment, evaluation | Python 3.8, PyTorch 2.1.0 (CUDA 11.8), PyTorch Geometric 2.6.1 |
+| `semper-esm` | `environment_esm.yml` | ESM-C 600M sequence embeddings (`semper/esm/`) | Python 3.10, PyTorch 2.6.0, `esm` 3.2.1.post1 |
+
+The LLM analyses (Figs. 5–6) additionally need `openai` and `tooluniverse` and an Azure
+OpenAI or OpenAI API key.
 
 ---
 
-## Training
+## Tutorial
 
-Components 1 and 2 can be run in parallel. Component 3 requires outputs from both.
-
-### 1 · PPI Graph Transformer
-
-Trains the multi-scale graph transformer encoder on cell type-specific PPI networks and the BTO metagraph using GraphSAINT minibatch sampling and DDP across 4 GPUs.
+To check that everything works, run the full pipeline on the demo dataset. It trains
+SEMPER on four small demo networks, runs zero-shot target retrieval, and makes
+paper-style versions of Figs. 2a, 2b–d, 2e, 3b and 4 with the same scripts as the paper.
+It takes about 10 minutes on one NVIDIA A100 GPU:
 
 ```bash
-cd ppi_gt/
-bash run_ppi_gt.sh
+bash tutorial/run_tutorial.sh
 ```
 
+The [tutorial README](tutorial/README.md) explains each step, shows the expected outputs
+and figures, and describes how to run SEMPER on your own networks.
+
+---
+
+## Released benchmark datasets
+
+[`data/benchmarks/`](data/benchmarks) contains the ground truth used to evaluate SEMPER.
+These files can be used to benchmark any protein representation model:
+
+| Dataset | Contents | Paper |
+|---|---|---|
+| [Cell type-specific protein complexes](data/benchmarks/protein_complexes) | 547 CNS-relevant CORUM complexes and, for each of four complex definitions (transcriptional co-expression, structural connectivity, protein co-abundance, spatial colocalization), the complexes present in each brain cell type with the ten size-matched decoys per complex used for evaluation | Fig. 3, Supplementary Tables 4–5 |
+| [Clinically pursued targets](data/benchmarks/clinical_targets) | Targets of drugs and compounds in completed Phase 2 or in Phase 3–4 trials for Alzheimer's disease (130), Parkinson's disease (97), multiple sclerosis (166), Huntington's disease (86) and ALS (98) from the Open Targets Platform. Each target has its clinical phase, ChEMBL/DrugBank drugs, pharmacological action and curated therapeutic intent | Figs. 4–6, Supplementary Table 6 |
+| [Dopaminergic neuron essential genes](data/benchmarks/da_neuron_essential_genes) | 693 genes essential to the survival of human iPSC-derived midbrain dopaminergic neurons, from a genome-wide CRISPR/Cas9 screen (Nazeen et al., 2025) | Fig. 5 |
+
+See the [dataset README](data/benchmarks/README.md) for column descriptions and sources.
+
+---
+
+## Training SEMPER
+
+Steps 1 and 2 are independent. Step 3 needs the outputs of both. All scripts run from any
+directory and read and write paths relative to the repository root. Each path can be
+overridden with an environment variable, as shown in [`tutorial/run_tutorial.sh`](tutorial/run_tutorial.sh).
+
+**Inputs** (place under `data/`, or point the scripts at them):
+
+- `human_background.csv`, the cell type-agnostic interactome ([TransposeNet](https://doi.org/10.6084/m9.figshare.33717070))
+- `networks/ppi_edgelists/<cluster>_edgelist.txt`, one PPI network per cell type
+- `networks/mg_edgelist.txt`, the metagraph linking cell types, superclusters, brain structures and regions
+- `protein_sequences.fasta`, protein sequences, which can be fetched with [`semper/esm/fetch_sequences.py`](semper/esm/fetch_sequences.py)
+
+The 442 brain cell type networks are built with [`data_prep/construct_ppi_networks/`](data_prep/construct_ppi_networks).
+
+### 1 · Sequence embeddings (ESM-C 600M, frozen)
+
+```bash
+bash semper/esm/run_esm.sh
+```
+
+Writes `outputs/esm/protein_esmc_600m.pt` (`[N_proteins, 1152]`, mean-pooled over residues) and `protein_esmc_600m.pkl` (protein ID → row).
+
+### 2 · PPI graph transformer
+
+```bash
+bash semper/ppi_gt/run_ppi_gt.sh      # 4 GPUs by default; NUM_GPUS=1 for one GPU
+```
+
+Trains the multi-scale graph transformer with link prediction and center loss for 300
+epochs using GraphSAINT mini-batches and DistributedDataParallel. It writes
+`outputs/ppi_gt/_protein_embed.pth` (`{cell type → [n_proteins, 64]}`), `_labels_dict.txt`
+and the model checkpoint.
+
 <details>
-<summary>Full argument list</summary>
+<summary>Arguments of <code>semper/ppi_gt/train.py</code></summary>
 
 | Argument | Description | Default |
 |---|---|---|
-| `--G_f` | Path to global background PPI edgelist | — |
-| `--ppi_dir` | Directory of cell type-specific PPI edgelists | — |
-| `--mg_f` | Path to BTO metagraph edgelist | — |
+| `--G_f` | Background interactome CSV | — |
+| `--ppi_dir` | Directory of cell type edgelists | — |
+| `--mg_f` | Metagraph edgelist | — |
 | `--feat_mat` | Initial node feature dimension | `512` |
-| `--hidden` | Hidden layer dimension | `16` |
-| `--output` | Output embedding dimension | `8` |
-| `--n_heads` | Number of attention heads | `8` |
-| `--batch_size` | GraphSAINT minibatch size | `32` |
+| `--hidden` | Hidden dimension | `16` |
+| `--output` | Output dimension per head | `8` |
+| `--n_heads` | Attention heads | `8` |
+| `--batch_size` | GraphSAINT mini-batch size | `32` |
 | `--epochs` | Training epochs | `300` |
 | `--theta` | PPI vs. metagraph loss mixing coefficient | `0.1` |
 | `--lmbda` | Center loss weight λ | `0.01` |
 | `--lr` | Learning rate | `0.001` |
 | `--lr_cent` | Center loss learning rate | `0.01` |
-| `--dropout` | Dropout rate | `0.5` |
-| `--save_prefix` | Output directory for embeddings | — |
+| `--dropout` | Dropout | `0.5` |
+| `--save_prefix` | Output prefix | — |
 
 </details>
 
-**Outputs** (written to `--save_prefix`):
-- `_protein_embed.pth` — per-cluster protein embeddings `{ct_idx -> tensor[n_proteins, D]}`
-- `_labels_dict.txt` — label dictionary mapping cluster indices to cell type names
+Training logs to [Weights & Biases](https://wandb.ai) when you are logged in. Set
+`WANDB_ENTITY` to choose the entity, or `WANDB_MODE=disabled` to turn logging off.
 
-### 2 · ESM-C Sequence Encoder
-
-**Step 1:** Fetch canonical amino acid sequences from Ensembl and UniProt.
+### 3 · Contrastive alignment and SEMPER representations
 
 ```bash
-cd esm/
-python fetch_sequences.py \
-    --protein_list  data/unique_proteins.txt \
-    --out_fasta     data/protein_sequences.fasta \
-    --out_failed    data/failed_proteins.txt
+bash semper/contrastive/run_contrastive.sh
 ```
 
-The pipeline stratifies protein IDs into ENSP (Ensembl Protein) and UniProt Entry Name identifiers, retrieves sequences via the respective REST APIs, applies an archive-based fallback for deprecated ENSP IDs, and strips stop-codon characters (`*`) to prevent tokenization errors.
+This trains the two projection heads (sequence 1152 → 1024 → 512 → 512 and network
+64 → 512 → 512 → 512) with a symmetric InfoNCE loss (τ = 0.07, batch 64, 200 epochs, Adam,
+learning rate 10⁻⁴). It then forms the final representation of protein *p* in cell type *c*:
 
-**Step 2:** Run frozen ESM-Cambrian (600M) inference to extract sequence embeddings.
+  **z**<sub>p,c</sub> = normalize( (1 − t) · **u**<sub>p</sub> + t · **v**<sub>p,c</sub> ),  t = 0.10
 
-```bash
-bash run_esm.sh
-```
+where **u**<sub>p</sub> is the sequence projection and **v**<sub>p,c</sub> is the cell
+type-specific network projection. Proteins without a sequence get the mean sequence projection.
+
+| Output (`outputs/`) | Contents |
+|---|---|
+| `semper/semper_embed.pth`, `semper_labels.txt` | **SEMPER representations** `{cell type → [n_proteins, 512]}`, used in all analyses |
+| `contrastive/clip_mlps.ckpt` | Projection head weights and configuration |
+| `contrastive/esm_projected.pth`, `ppi_projected.pth` | Aligned sequence and network projections per cell type |
+| `contrastive/joint_projected.pth` | Concatenation of the two (1024-d) |
 
 <details>
-<summary>Full argument list for `generate_ESMC_embeds.py`:</summary>
+<summary>Arguments of <code>train_contrastive_MLP.py</code> and <code>build_semper_embeddings.py</code></summary>
 
 | Argument | Description | Default |
 |---|---|---|
-| `--fasta` | Path to input FASTA file | — |
-| `--out_embeds` | Output path for embedding tensor (.pt) | — |
-| `--out_index` | Output path for protein index (.pkl) | — |
-| `--batch_size` | Sequences per inference batch | `16` |
-
-</details>
-
-**Outputs:**
-- `protein_esmc_600m.pt` — embedding tensor `[N_proteins, 1152]`
-- `protein_esmc_600m.pkl` — index mapping `{protein_id -> tensor_index}`
-
-### 3 · Contrastive Alignment
-
-Trains two lightweight MLP projection heads that align PPI graph embeddings and ESM-C sequence embeddings into a shared latent space via symmetric InfoNCE loss. Requires embeddings from the above ESM-C and PPI Graph Transformer.
-
-```bash
-cd contrastive/
-bash run_contrastive.sh
-```
-
-<details>
-<summary>Full arguments:</summary>
-
-| Argument | Description | Default |
-|---|---|---|
-| `--embed_path` | PPI-GT protein embeddings (.pth) | — |
-| `--label_path` | PPI-GT label dictionary (.txt) | — |
-| `--esm_pickle` | ESM index file (.pkl) | — |
-| `--esm_embeds` | ESM embedding tensor (.pt) | — |
+| `--embed_path`, `--label_path` | PPI graph transformer embeddings and labels | — |
+| `--esm_pickle`, `--esm_embeds` | ESM-C index and embeddings | — |
 | `--save_dir` | Output directory | — |
-| `--proj_dim` | Shared latent space dimensionality | `512` |
-| `--hidden_esm` | ESM MLP hidden layer sizes | `1024 512` |
-| `--hidden_ppi` | PPI MLP hidden layer sizes | `512 512` |
-| `--batch_size` | Training batch size | `64` |
-| `--epochs` | Training epochs | `200` |
-| `--lr` | Learning rate | `1e-4` |
+| `--proj_dim` | Shared latent dimension | `512` |
+| `--hidden_esm` / `--hidden_ppi` | Hidden layer sizes | `1024 512` / `512 512` |
+| `--batch_size`, `--epochs`, `--lr` | Optimization | `64`, `200`, `1e-4` |
 | `--temperature` | InfoNCE temperature τ | `0.07` |
+| `--seed` | Random seed | `42` |
+| `--t` (`build_semper_embeddings.py`) | Weight on the network projection | `0.10` |
 
 </details>
 
-**Outputs** (written to `--save_dir`):
-- `clip_mlps.ckpt` — projection head checkpoint (weights + config)
-- `ppi_projected.pth` — projected PPI embeddings per cluster `{ct_idx -> tensor[n, 512]}`
-- `esm_projected.pth` — projected ESM embeddings per cluster `{ct_idx -> tensor[n, 512]}`
-- `joint_projected.pth` — concatenated joint embeddings per cluster `{ct_idx -> tensor[n, 1024]}`
-- `esm_proj_embeddings.pt` — flat projected ESM tensor `[N_proteins, 512]`
-- `esm_proj_ids.json` — ordered protein ID list corresponding to the flat tensor
+### Hardware
+
+The paper's model was trained on the [Kempner Institute](https://kempner.harvard.edu)
+cluster. The graph transformer used 4× NVIDIA H100 (80 GB) with DDP. ESM-C inference and
+contrastive alignment used one H100. The tutorial needs one GPU.
 
 ---
 
-## Evaluation
+## Reproducing the paper's analyses
 
-Scripts to reproduce the paper's analyses are in [`evaluate/`](evaluate/), organized by figure, each with its own README:
+[`evaluate/`](evaluate) holds the scripts behind each figure, with a README per folder:
 
 | Folder | Figure | Analysis |
 |---|---|---|
-| [`fig2_embedding_space/`](evaluate/fig2_embedding_space) | 2 | Embedding-space structure: pairwise similarity, GO dispersion, UMAP + Leiden enrichment |
-| [`fig3_protein_complexes/`](evaluate/fig3_protein_complexes) | 3 | Zero-shot cell type-specific protein complex identification |
-| [`fig4_target_prioritization/`](evaluate/fig4_target_prioritization) | 4 | Zero-shot therapeutic target retrieval across five neurodegenerative diseases |
-| [`fig56_llm_evaluator/`](evaluate/fig56_llm_evaluator) | 5–6 | LLM-augmented reranking and Elo tournament (requires `pip install openai tooluniverse`) |
+| [`fig1e_plm_backbones/`](evaluate/fig1e_plm_backbones) | 1e | SEMPER vs. its protein language model backbone, for six backbones |
+| [`fig2_embedding_space/`](evaluate/fig2_embedding_space) | 2 | Cell type coherence, GO compactness, dopaminergic neuron clusters, tissue co-abundance |
+| [`fig3_protein_complexes/`](evaluate/fig3_protein_complexes) | 3 | Cell type-specific protein complex prediction under four complex definitions |
+| [`fig4_target_prioritization/`](evaluate/fig4_target_prioritization) | 4 | Zero-shot drug target retrieval for five neurodegenerative diseases |
+| [`fig56_llm_evaluator/`](evaluate/fig56_llm_evaluator) | 5–6 | LLM-only baseline, LLM reranking and Gene Ontology tournament |
 
-These scripts depend on SEMPER embeddings and cell type-specific PPI networks derived from the controlled-access CNS atlas. They are provided for transparency of methodology; exact reproduction requires access to that data (see [Code and Data Availability](#code-and-data-availability)).
-
----
-
-## Experiment Tracking (optional)
-
-Component 1 logs training and validation metrics to [Weights & Biases](https://wandb.ai). Tracking is optional.
-
-**To enable it**, set your W&B entity (team or username) and log in once:
-
-```bash
-export WANDB_ENTITY=your-entity   # omit to use your account's default entity
-wandb login                       # first run only
-bash run_ppi_gt.sh
-```
-
-**To run without W&B** — no account or login required — disable it with the standard environment variable:
-
-```bash
-export WANDB_MODE=disabled
-bash run_ppi_gt.sh
-```
+Target retrieval can be run directly on the released targets. Use
+[`make_seedplan.py`](evaluate/fig4_target_prioritization/make_seedplan.py) to generate seed
+sets, then the scripts in `run_evaluations/`; the tutorial does exactly this. The
+other analyses need SEMPER representations of the 442 brain cell types. These are not
+released (see below), so they can be run on representations trained with the code above.
 
 ---
 
-## Hardware
+## Code and data availability
 
-SEMPER was trained on the [Kempner Institute](https://kempner.harvard.edu) computing cluster.
+- **Code:** this repository, MIT License.
+- **Benchmark datasets:** [`data/benchmarks/`](data/benchmarks), see [above](#released-benchmark-datasets).
+- **Interactome:** TransposeNet is available at [Figshare](https://doi.org/10.6084/m9.figshare.33717070).
+- **Cell type networks, representations and model weights:** the 442 cell type PPI networks, the metagraph, and the SEMPER representations and model weights derived from them are not released. The weights are specific to these networks, so to apply SEMPER to another atlas, tissue or organism, retrain on your own networks with the code above.
+- **Project website:** https://zitniklab.hms.harvard.edu/SEMPER/
 
-| Component | Hardware | Notes |
-|---|---|---|
-| PPI-GT encoder | 4× NVIDIA H100 (80GB) | Distributed Data Parallel (DDP) |
-| ESM-C inference | 1× NVIDIA H100 (80GB) | Frozen inference only |
-| Contrastive alignment | 1× NVIDIA H100 (80GB) | Projection heads only |
-
----
-
-## Using the released weights
-
-The weights on HuggingFace reproduce the trained PPI graph-transformer and
-contrastive projection heads from the paper. They are specific to the CNS atlas
-SEMPER was trained on, so they are intended
-for reproducing the published model (e.g., once the source atlas is available),
-**not** as a general-purpose protein embedder. To apply SEMPER to a different
-organism, tissue, or cell-type atlas, retrain on your own cell type-specific PPI
-networks (see [Training](#training)).
-
----
-
-## Code and Data Availability
-
-SEMPER consumes three inputs derived from an adult human CNS single-cell atlas — a background interactome with 442 cell type-specific PPI networks, a BTO metagraph of cell type/tissue organization, and canonical protein sequences (retrieved via Ensembl and UniProt). Availability of each artifact:
-
-- **Code** — this repository, released under the MIT License.
-- **Model weights** — available on [HuggingFace](https://huggingface.co/mims-harvard/SEMPER) (atlas-specific; see [Using the released weights](#using-the-released-weights)).
-- **Training data** — the CNS single-cell atlas, the 442 cell type-specific PPI networks, and the cellular/tissue metagraph are not publicly available.
-- **Derived embeddings** — not released, as they are derived one-to-one from and would reconstitute the restricted atlas.
-- **Project website** — https://zitniklab.hms.harvard.edu/SEMPER/
-  
 ---
 
 ## Citation
 
-If you use SEMPER in your research, please cite:
+If you use SEMPER, please cite:
 
 ```bibtex
-@article{semper2026,
-  title   = {SEMPER: Multimodal protein representations for neurological target assessment},
-  author = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
+@article{dong2026semper,
+  title   = {Multimodal protein representations across human brain cell types},
+  author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Gao, Shanghua and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
   journal = {},
   year    = {2026},
-  url     = {}
+  url     = {https://github.com/mims-harvard/SEMPER}
 }
 ```
+
+Please also cite Nazeen et al. (2025) when using the dopaminergic neuron essential genes, and
+the Open Targets Platform when using the target lists.
 
 ---
 
@@ -242,8 +273,8 @@ If you use SEMPER in your research, please cite:
 
 [MIT License](LICENSE)
 
----
-
 ## Acknowledgements
 
-SEMPER builds on [PINNACLE](https://github.com/mims-harvard/PINNACLE) and the [ESM](https://github.com/evolutionaryscale/esm) protein language model family. We thank the Kempner Institute for computational resources.
+SEMPER builds on [PINNACLE](https://github.com/mims-harvard/PINNACLE) and the
+[ESM](https://github.com/evolutionaryscale/esm) protein language models. We thank the Kempner
+Institute for computational resources.

@@ -1,0 +1,402 @@
+[
+  {
+    "role": "user",
+    "content": "Given these proteins IGF1R, KCND3, KCNB1, KCNV2, GRIN1, GABRA2, GABBR2, KCNV1, KCNC4, KCNG2, KCNH1, OPRD1, GABBR1, SCN11A, KCNH7 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IFNAR2, LINGO1, DRD2, PDE4B, GABRA5, KCNQ5, KCNG3, KCNH3, HRH1, TNFSF13B, POLD3, GRIN2B, HMGCR, KCNQ3, SCN8A that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNA4, FAAH, SNAP25, PPARG, ESR1, KCNG1, KCNC1, IL6ST, KCNB2, GRIN2A, ADORA1, KCNC2, KCNQ2, CACNA2D1, SCN3A that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGCR, HMGCR, KCNB2, KCNC1, GABBR1, KCNC4, KCNC2, KCNG2, LINGO1, KCNV2, ESR1, KCNB2, KCNH3, IFNAR2, DRD2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, PDE4B, KCNC2, SNAP25, TNFSF13B, GABRA2, KCND3, KCNH7, KCNQ2, CACNA2D1, ESR1, GABRA2, ESR1, KCNH3, KCNB2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNB2, PPARG, KCNG3, PDE4B, GRIN1, KCNH7, GABRA2, GRIN2B, OPRD1, PPARG, GABRA2, CACNA2D1, KCNC4, GABRA5, GABBR1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNH7, SNAP25, KCNQ3, KCNG2, KCNC4, GRIN2A, KCNC2, CACNA2D1, ESR1, KCNC1, KCNQ3, PDE4B, GABRA5, GABRA2, CACNA2D1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IGF1R, PPARG, ADORA1, SCN11A, IGF1R, KCNG3, GABRA2, IFNAR2, KCNQ3, LINGO1, KCNG1, KCNC2, IL6ST, HMGCR, ESR1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, CACNA2D1, KCNH1, KCNV2, KCNQ3, IGF1R, KCNG1, ESR1, PPARG, KCNA4, GRIN1, KCNC1, KCNH3, KCNV1, SCN3A that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, KCNC4, SNAP25, SCN11A, ESR1, GABRA5, KCNG3, FAAH, KCNB1, HRH1, KCNA4, PPARG, PDE4B, KCNQ5, HRH1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:158, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, IGF1R, SCN2A, PDE4B, PDE10A, KCNA5, KCNH1, KCNQ5, KCNQ2, GABRA2, HRH2, PDGFRA, GRIN2A, OPRD1, KCNH8 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNG3, KCNH5, KCND2, KCNA1, KCNH3, FKBP1A, PDE4A, SCN5A, KCNB1, RYR3, KCNQ3, C5, OPRM1, GABBR1, GABRG1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, IFNAR2, KCNH4, KCNQ4, GRIN2B, SCN3A, GABRA3, KIT, GABRA5, PSMB5, KCNA4, SCN1A, PDE5A, KCNA2, FAAH that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNC3, KCNF1, PRIM2, POLA1, PDE3A, ADORA1, GABRG3, GABRA2, PDE10A, PRIM2, KCNB1, GABRA2, PDE4A, SCN8A, IFNAR2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, PDE5A, SCN8A, PDGFRA, PDGFRA, KCND2, POLA1, GABRG3, GABRG3, GABBR1, PDE5A, GRIN2B, KCNH3, GABRA2, KCNA2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, PRIM2, OPRD1, PRIM2, KCNH5, PDE5A, IGF1R, GABBR1, ADORA1, KCNA1, KCNH3, KCNQ5, KIT, PDE4A, PDE5A that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ADORA1, KCNF1, IFNAR2, ADORA1, SCN2A, PDE5A, SCN3A, ADORA1, KCNQ3, PRIM2, IGF1R, GABRG1, KCNG3, RYR3, KCNG3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, KCNA5, KCNA5, RYR3, KCNC3, KCNH1, KCNH3, PDE3A, PDGFRA, KCNH5, GABBR1, SCN5A, OPRD1, KCNA4, FAAH that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, SCN5A, KCNC3, POLA1, KCNQ3, HRH2, OPRM1, KCNH3, KCNH5, PDE5A, RYR3, SCN5A, KCNA4, KCNA2, KCNB1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG3, KCNA2, KCNQ2, PDE4A, IFNAR2, PDE3A, KCNQ4, KCNQ2, RYR3, PDGFRA, IFNAR2, SCN5A, SCN5A, KCNB1, PDGFRA that are known targets for Multiple Sclerosis (MS) in celltype cluster:223, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNH1, KCNA4, SCN9A, GABRA2, KCNA1, PDE4C, PDE4D, KCNQ5, C5, CACNA2D1, PPARG, SCN3A, KCNF1, FAAH, SCN1A that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ3, NR3C1, KCNB2, KCNH3, PDE4B, SCN8A, KCNQ2, PDE4A, KCNG1, KCNH4, KCNH5, KCND2, RYR3, SCN2A, PDE5A that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2B, PDE10A, GABRA3, GABBR1, GABRG2, IL12B, GABRG1, IGF1R, SCN5A, SNAP25, GABRG3, GABRA5, OPRM1, KCNA5, PRIM1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins FKBP1A, GRIN1, SCN7A, KCNH8, NR3C1, FKBP1A, IGF1R, KCNF1, GABRA3, OPRM1, IGF1R, GABRG3, GABRG1, KCNQ2, KCNA1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNH8, KCNF1, FAAH, SCN7A, IL12B, KCNA4, KCNH5, KCNH1, PDE5A, SNAP25, PDE10A, GABBR1, KCNG1, FAAH, GABRG1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG2, KCNA5, GABBR1, GABRA5, KCNH5, SCN2A, PDE4C, KCNA1, PDE4B, GABRG1, SCN3A, KCNH4, KCNA5, KCNQ3, KCNA1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4D, SNAP25, GABRA3, GABRG3, RYR3, SCN9A, IGF1R, GABRA3, SCN7A, SCN5A, FAAH, CACNA2D1, KCNA1, KCNH3, SCN1A that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SNAP25, SNAP25, PDE4C, IL12B, SCN1A, GABRA5, KCNH5, PDE4C, KCNQ2, KCNH5, PRIM1, SCN5A, KCNA1, KCNA5, GABRG3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, GABRA3, SCN1A, GABBR1, PPARG, PDE4A, KCNH1, KCNA5, PPARG, KCNH8, KCNH8, GABRA5, KCNQ5, GABRA5, GABRG1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NR3C1, SCN3A, SCN7A, SCN1A, KCNH1, PDE10A, SCN2A, IGF1R, KCNH8, GABBR1, KCNF1, PDE10A, KCNA5, KCNH8, GABRG2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:227, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DRD2, KCNQ2, GABRA2, SNAP25, GABRG1, GRIN3A, HMGCR, PDE5A, GRIN2B, SCN2A, KCNC4, KCNB1, KCNA2, GABBR2, PDE4D that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNC2, SCN9A, KCNQ3, GABRA3, KCNB2, SCN11A, RYR1, GRIN1, PPARG, SCN8A, GABRG3, IFNAR2, ACHE, GSR, KCNC1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLA1, SCN7A, KCNH5, KCNS3, KCND2, SCN3A, GRIN2D, OPRD1, SCN1A, TNFSF13B, KCNQ4, ESR1, IL6ST, KCNQ1, IGF1R that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, SCN9A, GABRG3, HMGCR, KCNH5, POLA1, GSR, IL6ST, OPRD1, ESR1, GABRA2, POLA1, PPARG, GABRA3, IGF1R that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ2, SCN7A, POLA1, GABRG3, IFNAR2, KCNC1, KCNC2, PDE5A, GRIN3A, KCNS3, KCNA2, KCNQ4, SCN11A, SCN2A, HMGCR that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNA2, KCNC4, GRIN3A, PDE5A, KCND2, GABRG1, PDE5A, HMGCR, RYR1, GABRA2, KCNQ4, GRIN2D, POLA1, SCN11A, KCNC4 that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLA1, KCNQ3, GABRG3, SCN7A, TNFSF13B, IL6ST, PDE4D, KCNS3, KCNC4, PPARG, SCN3A, ESR1, KCNQ3, SCN1A, KCNA2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCND2, HMGCR, KCNC4, KCNA2, KCNQ2, KCND2, KCNB1, POLA1, KCNQ1, GSR, KCNA2, KCNQ4, IGF1R, KCNQ1, KCNC1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNA2, OPRD1, SCN2A, TNFSF13B, IGF1R, GRIN2D, KCNC4, KCNB1, OPRD1, TNFSF13B, KCNC1, KCNQ3, GRIN1, ESR1, ACHE that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSR, SCN3A, DRD2, KCND2, IL6ST, SCN11A, KCNQ1, KCNC2, KCND2, KCND2, GRIN2D, KCNA2, SCN3A, GRIN3A, KCNQ1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:247, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLA2, KCNC4, KCND3, KCNC1, CACNA2D1, PDE10A, KCNH7, KCNA2, TOP2B, ACHE, KCNC2, PDE3A, ATP4A, POLE3, POLE that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SNAP25, HMGCR, NR3C1, PRIM1, SCN1A, SCN3A, SCN9A, SCN2A, KCNA1, POLD2, KCNQ5, KCND1, KCNH2, PRIM2, KCNQ3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, PDE4B, KCNC3, PDE4D, ITGA4, PDE4A, RYR3, KCNH5, OPRM1, SCN8A, GRIN2C, KCND2, KCNH5, KCNA2, POLD2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE3A, GRIN2C, GRIN1, PDE3A, PDE10A, NR3C1, CACNA2D1, PDE3A, SCN8A, PRIM1, KCNA2, ACHE, NR3C1, KCNH5, POLE3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PRIM1, KCND3, PDE4B, SCN9A, SCN9A, POLE, KCNC4, KCND1, SCN8A, GRIN2C, SCN8A, OPRM1, NR3C1, PRIM2, ACHE that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ3, SCN9A, KCNC4, PDE4D, ITGA4, OPRM1, KCNC3, GRIN2C, SCN1A, SCN9A, PRIM1, POLE3, ATP4A, KCNC4, ATP4A that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLA2, KCNC3, KCND2, PRIM2, KCNH5, OPRM1, KCND3, SCN2A, POLA2, POLA2, KCND2, POLE, POLA2, HMGCR, KCNA1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4D, ATP4A, KCND1, SCN1A, PRIM2, SCN2A, KCND1, POLD2, PDE4B, KCNH5, PDE4D, GRIN1, SCN8A, RYR3, KCNH2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, KCNA1, KCND3, KCNH2, KCNA2, KCND2, ACHE, KCNC3, POLE, KCNC4, KCND3, KCNH5, KCNQ5, POLE, KCNC2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PRIM2, NR3C1, SCN3A, ATP4A, KCND2, KCND1, KCNA1, KCNC3, TOP2B, KCNA2, SCN1A, POLD2, SCN9A, HMGCR, PDE4A that are known targets for Multiple Sclerosis (MS) in celltype cluster:308, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, ACHE, KCND3, KCNQ1, KCNB2, SCN7A, PDE3A, ESR1, PPARG, KCNH7, ITGA4, KCNG3, GABRG3, DRD2, ADORA1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN1, POLD3, SNAP25, KCNC3, PGR, KCNC1, PSMB5, LINGO1, KCNB1, PDE4C, KCNH8, SCN1A, KCNQ4, KCNH2, KIT that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSR, KCNH3, POLE, KCNH5, GRIN2D, OPRM1, RYR1, SCN3A, KCNH6, PDE4B, PDGFRB, RYR3, IL6ST, GRIN3A, HRH2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ITGB1, KCNA2, GABRA3, KCNH1, KCND2, KCNQ2, SCN9A, KCNQ3, KCNS3, TNFSF13B, HRH1, KCNQ5, GRIN2A, SCN8A, KIT that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNB2, KCND2, KCNC3, TNFSF13B, TNFSF13B, KCNC1, PGR, GRIN1, KCNA2, KCNG3, GRIN2A, KCNA2, PDE4C, SCN3A, GABRA3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCND3, GRIN3A, KCNH5, SCN8A, ADORA1, ESR1, KCNQ3, KCNC1, KCNH5, KCNG3, POLD3, PDE4C, KCNH1, PPARG, PDE4B that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SNAP25, PPARG, SCN8A, KIT, SCN7A, PPARG, SCN7A, KCNC3, ACHE, KCNB1, ACHE, SCN3A, KCNH6, ADORA1, KCNH1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCND3, KCNQ3, ACHE, DRD2, DRD2, PDE4C, DRD2, KCNH2, KCNQ4, KCNB1, ADORA1, PDE4C, KCND2, GRIN1, IL6ST that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNH2, TNFSF13B, TNFSF13B, KCNB2, KCNA2, KCND2, KCNQ5, KCNG3, KCNH7, RYR1, GABRG3, GRIN2D, KCNG3, PDGFRB, KCNC3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, RYR1, GABRA3, PDGFRB, KCNS3, HRH2, KCNH1, PSMB5, HRH2, DRD2, KCNH2, OPRM1, KCNH1, KCNA2, RYR3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:348, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ITGB1, IL6ST, ESR2, IFNAR1, IFNAR2, PDE4A, PDE5A, SNAP25, IGF1R, GABRG3, SCN7A, KCNA2, SCN3A, GABBR2, HRH2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, KCND2, RGMA, KIT, PDE4D, PDE10A, PDE4C, GABRA3, KCNS3, PDE4B, GABRG1, KCNQ1, PSMB5, KCNA4, SCN2A that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLE3, GABRA1, OPRM1, HMGCR, GRIN3A, KCNC1, RYR1, ESR1, GABRG2, GRIN2A, POLE, KCNH6, KCNH7, OPRK1, SCN9A that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNB2, GRIN2D, KCNH2, SCN1A, KCNH5, KCNC4, PGR, KCNH8, IFNAR2, IFNAR1, IGF1R, POLE, SNAP25, SCN7A, POLE that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IGF1R, GABRA3, KIT, KCNC1, PDE4D, GABRG2, KCNH5, KCNB2, PDE4D, KCNS3, GABBR2, PDE4C, GABRG2, RGMA, KCNH8 that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG1, SCN7A, KCNB2, PDE10A, KCNH7, GRIN2D, KCNH5, HRH2, PDE4A, SCN7A, PDE4A, PDE10A, IL6ST, ITGB1, IFNAR1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLE3, ESR1, SCN3A, SNAP25, KCND2, GABRA1, IL6ST, PDE4C, PDE4C, KCNC4, OPRK1, ESR1, PDE4C, OPRK1, PDE4D that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, KCND2, PDE4C, KCNC4, SCN3A, KCNQ1, ITGB1, GABRA1, KCNA2, POLE3, POLE3, OPRM1, KCNS3, PDE10A, IFNAR2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG3, SNAP25, ESR2, PDE10A, SCN1A, KCNB2, KCNA2, KCNH8, KCNS3, HRH2, GRIN3A, SCN1A, KCNH7, PDE4D, KCNA4 that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNC4, ESR1, GABRA3, HRH2, ITGB1, SCN2A, HRH2, SCN3A, KCNH5, GRIN2A, KCNH7, IFNAR1, IFNAR1, KCNB2, GRIN3A that are known targets for Multiple Sclerosis (MS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNA4, IFNAR1, ESR1, HMGCR, GABRA1, RYR1, GRIN2C, CACNA2D1, KCNQ1, KCNH7, GABBR2, PDE5A, KCNA2, GABRG3, NR3C1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GABRA5, KCNV2, IGF1R, POLE, GABRA3, KCNC2, GRIN3A, GABRG2, GRIN1, KCNB2, SCN1A, KCNS2, PDE4C, TNFSF13B that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4A, OPRM1, KCNH5, KCNC4, KCNH8, SCN9A, KCNH2, GRIN2D, KCND2, PSMB5, IL6ST, KCNC1, GABRG1, PDE4D, PGR that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PPARG, PDE4B, RYR3, PPAT, ACHE, SCN8A, KCNS3, KCNH6, ITGB1, KCNH1, SCN7A, SCN3A, PPAT, KCNC1, SCN2A that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, PDE5A, KCNH8, KCNC2, KCNH8, SCN9A, SCN1A, SCN2A, NR3C1, HMGCR, IL6ST, KCNH2, HMGCR, IL6ST, SCN1A that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4A, SCN8A, KCNB2, ACHE, KCNH1, IL6ST, POLE, KCNH7, PDE4D, ACHE, ITGB1, KCNC2, IFNAR1, PDE4C, ACHE that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE5A, KCNA2, KCNH8, RYR3, KCND2, GABRA5, ESR1, KCNH6, HMGCR, GABRG3, RYR3, KCNC2, GRIN1, HMGCR, POLE that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG2, KCNH5, IL6ST, RYR3, KCNH6, KCNC4, KCNC1, SCN8A, GRIN3A, PSMB5, IL6ST, POLE, KCNH6, PGR, KCNV2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, IL6ST, ACHE, KCNH1, IFNAR1, ITGB1, PDE4C, KCNC4, PPAT, KCNQ1, GRIN1, KCNC4, GABRA1, GABBR2, KCNH7 that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, KCNB2, SCN1A, GRIN2C, KCNC1, TNFSF13B, HMGCR, POLE, KCNA4, PDE4B, PDE4A, PDE4D, NR3C1, KCNA4, IL6ST that are known targets for Multiple Sclerosis (MS) in celltype cluster:368, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ITGB1, GRIN2A, GRIN2D, KIT, CACNA2D1, KCNH2, GRIN2B, SCN3A, GABRG3, IMPDH1, DRD2, PDE10A, LINGO1, GABBR2, IL6ST that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG2, PDE4B, PDE3A, PSMB5, KCNC2, KCNQ3, KCNH7, KCND2, KCNS3, SCN2A, POLD4, PDE5A, HMGCR, PDE4C, HRH1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ESR1, SCN7A, GABRG1, PDE4A, PGR, GABRA1, GABRA3, SCN9A, KCNB2, ACHE, RYR1, GRIN3A, NR3C1, KCNH6, PDE4D that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IFNAR1, SCN1A, KCNG3, OPRM1, KCNQ1, KCNA4, KCNH7, LINGO1, GABBR2, ITGB1, SCN7A, GRIN2A, SCN7A, ACHE, IL6ST that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, KCNQ1, KCNA4, GABRA3, GABRG3, SCN2A, SCN1A, PSMB5, SCN9A, RYR1, PDE4A, IFNAR1, GABRG3, DRD2, KCNQ3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RYR1, GABRA1, LINGO1, KCNQ3, GABRG2, DRD2, KCNQ3, LINGO1, GABRA1, ITGB1, ESR1, GABRA1, KIT, HMGCR, GRIN2A that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, KCNH6, SCN1A, SCN7A, OPRM1, ACHE, SCN2A, PDE4C, RYR1, KCNH6, DRD2, PDE3A, KCNB2, ESR1, KCNH2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, OPRM1, IL6ST, CACNA2D1, PGR, KCNG3, ACHE, GRIN3A, PDE4B, ITGB1, NR3C1, PDE4A, PDE4D, LINGO1, GRIN2D that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, ESR1, GABRG1, PDE4B, IL6ST, SCN3A, KCNG3, GRIN2D, SCN1A, RYR1, PDE5A, GABRG2, KCNC2, SCN1A, PSMB5 that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NR3C1, KCNS3, IFNAR1, PDE4A, SCN3A, KCNQ1, KCNH7, PDE10A, SCN1A, GRIN3A, KCNH2, GABRA1, IL6ST, NR3C1, GABRG3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, KCNA7, KCNH7, PDGFRB, SCN10A, GABRG3, KCNC2, PDE4D, PDE10A, KCND2, TOP2B, KCNA2, CD86, KCNQ4, POLD3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, HRH2, KCNC4, KCNF1, KCNQ1, ACHE, SNAP25, KCNC1, TNFSF13B, GABBR2, KCNQ2, KCNB2, OPRM1, ADORA1, KCNV1 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IL6R, POLA1, HMGCR, KCNA4, PDE4A, SCN8A, KCND3, PDE4B, KCNQ3, GABRA3, GABRA1, GABRG2, KCNQ5, KCNB1, GRIN3A that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNG3, GRIN3A, PDE4A, KCND2, HMGCR, IL6R, KCNQ2, SNAP25, KCNC2, SCN8A, KCNQ2, PDE4A, PDE10A, PDE4B, PDGFRB that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, SCN10A, SNAP25, PDE4A, TOP2B, KCNQ1, SCN1A, GABRA1, KCNV1, GABRA3, PDE4A, HRH2, PDGFRB, KCNA7, GABRG2 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, KCNA2, HMGCR, GRIN2A, KCNQ2, KCNG3, KCNC2, KCNQ4, GABRA3, POLD3, SCN10A, GABRG2, PDE4D, GABRG3, KCNQ3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRG2, GABBR2, GABRG2, PDE4A, SCN10A, GABRA1, PDE10A, IL6R, ADORA1, SCN10A, KCNA2, CD86, CD86, IL6R, GABRA3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNA4, KCNB1, TOP2B, KCNC1, KCNB1, KCNQ1, IL6R, GRIN2A, GABRA3, CD86, KCNC4, SNAP25, KCNQ1, HMGCR, KCND3 that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GABRA3, PDE10A, SCN10A, KCNV1, GABRG2, HRH2, PDE4A, ADORA1, KCND2, SCN1A, KCNQ5, GABBR2, KCNB1, KCND2, IL6R that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins POLD3, KCND3, PDE4B, KCNB2, PDGFRB, KCNQ5, KCNQ1, KCNQ3, GABRA1, GABRG3, KCNA2, ADORA1, PDE4A, KCND2, TNFSF13B that are known targets for Multiple Sclerosis (MS) in celltype cluster:94, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  }
+]

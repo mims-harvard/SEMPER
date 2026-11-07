@@ -7,8 +7,6 @@ import networkx as nx
 import torch
 from torch_geometric.data import Data
 
-from torch_geometric.transforms import AddLaplacianEigenvectorPE
-from torch_geometric.transforms import AddRandomWalkPE
 import math
 
 def split_data(num_y):
@@ -135,13 +133,8 @@ def read_data(G_f, ppi_dir, mg_f, feat_mat_dim,node_heads):
     #  Set up edge attr dict
     edge_attr_dict = {"tissue_tissue": 0, "tissue_cell": 1, "cell_tissue": 2, "cell_cell": 3, "protein_protein": 4}
     
-    # LAPLACIAN EMBEDDINGS
-    transform = AddLaplacianEigenvectorPE(k=10, attr_name='pe')
     for cluster, graph_data in ppi_data.items():
-        ppi_data[cluster] = transform(graph_data)
-        ppi_data[cluster].x = pad_features(ppi_data[cluster].x, target_dim=node_heads)
-    mg_data = transform(mg_data)
-
+        ppi_data[cluster].x = pad_features(graph_data.x, target_dim=node_heads)
     mg_data.x = pad_features(mg_data.x, target_dim=node_heads)
     # Return celltype specific PPI network data
     return ppi_data, mg_data, edge_attr_dict, mg_mapping, tissue_neighbors, orig_ppi_layers, orig_mg

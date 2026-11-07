@@ -1,0 +1,402 @@
+[
+  {
+    "role": "user",
+    "content": "Given these proteins DRD2, PDE3B, GRIN2B, GRIA4, GRIN3A, GSK3B, GRIN2D, KCNQ3, SCN3A, SCN7A, PDE4D, PDE3A, KCNQ2, MAOB, GRIA3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, HTR2C, SCN11A, SCN2A, HTR2A, GRIA2, TUBB, ALDH5A1, CNR1, GHR, PDE4B, GRIA1, SCN1A, GRIN1, TUBB2B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ4, GSK3B, SCN11A, GRIN2D, CNR1, GRIA3, GRIN2B, GHR, GRIN2D, SCN7A, SCN2A, GRIA2, TUBB2B, GRIN2B, GRIN2D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, SCN1A, GRIA4, SCN2A, GHR, DRD2, TUBB, SCN2A, GRIN3A, HTR2A, KCNQ4, KCNQ2, KCNQ4, GHR, HTR2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, MAOB, SCN7A, PDE4D, SCN1A, GHR, GRIA1, CNR1, PDE4D, KCNQ2, SCN1A, HTR2A, KCNQ2, GHR, GRIN2D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB2B, PDE3B, SCN3A, DRD2, GSK3B, TUBB, GRIN1, GSK3B, GRIN2B, PDE4B, PDE4D, HTR2A, PDE3B, KCNQ3, SCN11A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, KCNQ4, PDE4D, GRIA2, SCN3A, TUBB, SCN9A, SCN11A, SCN7A, KCNQ4, SCN3A, TUBB, GSK3B, KCNQ4, GHR that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, CNR1, TUBB2B, KCNQ2, SCN2A, GRIN3A, GRIN2B, KCNQ3, GRIN2B, TUBB2B, SCN2A, GRIA1, GSK3B, TUBB, GRIN2B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA1, HTR2C, PDE3B, TUBB, PDE4B, GRIA1, KCNQ3, CNR1, DRD2, TUBB2B, DRD2, GRIA1, GRIN3A, HTR2C, GRIA3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ALDH5A1, PDE4B, PDE3B, PDE4D, KCNQ4, TUBB2B, SCN7A, GRIN1, GRIN1, GRIN2B, GHR, SCN11A, GRIN3A, GRIA2, GRIN2D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:245, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, TUBB2B, GRIN3A, IL1R1, KIT, GRIA3, SRD5A3, PDE10A, SCN5A, SCN2A, TUBB4A, KCNQ4, SCN1A, PDE4B, GRIN2B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RBX1, SOD1, GRIN2D, IL6R, GRIN2C, GHR, PDGFRA, KCNQ3, SCN3A, SCN7A, PDE4D, GRIN1, TUBB2A, ALDH5A1, SCN9A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA4, KCNQ1, GRIA1, PDGFRB, SOD1, TUBB2B, GRIN2D, RBX1, SRD5A3, KIT, KCNQ4, GRIN2B, KCNQ1, SCN3A, GRIN3A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA1, GRIN2D, GRIA4, KCNQ3, PDE4D, SCN5A, ALDH5A1, KCNQ4, GHR, GRIN1, GRIA3, TUBB4A, IL6R, IL6R, PDGFRB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ4, TUBB4A, SCN9A, SCN7A, GRIN2C, KCNQ3, IL6R, SCN9A, SCN9A, KIT, GRIN2D, SCN7A, IL1R1, GRIA1, KIT that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, IL1R1, KCNQ4, SCN9A, KCNQ3, KCNQ4, TUBB2B, KCNQ3, KCNQ1, GRIA3, SCN2A, KCNQ3, IL1R1, GHR, SOD1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, GRIN2A, GRIA3, GRIA3, TUBB2B, SRD5A3, TUBB2A, GHR, GRIN2C, IL1R1, GHR, SCN7A, SCN9A, PDE4D, KCNQ1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SOD1, SOD1, KCNQ4, SCN1A, GRIA3, PDE4B, GRIN2C, SCN7A, KIT, GRIN2B, GRIA4, SCN3A, TUBB2B, GHR, PDE10A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IL1R1, ALDH5A1, SCN1A, KCNQ4, KCNQ3, SCN9A, KCNQ1, PDE4D, GRIN1, IL1R1, RBX1, KIT, KIT, GRIN2A, SOD1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KIT, SCN3A, GRIN3A, GRIN1, PDGFRA, PDGFRB, TUBB4A, KCNQ4, SCN1A, GRIA4, IL6R, GRIN2B, GRIN2B, SCN3A, GRIA4 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:268, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GHR, ALDH5A1, GRIA4, GRIN2D, SCN1A, KCNQ4, PDE3B, GRIN2B, GRIA1, SCN5A, SRD5A1, SCN9A, PDE4D, SCN3A, GRIA2 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GRIN3A, GRIN1, SCN7A, TUBB2B, IL1R1, KIT, KCNQ2, DDB1, IL6R, SIGMAR1, GRIA3, GRIN2C, HTR2A, GRIN2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, PDGFRA, KCNQ3, SRD5A3, PDE5A, PDE10A, GRIN2A, GRIA1, GRIN2C, KCNQ1, SRD5A1, ALDH5A1, PDE10A, GRIA1, SCN3A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, SCN5A, GRIN1, SCN3A, SCN9A, ALDH5A1, SCN3A, GRIA4, KCNQ1, SIGMAR1, GRIN1, GRIN2A, SCN7A, PDE3B, SCN9A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA4, PDE4D, PDE10A, SCN7A, KCNQ1, SCN3A, IL1R1, GRIA1, PDE5A, KCNQ2, DDB1, GRIN2C, HTR2A, GRIN3A, KIT that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ4, GRIA1, GRIN2B, PDGFRA, IL1R1, DDB1, GRIN2A, IL6R, SIGMAR1, SCN7A, HTR2A, GRIA3, HTR2A, TUBB2B, PDE4D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KIT, SCN3A, GRIN2C, TUBB2B, PDE4D, SIGMAR1, SCN9A, SCN5A, GRIN3A, GHR, GRIA2, SCN5A, PDE3B, IL6R, GRIA2 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ4, IL1R1, GRIN3A, IL6R, KCNQ3, SCN5A, HTR2A, GRIN2A, PDE4D, IL6R, TUBB2B, PDE5A, SRD5A1, IL6R, SRD5A1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA1, GRIA4, SCN3A, PDE5A, ALDH5A1, SIGMAR1, GRIN3A, IL6R, SCN7A, IL1R1, GRIA1, DDB1, GRIA2, PDE3B, PDE3B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, HTR2A, IL6R, PDE10A, GHR, GRIN2C, KCNQ1, KCNQ3, IL6R, GHR, GRIN2B, PDGFRA, KCNQ3, IL6R, SIGMAR1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:271, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4A, GRIN1, GRIN2C, SCN7A, IL6R, GRIA1, GRIN2D, GRIA2, ALDH5A1, KCNQ3, GRIA4, GSK3B, SRD5A3, PDE4D, KIT that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE10A, MAOB, GHR, PDGFRA, SCN9A, CRBN, SCN3A, IGF1R, C5, IL1R1, GRIN2B, KCNQ4, SCN1A, GRIN2A, GRIN3A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CNR1, SCN5A, GRIA3, SCN2A, TUBB2B, ROCK1, KCNQ4, GRIN2C, PDE4D, ALDH5A1, CNR1, IL6R, GRIN1, C5, GRIA1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CRBN, KCNQ3, IGF1R, IL6R, GRIA4, KCNQ3, ALDH5A1, KIT, SCN1A, SCN1A, ALDH5A1, C5, PDGFRA, ROCK1, TUBB4A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2B, SCN7A, KCNQ4, C5, GRIN1, GRIA4, GRIA4, KCNQ4, SCN5A, SCN7A, GRIN3A, CRBN, IL6R, IL1R1, CNR1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, PDE4D, GSK3B, MAOB, ALDH5A1, KCNQ4, GHR, IL6R, GRIA4, SRD5A3, GSK3B, GRIN2A, GRIA3, SCN7A, SCN7A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2C, GRIA1, IL6R, KCNQ4, ROCK1, CNR1, GRIA1, GRIA4, KCNQ3, TUBB4A, GRIN1, GRIA1, GRIN2D, SCN1A, SCN7A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GHR, TUBB4A, SCN9A, SCN9A, SCN5A, GRIA1, KIT, PDE10A, TUBB2B, ROCK1, GRIA4, TUBB4A, KCNQ3, GHR, GRIA2 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, KCNQ3, GRIN2A, SCN2A, GRIA3, KCNQ4, SCN9A, IL1R1, GHR, GRIN1, SCN1A, SCN1A, SCN2A, GRIN2C, SCN1A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4A, SRD5A3, MAOB, SRD5A3, GSK3B, GRIN3A, SCN2A, GRIN2C, GRIA2, CNR1, SCN9A, GRIN1, MAOB, GRIN3A, SCN7A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:275, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, SCN8A, ALDH5A1, PDE5A, CRBN, SCN7A, TUBB2A, HTR2C, TUBB4B, PDE3B, PDE10A, TUBB3, TUBB4A, IMPA1, SRD5A1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, PDE4A, IGF1R, GRIA4, PDE4C, KCNQ1, GSK3B, PDE4D, MAOB, SCN2A, HTR2A, ESR1, GRIN3A, KIT, SOD1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, GRIN2A, SCN9A, TUBB, RTN4, GRIN2D, TUBB2B, SCN8A, GSK3B, CRBN, GRIN3A, PDE4C, KCNQ1, PDE3B, PDE4B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, SCN1A, SOD1, HTR2C, ALDH5A1, IMPA1, HTR2A, SCN7A, TUBB, PDE4C, SCN8A, ESR1, TUBB4B, GRIN3A, TUBB3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GSK3B, TUBB, TUBB2B, SCN7A, IGF1R, GRIN2D, MAOB, GSK3B, KIT, PDE4D, RTN4, GRIN2D, PDE4D, PDE5A, IGF1R that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CRBN, KCNQ1, TUBB2A, TUBB4B, CRBN, MAOB, PDE3B, KIT, SCN1A, PDE4C, GSK3B, HTR2C, PDE4A, CRBN, PDE3B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, PDE4B, HTR2C, GRIN3A, GRIN3A, SOD1, HTR2A, IMPA1, TUBB2A, HTR2C, HTR2A, IGF1R, ESR1, PDE10A, TUBB3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4B, KCNQ1, TUBB4A, IGF1R, TUBB4B, SRD5A1, HTR2C, PDE4B, SCN8A, PDE3B, CRBN, TUBB4A, TUBB, PDE4B, PDE4A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB2A, PDE10A, SCN8A, HTR2C, MAOB, PDE4C, KIT, HTR2C, PDE4A, SCN7A, SOD1, HTR2C, GRIA4, SCN7A, GRIN2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, SCN9A, PDE4C, TUBB3, PDE4D, SOD1, SCN9A, MAOB, GSK3B, TUBB4A, ALDH5A1, TUBB2A, SOD1, SCN8A, CRBN that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:357, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, GRIN3A, TUBB2B, SOD1, PDE3B, ADRB2, IMPA1, SCN2A, GRIA4, TUBB4A, TUBB4B, SCN7A, GSK3B, PDE4D, ESR1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ALDH5A1, TUBB, MAOB, PDE5A, SCN1A, RTN4, CRBN, GRIA3, PDE4B, TUBB2A, TNNI3, TUBB3, GRIN2A, KCNQ5, HTR2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, KCNQ1, PDE4A, SCN9A, RBX1, SCN3A, GRIN2D, TUBB3, GRIN2A, CRBN, SOD1, GSK3B, GSK3B, HTR2A, GSK3B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GSK3B, IMPA1, KCNQ1, SCN2A, GRIN2D, SCN9A, TUBB4A, KCNQ1, KCNQ5, RBX1, TUBB4B, PDE5A, TUBB3, TUBB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, PDE3B, CRBN, TNNI3, PDE5A, MAOB, PDE3B, SCN3A, PDE3B, TUBB2B, PDE4B, MAOB, PDE4D, ESR1, TUBB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CRBN, TUBB4A, PDE3B, HTR2C, KCNQ1, PDE4B, SCN7A, SCN3A, KCNQ5, GSK3B, TNNI3, RBX1, IMPA1, GRIN2A, IMPA1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE3B, SCN2A, TUBB2A, TUBB4A, MAOB, HTR2A, ADRB2, TUBB2B, ESR1, IMPA1, ALDH5A1, TUBB3, GRIN2A, TUBB2A, GRIA4 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4D, PDE4D, SCN7A, ESR1, SCN3A, HTR2C, TUBB4A, SOD1, TUBB2A, TNNI3, SCN1A, HTR2C, KCNQ5, SCN2A, HTR2C that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA3, RBX1, GRIN3A, TUBB3, PDE5A, TNNI3, GRIN2D, GRIA3, TUBB4B, GRIA4, SOD1, PDE4D, GRIN3A, GRIN2A, PDE4D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, GRIN2A, PDE3B, TUBB2B, SCN7A, PDE5A, PDE4A, SOD1, GRIN2A, SCN7A, PDE4D, KCNQ1, CRBN, GRIN2D, HTR2C that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:361, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GHR, GRIN2B, KIT, SCN2A, KCNQ2, HTR2C, SCN1A, TUBB2B, PDE4A, GRIN2D, FGFR3, PDE4D, GRIA3, TUBB, PDE5A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, RTN4, PDE4B, PDE3B, GRIA1, SCN7A, SCN8A, TUBB3, PDE10A, PDE3A, PDGFRA, ESR1, GRIN2A, GRIN3A, SRD5A1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA2, GRIA4, SCN3A, TUBB4A, GRIN1, GSK3B, NR3C1, KCNQ5, CNR1, SCN9A, PDGFRA, RTN4, SCN7A, SRD5A1, PDE4D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN2A, GRIN2A, GRIN2D, GHR, GRIA3, HTR2C, PDE3B, PDE3A, HTR2C, TUBB4A, SRD5A1, FGFR3, TUBB, GSK3B, GRIN2D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, TUBB2B, GRIN1, TUBB4A, FGFR3, CNR1, PDE4B, PDE4D, GRIN2B, SCN2A, SRD5A1, GRIN2B, GRIN3A, SCN2A, PDE4D that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4D, NR3C1, SCN7A, GRIA3, TUBB, SRD5A1, KCNQ5, SCN9A, TUBB, GRIN2A, PDE10A, SCN7A, SRD5A1, NR3C1, PDE3A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, GSK3B, SCN3A, GRIN2D, NR3C1, PDE4B, PDE10A, SCN1A, KCNQ2, GHR, PDE4B, GRIA2, TUBB, FGFR3, SCN2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, TUBB, PDE4D, GHR, PDE4D, GRIA1, ESR1, KIT, PDE3B, GRIN2D, HTR2C, GRIA3, PDGFRA, GRIN3A, GSK3B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, SCN7A, PDE3A, ESR1, PDE4D, TUBB, TUBB, PDE3B, SCN7A, TUBB3, CNR1, GRIA3, TUBB2B, GRIN2D, TUBB4A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE10A, SCN1A, PDE5A, GRIA4, SRD5A1, GRIN3A, GRIN1, GSK3B, PDE10A, PDGFRA, KCNQ5, PDE10A, TUBB4A, TUBB4A, SCN2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:37, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIA4, GRIN3A, PDE4C, TUBB2B, PDE10A, PDE4B, IMPA1, RTN4, NR3C1, SOD1, HTR2C, ESR1, SCN1A, SCN9A, TUBB2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DRD2, GRIN2A, KCNQ1, PDE3A, SCN7A, PDE3B, IMPDH1, CRBN, ROCK2, ALDH5A1, PDE4D, MAOB, TUBB3, KIT, KCNQ3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2B, RBX1, PDE5A, SCN3A, PDE4A, GRIN2D, SCN2A, GSK3B, TUBB4B, TUBB4A, TUBB, KIT, GSK3B, KCNQ1, CRBN that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB2B, KCNQ3, GRIN3A, DRD2, GRIN2A, GRIN3A, SCN9A, KIT, GRIN2D, SCN3A, GRIN2B, PDE3A, SCN2A, NR3C1, GRIN2B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, GRIN2B, SCN1A, GRIN3A, SOD1, MAOB, RTN4, GRIN3A, SOD1, DRD2, PDE4D, NR3C1, PDE4D, TUBB, PDE3B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NR3C1, RTN4, KCNQ3, IMPA1, HTR2C, TUBB2A, PDE4A, SCN3A, KCNQ1, TUBB2B, IMPA1, PDE3B, IMPA1, TUBB4B, TUBB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, PDE10A, GRIA4, ROCK2, KCNQ3, PDE4A, PDE4D, TUBB, NR3C1, SCN3A, MAOB, TUBB2A, TUBB2B, GRIN2D, KIT that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB2B, HTR2C, TUBB2B, KIT, PDE4D, HTR2C, PDE4C, TUBB, TUBB2A, TUBB, PDE3A, HTR2C, KCNQ3, ESR1, IMPA1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, TUBB, TUBB4A, TUBB2A, PDE10A, PDE4B, TUBB3, DRD2, RTN4, PDE4B, SCN2A, GSK3B, NR3C1, TUBB, TUBB3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4A, PDE3B, PDE4C, ESR1, KCNQ3, PDE5A, ALDH5A1, GRIA4, TUBB, PDE4C, TUBB2B, KCNQ3, KIT, IMPDH1, MAOB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:374, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RTN4, TUBB3, CNR1, SCN7A, SCN8A, HTR2C, GRIN3A, PDE10A, GRIA1, TUBB, KCNQ2, GRIN2B, GRIA2, PDE4B, TUBB2B that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, PDE4D, PDE4A, IMPDH2, KCNQ5, PDE3A, DDB1, KCNQ4, GHR, GRIN2A, GRIA4, GSK3B, SCN3A, GRIA3, SCN2A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ1, SCN1A, PDE3B, TUBB4A, KIT, GRIN1, ALDH5A1, ALDH5A1, GHR, GRIA2, SCN8A, PDE3A, SCN7A, DDB1, SCN7A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, CNR1, PDE3B, GRIA1, SCN9A, RTN4, GRIA2, KCNQ2, GRIN3A, TUBB3, PDE3B, TUBB, KCNQ1, TUBB4A, RTN4 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GHR, GHR, SCN1A, TUBB2B, DDB1, GRIN3A, ALDH5A1, ALDH5A1, PDE3A, TUBB, SCN2A, TUBB4A, TUBB4A, PDE4A, KIT that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DDB1, KCNQ4, SCN1A, PDE4A, GHR, TUBB3, PDE4A, ALDH5A1, SCN1A, KIT, GSK3B, TUBB4A, GSK3B, GRIN3A, RTN4 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RTN4, SCN1A, GRIN2B, GRIN2A, HTR2C, SCN7A, PDE3A, SCN3A, GRIN2A, TUBB4A, KCNQ2, KCNQ4, SCN7A, GRIA4, KCNQ4 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, TUBB3, PDE4D, KCNQ1, DDB1, CNR1, PDE3B, TUBB4A, GRIA1, PDE4B, KCNQ4, PDE3A, IMPDH2, GHR, PDE3A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE10A, TUBB3, SCN1A, PDE4A, KCNQ4, PDE4D, CNR1, GRIA2, GHR, TUBB2B, GRIN3A, SCN3A, SCN2A, RTN4, KCNQ5 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KIT, TUBB2B, SCN1A, GSK3B, PDE4B, KCNQ2, IMPDH2, PDE4B, GHR, IMPDH2, SCN3A, PDE10A, GRIA2, GRIA4, KCNQ5 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:38, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4A, PDE4D, RTN4, GRIN2B, CUL4A, KCNQ1, ALDH5A1, SCN11A, TUBB2B, HTR2C, SOD1, KCNQ3, GSK3B, GRIA3, TUBB3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, SCN7A, PDE3B, SCN1A, DRD3, TUBB4B, KCNQ2, IL6R, TUBB2A, GRIN2D, SCN8A, SCN9A, SCN3A, SCN2A, ESR1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB, DRD2, GRIA4, PDE4B, MAOB, IMPA1, SCN2A, TUBB2A, SOD1, KCNQ2, SCN8A, SCN2A, RTN4, TUBB3, IMPA1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, TUBB4B, TUBB4A, MAOB, GRIA3, GRIA4, KCNQ2, GRIN3A, GSK3B, GRIN2B, DRD2, SCN7A, TUBB2A, IL6R, SCN11A that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN11A, TUBB4A, TUBB2B, ALDH5A1, MAOB, HTR2C, SCN1A, SCN1A, GRIN2D, GRIN2D, SOD1, SCN7A, GRIA3, CUL4A, ALDH5A1 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE3B, PDE4D, IMPA1, SCN1A, SCN8A, GRIN2B, SCN9A, GRIA4, GRIA3, ESR1, DRD2, GRIA3, HTR2C, SCN7A, KCNQ2 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TUBB4B, KCNQ3, GSK3B, IL6R, SCN2A, HTR2C, GRIN2B, SCN2A, SCN11A, SCN7A, HTR2C, SCN2A, DRD3, TUBB2A, HTR2C that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IMPA1, IL6R, PDE4D, TUBB2A, KCNQ1, IL6R, MAOB, SCN3A, KCNQ3, CUL4A, GSK3B, GSK3B, ALDH5A1, IMPA1, MAOB that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RTN4, PDE4B, SCN2A, ESR1, IL6R, GRIN3A, TUBB2B, PDE3B, SCN3A, RTN4, PDE4D, GRIN2B, GRIN3A, SCN3A, KCNQ3 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RTN4, MAOB, IL6R, PDE4D, KCNQ2, ESR1, SCN8A, DRD2, SCN3A, SCN11A, GRIA3, SCN2A, DRD2, TUBB2B, DRD2 that are known targets for Amyotrophic Lateral Sclerosis (ALS) in celltype cluster:400, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  }
+]

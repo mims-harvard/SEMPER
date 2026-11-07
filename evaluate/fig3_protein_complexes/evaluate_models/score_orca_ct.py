@@ -55,10 +55,13 @@ def normalize_ct_label(ct: str) -> str:
     """
     Normalize CT label strings to match your file naming convention:
     '101_edgelist.txt' -> '101_edgelist'
+    '101' (cell_type_id in the released benchmark CSVs) -> '101_edgelist'
     """
     ct = _clean(ct)
     if ct.endswith(".txt"):
         ct = ct[:-4]
+    if ct.isdigit():
+        ct = f"{ct}_edgelist"
     return ct
 
 def parse_member_celltypes(s: Optional[str]) -> Dict[str, str]:

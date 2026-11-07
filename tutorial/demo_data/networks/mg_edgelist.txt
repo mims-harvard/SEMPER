@@ -1,0 +1,6 @@
+BTO:DemoBrain	BTO:DemoRegionA
+BTO:DemoBrain	BTO:DemoRegionB
+BTO:DemoRegionA	cluster:0
+BTO:DemoRegionB	cluster:1
+BTO:DemoRegionA	cluster:2
+BTO:DemoRegionB	cluster:3

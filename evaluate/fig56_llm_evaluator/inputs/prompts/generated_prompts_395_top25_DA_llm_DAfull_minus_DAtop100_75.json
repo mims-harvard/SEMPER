@@ -1,0 +1,402 @@
+[
+  {
+    "role": "user",
+    "content": "Given these proteins DLAT, BLOC1S4, CHD4, LOXL1, DNAJC1, TAB3, HAX1, UHMK1, IPO11, NTN4, ALG14, ARHGEF26, LPGAT1, SERPINB6, PPP1R14A, REEP5, PSMA4, IFIT5, NDUFA13, BLCAP that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins AUTS2, BTF3, PCGF5, SLC25A27, NDUFB2, ZNF33A, NTN4, CHCHD10, HSPA1B, RAB3C, CDK8, PRKAA1, GPC3, COX7A2, AK3, PSMA4, PSMB5, FDPS, TENM2, HMGB1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins AFDN, TRIM2, KCTD10, THSD7A, BTF3, NEDD4L, ASB4, REEP5, TRPC5, TIMM50, TAB2, EML6, TAB3, GNAS, LPGAT1, ZBTB4, PPP1R14A, LAP3, EIF3J, NDUFA13 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TMEM14C, ZNF33A, EIF2AK2, UBE2S, DDA1, JUND, TRPM3, GPC3, SYT7, IFIT5, GIPC1, CHCHD10, VCAN, NDUFB2, TAB3, DMD, RALGPS1, FAM20A, AUTS2, UPP1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MOAP1, MBP, GNAS, PSME3, ALG14, EMC4, TRPM3, COX7A2, TMEM147, NDUFS4, UNC45A, ZNF622, SELENOK, LAP3, SSBP2, TBCA, KCTD10, HSP90AA1, SERPINB6, HAX1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BTF3, UNC45A, SCAND1, BRINP3, TRIM2, GNAI2, MTA3, TAB3, RAPGEF6, PRDX5, LOXL1, GNG4, ZNF622, NEDD4L, DHX36, SSBP2, ZBTB4, BLCAP, HSPA1B, SERPINB6 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SHOC2, SLX4IP, FBXO2, DHX36, HSPA1B, TIMM50, BLOC1S4, TAB3, COX7A2, EMC4, MBP, MRPL57, EEF1B2, KCTD10, GPC3, THSD7A, CCT7, VCAN, MOAP1, NDUFB2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PIGF, CHD4, DDA1, COX7A2, LPGAT1, MRPL57, RPP21, SELENOK, RPS5, GIPC1, HAX1, ASB4, SYT7, CCT7, DHX36, MBP, LAPTM4A, ZNF33A, TMEM14C, TIMM50 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DDA1, PSMB5, COPG2, STK38L, CHN1, RAB3C, MAST2, GNG4, CDK8, AUTS2, ZNF532, LGALS3BP, TIMM13, NTN4, TMEM147, TRPM3, PSME3, DNAJC15, PCGF5, UNC45A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins LGALS3BP, PIP4K2A, RBM5, KCNQ3, NDUFS4, AUTS2, DPH3, HSPA1B, EIF3J, NDN, RAB3C, B4GALT7, UBL7, UBE4B, PPTC7, PRKCB, LPGAT1, TLK1, CDC25B, TRPM3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SLX4IP, TENM2, GNAS, DNAJC1, PPTC7, TIMM13, MTA3, ARHGEF26, EPDR1, SSBP3, TRIM2, UNC45A, CDK8, ZNF622, CHD4, LAP3, REEP5, HSPA1B, AUTS2, PDE4B that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RAB3C, SLX4IP, GNAS, ORMDL1, EML6, PSMB5, RPP21, FDPS, COPG2, CDC25B, EMC4, BLCAP, LAPTM4A, EPDR1, RTN4, EIF3J, AK3, TAB2, GRP, ZEB1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HSP90AA1, BASP1, UBE4B, TAB3, EIF3J, NAPB, GIPC1, FBXO2, ULK3, EEF1B2, KCNH7, TMEM14C, ZEB1, ZNF33A, CHD4, DMD, PSME3, ZBTB4, DNAJC1, UNC45A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TRIM2, PCYOX1, GSTM3, NCOA4, PDE4B, AK3, KCTD10, NEK1, IFIT5, CDC25B, NDUFB2, ASB4, KCNH7, BLOC1S4, ZBTB4, ARHGEF26, FAM222A, RAB3C, AFDN, HAX1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CDK8, NDN, PRKAA1, CDC25B, YWHAE, RAPGEF6, COX7A2, COPG2, FNBP1L, GRP, TRIM2, SSBP2, SYT7, ZNF532, MOAP1, PIP4K2A, TMEM147, NDUFB2, DNAJC15, B4GALT7 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RAP1B, CYP2U1, LAPTM4A, RALGPS1, EMC4, HSPA1B, PPTC7, ARHGEF26, ZNF622, COPG2, RPP21, NEDD4L, CADPS, SLC25A27, ZNF33A, CCT7, LOXL1, PSMB5, SLX4IP, PPP1R14A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RAD51B, RBM5, PIP4K2A, NDUFB2, HSPA1B, CHN1, GSTM3, EIF3J, BLOC1S4, NDUFS4, TIMM13, GNAI2, SLX4IP, TRPM3, RPP21, FDPS, AK3, VCAN, PRKCB, TMEM147 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins YWHAE, ARPC1A, ALG14, CHORDC1, TVP23C, GSTM3, HSPA1B, UBE4B, MTHFD2, AFDN, CHCHD10, AUTS2, DHX36, DNALI1, NDUFA13, FDPS, UBL7, TAB3, RALGPS1, PDE4B that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TIMM50, EMC4, ORMDL1, KCTD10, SLC25A27, HMGB1, NDN, UNC45A, DDA1, BRINP3, RAP1B, FAM20A, VCAN, LPGAT1, PRKAA1, TRPC5, PSMA4, LAPTM4A, PPP1R14A, NTN4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UPP1, YWHAE, RAP1B, GPC3, REEP5, TAB2, MRPL57, MAST2, TRPM3, EIF3J, NAPB, CHD4, CADPS, UBE4B, PCYOX1, GNG3, ORMDL1, B4GALT7, FAM222A, NEDD4L that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CHD4, YWHAE, DLAT, MRPL57, DNAJC1, GNAI2, CYP2U1, VCAN, TLK1, IPO11, GPC3, SELENOK, THSD7A, FHOD3, ZNF622, UNC45A, DNALI1, FDPS, GNAS, TMEM147 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDN, NDUFB2, UHMK1, LDB2, LOXL1, DLAT, KCNQ3, AK3, RALGPS1, FAM222A, GNAS, DPH3, OPTN, GNAI2, ARHGEF26, GSTM3, RAB3C, TBCA, CADPS, TAB2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins FHOD3, CYP2U1, MZT2B, TAB3, BASP1, ZNF532, SYT1, CCT7, GNG4, ORMDL1, NEDD4L, FAM20A, PRDX5, CHORDC1, NDN, UNC45A, BRINP3, SNAP25, MTA3, ASB4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DHX36, HAX1, MTHFD2, NTN4, SSBP3, GNG4, LDB2, TRPM3, RAB3C, TIMM13, GNAI2, SCAND1, PRDX5, PPP1R14A, IFIT5, GLRX5, SHOC2, GSTM3, NCOA4, RAP1B that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ULK3, GNG4, IFIT5, EMC4, PIP4K2A, GNAI2, DNAJC15, KCTD10, BLOC1S4, LDLRAD4, HSP90AA1, GIPC1, SSBP3, BASP1, MBP, RAB3C, BRINP3, TRIM2, IDI1, ZBTB4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DNALI1, GNAS, ARPC1A, TBCA, SHOC2, ZNF33A, DPH3, UBL7, SERPINB6, TMEM147, CHCHD10, TRPC5, EML6, SNAP25, NEDD4L, DDA1, FDPS, FHOD3, DNAJC1, EIF3J that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNQ3, MZT2B, AUTS2, LDB2, SSBP3, SNAP25, LAPTM4A, ZBTB4, BRINP3, THSD7A, GNG3, FDPS, RTN4, PSMA4, DMD, SHOC2, EMC4, RPP21, ORMDL1, TENM2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, ZEB1, TLK1, SELENOK, NTN4, COX7A2, SLC25A27, CHORDC1, CADPS, CDC25B, HMGB1, TAB2, REEP5, ALG14, SLX4IP, RTN4, NAPB, PPP1R14A, LAPTM4A, GRP that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RTN4, UNC45A, AUTS2, UBL7, SYT7, PRKAA1, DPH3, SLC25A27, LDB2, PCYOX1, FNBP1L, CHD4, HSP90AA1, SNAP25, PPTC7, CDK8, PCGF5, HMGB1, BLOC1S4, MBP that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TCEAL3, NEDD4L, UBE4B, IDI1, RPP21, PRKCB, RAB3C, SYT7, YWHAE, MAST2, MRPL57, DNAJC1, TVP23C, LAP3, GNAS, SLC25A27, LAPTM4A, NEK1, BLCAP, UNC45A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UBE2S, LDLRAD4, ZBTB4, FDPS, PPP1R14A, PCGF5, SERPINB6, CHN1, RTN4, GSTM3, BAZ2A, GRP, FAM222A, HMGB1, HAX1, RAB3C, UBE4B, KCTD10, RBM5, GIPC1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RPS5, MBP, YWHAE, SYT7, FAM222A, TLK1, FBXO2, KCTD10, CYP2U1, ALG14, SELENOK, AFDN, PIP4K2A, DNAJC15, HSP90AA1, CCT7, ARHGEF26, DDA1, RTN4, FAM20A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CYP2U1, MRPL57, CHN1, SCAND1, IPO11, DHX36, PIP4K2A, UNC45A, NTN4, PRDX5, PRKCB, ZNF532, MTA3, SOCS4, ZNF33A, GNAI2, STK38L, RPP21, TCEAL3, ZNF622 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins STK38L, ARPC1A, PPP1R14A, PIGF, MTHFD2, COPG2, TBCA, GLRX5, CDC25B, DPH3, EEF1B2, NDUFS4, FDPS, BRINP3, DMD, LDB2, CADPS, ZEB1, ZBTB4, CDK8 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ZNF622, AUTS2, TAB2, SSBP3, MAST2, COX7A2, KCTD10, PSMA4, BRINP3, IPO11, KCNQ3, AFDN, ZEB1, EPDR1, PPP1R14A, EIF2AK2, PSME3, FAM20A, FAM222A, RAPGEF6 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS4, NDN, RPS5, BTF3, EMC4, ALG14, RPP21, FAM20A, VCAN, TIMM13, GPC3, GLRX5, HSP90AA1, REEP5, UHMK1, EIF3J, LDLRAD4, BLOC1S4, EEF1B2, COX7A2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDN, ASB4, IRS2, UBE2S, PCGF5, PRDX5, GIPC1, SLC25A27, DDA1, LDB2, CDC25B, UBE4B, STK38L, CHORDC1, CHD4, RAB3C, UNC45A, FDPS, PIP4K2A, FNBP1L that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UHMK1, NDUFA13, CCT7, RAD51B, PSMB5, KCNH7, DNALI1, FHOD3, ZNF532, MTA3, KCTD10, PSMA4, AFDN, FDPS, GLRX5, UNC45A, PCYOX1, DDA1, TIMM13, EIF3J that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UNC45A, PSMB5, CYP2U1, COPG2, VCAN, GSTM3, NEDD4L, EML6, TMEM147, EPDR1, LDLRAD4, TAB3, MTA3, RAD51B, CHD4, DNAJC15, TRIM2, ZNF622, TMEM14C, GLRX5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ZNF622, MTA3, NEK1, SERPINB6, MAST2, MTHFD2, TMEM147, LAPTM4A, SYT7, ZNF532, GPC3, RPS5, NDUFB2, KCTD10, NDN, SCAND1, KCNQ3, UNC45A, NEDD4L, CYP2U1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NEDD4L, DNALI1, RAPGEF6, AK3, PSMB5, NDUFB2, BLCAP, FAAP20, TLK1, TMEM147, RPP21, VCAN, SELENOK, GNG4, IFIT5, GLRX5, SERPINB6, PIP4K2A, DPH3, GRP that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PPTC7, NDUFA13, PDE4B, THSD7A, EMC4, SNAP25, BASP1, NDUFS4, UBE4B, FHOD3, PSME3, GSTM3, PCYOX1, BLOC1S4, MTA3, SCAND1, SLX4IP, DDA1, UBL7, ZBTB4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins COX7A2, DPH3, TRIM2, UNC45A, RALGPS1, BLOC1S4, SOCS4, GNAI2, LAP3, DHX36, ZNF532, RTN4, GRP, SLC25A27, UBE2S, CEP170, MAST2, IFIT5, HSPA1B, PDE4B that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PSMB5, ASB4, TVP23C, DLAT, LDLRAD4, GNG4, CHD4, IRS2, REEP5, ARHGEF26, UBL7, COPG2, DNALI1, GSTM3, RALGPS1, UHMK1, PRDX5, ORMDL1, CDC25B, CHCHD10 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DPH3, KCNH7, PIP4K2A, PRKAA1, MAST2, NEDD4L, LGALS3BP, MBP, GSTM3, UPP1, CYP2U1, NDUFA13, IDI1, VCAN, GPC3, PRDX5, NTN4, BAZ2A, SYT7, CEP170 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins CHN1, CDC25B, KCNQ3, KCTD10, FBXO2, GSTM3, TIMM13, RPP21, IRS2, DLAT, CHORDC1, PRDX5, TVP23C, HMGB1, SELENOK, CDK8, STK38L, DNALI1, GNG3, TBCA that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GNAS, ARHGEF26, FAM222A, SYT7, ORMDL1, AK3, TRPC5, DHX36, NTN4, PIGF, GNG3, CHN1, ARPC1A, RAP1B, KCNQ3, NCOA4, MTA3, RAB3C, STK38L, SLC25A27 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS4, UHMK1, KCNH7, MTA3, RPP21, GNG3, BLOC1S4, YWHAE, ARPC1A, LPGAT1, UBE2S, UNC45A, SYT7, PPP1R14A, RAPGEF6, EIF2AK2, AUTS2, TIMM13, SNAP25, GNAI2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UBE2S, DDA1, FAAP20, AUTS2, ZEB1, COPG2, PCGF5, DHX36, EML6, GIPC1, UBL7, PPTC7, IFIT5, AK3, CHCHD10, PRDX5, SCAND1, STK38L, CHN1, TAB2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TLK1, BRINP3, FAAP20, ZNF33A, MTHFD2, B4GALT7, NTN4, GNAS, CADPS, SLX4IP, PRKAA1, ZNF532, PSME3, AK3, RAD51B, SOCS4, LOXL1, ULK3, FBXO2, GRP that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RPP21, RAD51B, SCAND1, PCGF5, DHX36, TRIM2, YWHAE, CADPS, GNAI2, CHORDC1, SOCS4, NDUFB2, IFIT5, PSMA4, NCOA4, TRPM3, UBE2S, UHMK1, PSMB5, LAP3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PCYOX1, THSD7A, SELENOK, PIP4K2A, NTN4, MAST2, DPH3, LOXL1, UBE2S, SYT1, RAP1B, DNAJC15, STK38L, CADPS, HMGB1, TAB3, RAD51B, NEK1, EML6, RPS5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PSME3, RPS5, RBM5, UPP1, JUND, IRS2, RAP1B, FNBP1L, EML6, KCNH7, DMD, NAPB, MAST2, AFDN, SCAND1, DPH3, CHD4, TIMM13, PRKCB, NDUFS4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TIMM50, SSBP2, BRINP3, HAX1, HSPA1B, EIF3J, DMD, SHOC2, NAPB, PPTC7, DPH3, GNAS, COPG2, PCYOX1, PPP1R14A, BLCAP, EEF1B2, TAB2, LDLRAD4, PIGF that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TRPM3, TBCA, ARPC1A, COPG2, AFDN, BTF3, GSTM3, NAPB, IPO11, DPH3, ZNF622, NDN, NDUFS4, NDUFA13, B4GALT7, SLC25A27, FNBP1L, ARHGEF26, HSPA1B, PSMB5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins ORMDL1, SLC25A27, MTA3, BLOC1S4, TAB3, TRPM3, FAAP20, FBXO2, BAZ2A, DHX36, SNAP25, ZBTB4, UPP1, BRINP3, CEP170, EEF1B2, SELENOK, STK38L, CHN1, NCOA4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TCEAL3, PRKCB, ZNF532, BRINP3, DDA1, UPP1, CDC25B, RPS5, MZT2B, GRP, SLC25A27, DNAJC15, TRIM2, RAP1B, SLX4IP, IDI1, SYT1, DNALI1, TBCA, TAB3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PIGF, PRKAA1, HMGB1, PSME3, PPP1R14A, PPTC7, FBXO2, CDK8, TMEM147, MTHFD2, BLCAP, MRPL57, ALG14, LOXL1, FAM222A, RTN4, CDC25B, PRDX5, IPO11, TAB3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins EML6, CHN1, TMEM14C, KCTD10, RTN4, GLRX5, PIGF, PIP4K2A, TENM2, RAB3C, HSP90AA1, LAPTM4A, SNAP25, RPS5, COPG2, LOXL1, DNAJC15, JUND, DLAT, GNAI2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins YWHAE, FAAP20, GNG4, EML6, LPGAT1, EEF1B2, RAD51B, OPTN, RAB3C, CDC25B, EPDR1, LGALS3BP, DHX36, UPP1, HAX1, BRINP3, TLK1, UBE2S, SCAND1, PDE4B that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RAPGEF6, CYP2U1, ZNF532, AUTS2, EMC4, DPH3, LOXL1, KCTD10, SERPINB6, AK3, SSBP2, TRPM3, FAM20A, PDE4B, BRINP3, DNAJC15, THSD7A, TAB3, HSPA1B, RBM5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins YWHAE, HSP90AA1, TLK1, PIP4K2A, ARPC1A, ZNF33A, TVP23C, ASB4, HAX1, HSPA1B, EPDR1, AK3, BLCAP, DDA1, UBE2S, DHX36, MZT2B, RAD51B, ORMDL1, EEF1B2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins FDPS, STK38L, UBE2S, PSME3, GLRX5, PSMB5, TAB2, GNAS, PRDX5, LAPTM4A, HAX1, ZNF622, COPG2, TRPM3, RAP1B, RPP21, LOXL1, CYP2U1, YWHAE, ZBTB4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCAND1, TMEM14C, LGALS3BP, ARHGEF26, TCEAL3, ULK3, CADPS, ZNF532, ALG14, HSPA1B, CHORDC1, LAP3, LDB2, PSMB5, IPO11, CCT7, PCGF5, OPTN, CHCHD10, RTN4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TMEM14C, NEDD4L, ZNF622, NDUFA13, NAPB, SYT1, UBE2S, RBM5, GRP, DPH3, DNALI1, CADPS, TCEAL3, SNAP25, SOCS4, UHMK1, CCT7, ULK3, MBP, PRDX5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GNAI2, MTA3, AK3, SNAP25, DNAJC1, MAST2, HMGB1, GNAS, PPTC7, GSTM3, LOXL1, HAX1, AFDN, CDC25B, REEP5, TAB3, CHCHD10, PSMB5, IDI1, NTN4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PSMA4, AFDN, FAM222A, GPC3, TAB3, ULK3, ZNF622, GNG4, RTN4, FAAP20, NDN, THSD7A, RPP21, SNAP25, PRKAA1, NTN4, FAM20A, CDK8, GNAS, NDUFB2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TBCA, IPO11, PDE4B, FBXO2, DLAT, UNC45A, IRS2, LAP3, FHOD3, MRPL57, PRKAA1, FNBP1L, CYP2U1, THSD7A, GNG3, PPTC7, ALG14, TAB2, BASP1, SLC25A27 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IDI1, PSMB5, CCT7, SYT7, YWHAE, RPS5, SHOC2, MRPL57, DNAJC1, RTN4, PPP1R14A, FHOD3, CHD4, TRIM2, UNC45A, FAM20A, ARHGEF26, LDB2, UBE4B, KCNH7 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TRPM3, GNAS, TENM2, ULK3, CHN1, CHCHD10, ZNF622, ORMDL1, IFIT5, UBE4B, BASP1, AUTS2, PRDX5, FAM222A, RBM5, VCAN, BAZ2A, REEP5, PPP1R14A, FHOD3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins KCNH7, EML6, SSBP3, FAM222A, HSP90AA1, NEK1, BTF3, AUTS2, LAPTM4A, NEDD4L, SLC25A27, EIF3J, ARPC1A, CADPS, RTN4, IRS2, IPO11, RAPGEF6, BLOC1S4, SCAND1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, NEK1, MBP, GNG3, CYP2U1, TAB2, RAPGEF6, LPGAT1, SYT7, DDA1, CEP170, DHX36, MTA3, RPP21, PSME3, TLK1, EPDR1, NCOA4, UHMK1, DPH3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins EIF3J, SELENOK, GIPC1, CDK8, TCEAL3, CYP2U1, MAST2, PIP4K2A, RBM5, UPP1, TAB3, NDUFB2, COX7A2, EML6, ORMDL1, NDN, RAP1B, BASP1, RAD51B, GNAI2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PPP1R14A, MOAP1, KCNH7, TVP23C, BTF3, IRS2, LAP3, CADPS, NTN4, JUND, MTA3, EIF2AK2, KCTD10, ARHGEF26, SLC25A27, SYT7, ULK3, FNBP1L, DNAJC15, ZNF33A that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HSP90AA1, FHOD3, COX7A2, RAPGEF6, GRP, BASP1, TRPC5, TCEAL3, CEP170, FAM20A, HSPA1B, ULK3, BAZ2A, MBP, REEP5, NAPB, SHOC2, ZNF532, VCAN, TRPM3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDN, ZEB1, NDUFB2, MBP, GPC3, IFIT5, DNALI1, NAPB, TRIM2, PPP1R14A, LPGAT1, BRINP3, JUND, TAB3, MRPL57, COX7A2, CADPS, FHOD3, IRS2, FNBP1L that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins AFDN, PIP4K2A, IFIT5, MOAP1, GSTM3, CHN1, DNAJC1, LDB2, IRS2, TRPC5, EML6, TRPM3, TIMM13, MTA3, OPTN, GNAI2, DLAT, MRPL57, CEP170, MAST2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DMD, HMGB1, JUND, SOCS4, PSMA4, GNG4, BRINP3, TIMM50, LAPTM4A, PSME3, MAST2, GLRX5, BAZ2A, FAM20A, NDUFB2, NDN, SELENOK, RAB3C, NTN4, SLC25A27 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins B4GALT7, CYP2U1, SERPINB6, NEK1, KCTD10, RAPGEF6, NDUFS4, THSD7A, TRPC5, PRKCB, YWHAE, NCOA4, ARPC1A, PIP4K2A, PCYOX1, NDUFA13, BLOC1S4, DMD, PRDX5, CHN1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, REEP5, BAZ2A, ARHGEF26, KCNH7, SOCS4, UHMK1, MOAP1, NTN4, HAX1, AFDN, ULK3, FBXO2, SELENOK, HMGB1, SHOC2, PPP1R14A, KCNQ3, EMC4, DPH3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BAZ2A, NEDD4L, B4GALT7, SCAND1, NTN4, GNG3, GLRX5, LDLRAD4, BLOC1S4, ZNF532, TCEAL3, DNAJC15, IDI1, TIMM50, ARHGEF26, RAD51B, BTF3, RTN4, VCAN, EIF2AK2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HMGB1, KCNQ3, PSMA4, SLX4IP, CYP2U1, REEP5, TRPM3, DNAJC1, DNAJC15, FDPS, BASP1, TRIM2, OPTN, STK38L, CDK8, KCNH7, UNC45A, LOXL1, LDB2, DNALI1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins EML6, IDI1, THSD7A, GNAS, BASP1, SCAND1, PSME3, ZNF622, UBL7, EEF1B2, CHCHD10, GNG3, SERPINB6, MTHFD2, FAM222A, RPS5, HAX1, PRKCB, GRP, EPDR1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TAB2, CADPS, GRP, STK38L, RAP1B, DNALI1, GNG4, YWHAE, LAPTM4A, TBCA, NAPB, NEDD4L, ZNF33A, UBL7, BLOC1S4, HMGB1, FHOD3, ALG14, PCYOX1, CYP2U1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins OPTN, FDPS, MBP, NAPB, PRKCB, COPG2, STK38L, EPDR1, GPC3, TBCA, HMGB1, PIGF, TLK1, BLCAP, ULK3, TCEAL3, MAST2, BTF3, PSME3, NCOA4 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TENM2, RALGPS1, BLOC1S4, SNAP25, BRINP3, EIF3J, SSBP2, SLX4IP, ZBTB4, GNG4, KCTD10, TCEAL3, NDN, THSD7A, BLCAP, TIMM13, DLAT, RTN4, TMEM147, CEP170 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins UNC45A, RTN4, SYT1, LDB2, UBE2S, NCOA4, DDA1, EEF1B2, TENM2, TAB2, MRPL57, AK3, FAM222A, GRP, SELENOK, ZEB1, KCTD10, MTA3, AFDN, GNG3 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DNAJC15, EML6, NCOA4, BRINP3, EPDR1, TLK1, BAZ2A, IRS2, SSBP2, ULK3, TAB3, TVP23C, LDB2, HSP90AA1, GNG4, NEK1, SOCS4, SERPINB6, BLOC1S4, MRPL57 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TRIM2, TVP23C, MBP, SYT1, PDE4B, CHD4, KCTD10, STK38L, DLAT, BRINP3, BAZ2A, CYP2U1, DMD, TBCA, DDA1, COX7A2, UHMK1, MTA3, ALG14, RPP21 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DDA1, FNBP1L, CEP170, FBXO2, SSBP3, KCTD10, GNG4, TIMM50, TMEM147, PDE4B, PSMB5, FHOD3, LGALS3BP, TAB3, TRPC5, DMD, EML6, SCAND1, TRIM2, EEF1B2 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins BLOC1S4, TAB2, MTA3, NEDD4L, RALGPS1, LAP3, LPGAT1, HMGB1, SSBP2, ARPC1A, SELENOK, PRDX5, HSPA1B, YWHAE, DNAJC1, DMD, BTF3, GNAI2, SYT7, PRKCB that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE4B, EIF3J, UBE2S, GNAI2, LGALS3BP, BRINP3, LDLRAD4, PIGF, TMEM147, PPP1R14A, AK3, COX7A2, PPTC7, FBXO2, DDA1, ZBTB4, BAZ2A, GRP, TRPM3, EML6 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PPTC7, GRP, PCYOX1, SCAND1, IRS2, LAPTM4A, UBL7, UBE2S, FBXO2, RAD51B, BTF3, MTHFD2, FDPS, HSP90AA1, SLX4IP, MAST2, RAB3C, PRDX5, B4GALT7, HAX1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins DLAT, IDI1, PRDX5, ZNF33A, ASB4, GLRX5, IRS2, FNBP1L, THSD7A, MBP, PCYOX1, UBL7, ZBTB4, GNG4, HSP90AA1, AUTS2, FHOD3, LAPTM4A, PSME3, DNAJC1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NCOA4, RAD51B, SYT1, BAZ2A, NTN4, TBCA, IFIT5, OPTN, NDUFB2, IDI1, SCAND1, B4GALT7, TIMM50, SSBP3, ASB4, COX7A2, HSPA1B, HMGB1, FHOD3, RALGPS1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins RAB3C, BTF3, PIGF, GRP, RALGPS1, BLCAP, TMEM147, ORMDL1, LOXL1, AK3, NDUFB2, SSBP3, ZEB1, FDPS, LAPTM4A, PRKAA1, PIP4K2A, EEF1B2, IFIT5, B4GALT7 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins OPTN, TBCA, EIF2AK2, PPP1R14A, NDN, GPC3, PIP4K2A, RPP21, CHORDC1, PRKCB, FHOD3, NTN4, RPS5, SSBP3, GNG3, CDK8, RAP1B, RTN4, LAP3, CHN1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, SHOC2, AK3, STK38L, ZNF532, TIMM50, RTN4, PSME3, FHOD3, ZBTB4, TBCA, PRDX5, EIF2AK2, FAM222A, IRS2, GNG4, TMEM14C, THSD7A, HAX1, EIF3J that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins LOXL1, SLX4IP, IPO11, AUTS2, UBE2S, B4GALT7, HAX1, CEP170, CCT7, KCNH7, CDK8, EEF1B2, TVP23C, TAB2, PSME3, RTN4, GNG4, CYP2U1, HMGB1, REEP5 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins TIMM13, ZEB1, NCOA4, GNG4, MTHFD2, RAPGEF6, ALG14, NDUFS4, SNAP25, FNBP1L, MTA3, GNAS, SELENOK, GPC3, DLAT, RPS5, ZBTB4, PIGF, SSBP2, PCYOX1 that are known essential genes in hPSC-derived dopamine neurons (i.e., genes for dopaminergic neuron survival), what are 75 other proteins that are also probable essential genes?"
+  }
+]

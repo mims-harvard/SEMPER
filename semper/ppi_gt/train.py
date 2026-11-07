@@ -151,8 +151,9 @@ def train(epoch, model, optimizer, center_loss, rank, local_rank, train_mask, va
     # Save best model and parameters
     if best_val_acc <= np.mean(val_acc) + eps:
         best_val_acc = np.mean(val_acc)
-        with open(save_model, 'wb') as f:
-            torch.save({"epoch": epoch, "model": model, "optimizer": optimizer}, f)
+        if rank == 0:  # only one DDP process writes the checkpoint
+            with open(save_model, 'wb') as f:
+                torch.save({"epoch": epoch, "model": model, "optimizer": optimizer}, f)
         best_model = copy.deepcopy(model)
     
     for i, val in enumerate(mg_metapaths_train):
@@ -292,7 +293,6 @@ def main():
         model = DDP(model, device_ids=[local_rank], output_device=local_rank,find_unused_parameters=True)
         params = list(model.parameters())
         optimizer = torch.optim.Adam(params, lr = hparams['lr'], weight_decay = hparams['wd'])
-        scheduler = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1.0, end_factor=0.01, total_iters=args.epochs)
 
     center_loss = CenterLoss(num_classes=len(set(center_loss_labels)), feat_dim=hparams['output'] * hparams['n_heads'], use_gpu=torch.cuda.is_available())
     params += list(center_loss.parameters())

@@ -1,7 +1,7 @@
 # Figure 2 — SEMPER embedding latent space analysis
 
 This directory contains scripts to reproduce all panels of Figure 2 from the SEMPER paper.
-All scripts require `esm_projected.pth` and `esm_projected_labels.txt` as base inputs,
+All scripts require `semper_embed.pth` and `semper_labels.txt` as base inputs,
 plus panel-specific data files described below.
 
 ---
@@ -13,8 +13,8 @@ The recommended layout is:
 
 ```
 data/
-├── esm_projected.pth                          # SEMPER embeddings
-├── esm_projected_labels.txt                   # Label dictionary
+├── semper_embed.pth                           # SEMPER representations
+├── semper_labels.txt                          # Label dictionary
 ├── ensp_to_gene.json                          # ENSP → gene symbol map
 │
 ├── science.add7046_table_s3.xlsx              # Fig 2a: Siletti et al. CNS supercluster map
@@ -30,17 +30,17 @@ data/
 │   ├── cohorts_combined_ovary_tumor_avg_outer_prob.csv
 │   └── ...                                   # one CSV per tissue
 │
-└── moonlightproteins_moondb_allemf_idmap.xlsx                       # Fig 2g: MoonDB EMF gene symbols
+└── moonlightproteins_moondb_allemf_idmap.xlsx  # extra EMF analysis (not in the paper)
 ```
 
 | File | Source | Notes |
 |---|---|---|
-| `esm_projected.pth`, `esm_projected_labels.txt` | Not released (controlled access) | Primary SEMPER outputs |
+| `semper_embed.pth`, `semper_labels.txt` | Not released | Primary SEMPER outputs |
 | `science.add7046_table_s3.xlsx` | [Siletti et al., Science 2023](https://doi.org/10.1126/science.add7046) | Supplementary Table S3 — CNS cell type supercluster annotations |
 | `ensp2go.json.gz`, `go2ontology.json.gz` | Already included in `data/` | Full GO term annotations per protein; GO term → BP/MF/CC namespace |
 | `ensp2lowestgo.json.gz` | Already included in `data/` | Most-specific (lowest-level) GO annotations per protein; used only for Fig 2e enrichment |
 | `laman_trip_association_scores/` | [Laman Trip et al., Nat Commun 2022](https://doi.org/10.1038/s41467-022-34544-2) | Protein co-abundance association scores across 11 tissues |
-| `moondb_emf_idmap.xlsx` | Included in `data/` | MoonDB EMF proteins (238 entries, columns: symbol, alias). Source: [MoonDB](https://moondb.hb.univ-amu.fr) |
+| `moonlightproteins_moondb_allemf_idmap.xlsx` | Included in `data/` | MoonDB EMF proteins (238 entries, gene symbol in column `symbol`). Source: [MoonDB](https://moondb.hb.univ-amu.fr) |
 
 ---
 
@@ -54,8 +54,8 @@ across 30 CNS superclusters. Mann-Whitney U test with BH-FDR correction.
 
 ```bash
 python fig2a_pairwise_similarity.py \
-    --embed-pt           data/esm_projected.pth \
-    --labels             data/esm_projected_labels.txt \
+    --embed-pt           data/semper_embed.pth \
+    --labels             data/semper_labels.txt \
     --supercluster-xlsx  data/science.add7046_table_s3.xlsx \
     --out-prefix         outputs/fig2a \
     --n-pairs            100000
@@ -72,17 +72,20 @@ python fig2a_pairwise_similarity.py \
 
 ### Figures 2b–d — GO term embedding dispersion vs. random null
 
-Distribution of mean pairwise squared Euclidean distance between SEMPER embeddings
-of proteins sharing a GO term, for Biological Process (BP), Cellular Component (CC),
-and Molecular Function (MF). Solid lines mark SEMPER mean; dashed lines mark the
-random null. One-sided t-test.
+Distribution of mean pairwise cosine distance between SEMPER embeddings of proteins
+sharing a GO term, for Biological Process (BP), Cellular Component (CC), and Molecular
+Function (MF), as plotted in the paper. Solid lines mark the SEMPER mean and dashed lines
+the random null. `--distance sqeuclidean` reports squared Euclidean distance instead,
+which is twice the cosine distance for unit-length embeddings. The script reports a
+one-sided t-test of the per-term shifts. The P-values in the paper come from a
+label-permutation test (Methods), which this script does not run.
 
 ```bash
 python fig2bcd_go_dispersion.py \
     --ensp2go        data/ensp2go.json.gz \
     --go2ontology    data/go2ontology.json.gz \
-    --embed-pt       data/esm_projected.pth \
-    --labels         data/esm_projected_labels.txt \
+    --embed-pt       data/semper_embed.pth \
+    --labels         data/semper_labels.txt \
     --out-prefix     outputs/fig2bcd \
     --min-term-size  10 \
     --max-term-size  500
@@ -106,8 +109,8 @@ correspond to Leiden clusters. Enriched GO terms annotated per module.
 
 ```bash
 python fig2e_cluster_and_enrich.py \
-    --embed-pt       data/esm_projected.pth \
-    --labels         data/esm_projected_labels.txt \
+    --embed-pt       data/semper_embed.pth \
+    --labels         data/semper_labels.txt \
     --target-id      395 \
     --ensp2lowestgo  data/ensp2lowestgo.json.gz \
     --go2ontology    data/go2ontology.json.gz \
@@ -139,8 +142,8 @@ strongest correlation. Three-step pipeline combined into one script.
 
 ```bash
 python fig2f_lamantrip_correlation.py \
-    --embed-pt          data/esm_projected.pth \
-    --labels            data/esm_projected_labels.txt \
+    --embed-pt          data/semper_embed.pth \
+    --labels            data/semper_labels.txt \
     --ensp-json         data/ensp_to_gene.json \
     --assoc-dir         data/laman_trip_association_scores/ \
     --out-prefix        outputs/fig2f \
@@ -163,27 +166,29 @@ python fig2f_lamantrip_correlation.py \
 
 ---
 
-### Figure 2g — Centroid dispersion: EMF proteins vs. background proteome
+### Extra analysis (not in the paper) — Centroid dispersion: EMF proteins vs. background proteome
+
+This moonlighting-protein analysis is not part of the published Figure 2.
 
 Distribution of centroid dispersion — defined as the mean L2 distance of a
 protein's cell type-specific embeddings from its global centroid — for
-computationally predicted extreme multifunctional (EMF) proteins (n=243, red)
+computationally predicted extreme multifunctional (EMF) proteins (red)
 vs. all other proteins in the proteome (grey). Dashed lines mark group means.
 Mann-Whitney U test.
 
 Combines two steps into one run:
-1. Compute per-protein centroid dispersion from `esm_projected.pth`
+1. Compute per-protein centroid dispersion from `semper_embed.pth`
 2. Map the MoonDB EMF gene list to ENSP IDs, split into EMF vs. background, run Mann-Whitney U, and plot the density histogram
 
-The EMF gene set (n=243) was derived from MoonDB (https://moondb.hb.univ-amu.fr).
-The idmap file is already included at `data/moondb_emf_idmap.xlsx` (columns: `symbol`, `alias`) — no download required.
+The EMF gene set was derived from MoonDB (https://moondb.hb.univ-amu.fr). The idmap file
+(238 entries) is included at `data/moonlightproteins_moondb_allemf_idmap.xlsx`, so no download is required.
 
 ```bash
 python fig2g_emf_dispersion.py \
-    --embed-pt      data/esm_projected.pth \
-    --labels        data/esm_projected_labels.txt \
+    --embed-pt      data/semper_embed.pth \
+    --labels        data/semper_labels.txt \
     --ensp-json     data/ensp_to_gene.json \
-    --emf-xlsx      data/moondb_emf_idmap.xlsx \
+    --emf-xlsx      data/moonlightproteins_moondb_allemf_idmap.xlsx \
     --out-prefix    outputs/fig2g \
     --metric        disp_centroid_mean_l2 \
     --exclude-k1

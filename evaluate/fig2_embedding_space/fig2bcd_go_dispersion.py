@@ -137,11 +137,15 @@ def build_mean_embeddings(
     print(f"[INFO] Built mean embeddings for {len(result):,} proteins.")
     return result
 
+# Mean pairwise distance of unit vectors: squared Euclidean distance is 2x cosine distance.
+# The paper (Fig 2b-d) plots cosine distance; set by --distance in main().
+DIST_SCALE = 0.5
+
 def _dispersion(n: int, sum_vec: np.ndarray) -> float:
     if n < 2: return float("nan")
     mean_vec     = sum_vec / n
     norm_mean_sq = float(np.dot(mean_vec, mean_vec))
-    return max(0.0, 2.0 * (1.0 - norm_mean_sq) * (n / (n - 1.0)))
+    return DIST_SCALE * max(0.0, 2.0 * (1.0 - norm_mean_sq) * (n / (n - 1.0)))
 
 def term_dispersion(proteins: List[str], emb: Dict[str, np.ndarray]) -> Tuple[int, float]:
     s, n = None, 0
@@ -264,7 +268,12 @@ def main():
                     help="Maximum proteins per GO term (default: 500)")
     ap.add_argument("--no-l2-normalize", action="store_true",
                     help="Skip L2 normalization of embeddings")
+    ap.add_argument("--distance", choices=["cosine", "sqeuclidean"], default="cosine",
+                    help="Mean pairwise cosine distance (as in the paper) or squared "
+                         "Euclidean distance (2x cosine for unit vectors). Default: cosine")
     args = ap.parse_args()
+    global DIST_SCALE
+    DIST_SCALE = 0.5 if args.distance == "cosine" else 1.0
 
     # Load
     print("[1] Loading GO annotations...")

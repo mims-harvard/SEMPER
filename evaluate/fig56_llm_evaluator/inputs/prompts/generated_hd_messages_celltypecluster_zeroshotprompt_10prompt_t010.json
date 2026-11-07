@@ -1,0 +1,402 @@
+[
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, NDUFS6, NDUFB5, NDUFA11, NDUFV2, GPD2, SCN8A, NDUFS2, NDUFS7, NDUFC2, NDUFB7, CNR1, NDUFA12, NDUFB2, NDUFV1 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA2, NDUFA8, NDUFB4, NDUFA5, NDUFAB1, GRIN2A, NDUFB11, PDE10A, NDUFB1, GRIN1, NDUFB9, NDUFB3, GRIN2B, NDUFB6, NDUFB8 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTT, NDUFS8, NDUFAF3, HTR2A, NDUFA3, NDUFA6, NDUFAF4, NDUFA4, NDUFS3, NDUFC1, NDUFS5, NDUFB10, NDUFA13, NDUFA10, NDUFA1 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB3, CNR1, SCN8A, NDUFA1, PDE10A, HTR2A, NDUFS3, NDUFA8, NDUFC2, NDUFA3, NDUFA8, HTR2A, NDUFA3, NDUFA5, GRIN1 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS6, SCN8A, GRIN2B, NDUFA8, NDUFA10, NDUFA13, NDUFS5, NDUFA10, NDUFA1, NDUFB1, NDUFA6, NDUFA6, NDUFB11, NDUFB7, NDUFB10 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFC2, NDUFB11, NDUFB3, NDUFB11, NDUFC1, HTR2A, HTR2A, NDUFB2, NDUFB10, NDUFS8, NDUFS6, NDUFA11, NDUFA8, NDUFS2, NDUFAB1 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, NDUFAB1, NDUFV1, NDUFB11, NDUFB10, NDUFS5, GRIN2B, HTR2C, NDUFAF3, NDUFB10, HTR2C, GRIN1, NDUFA8, NDUFA3, GRIN2B that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTT, GRIN1, NDUFA2, NDUFB7, NDUFA8, NDUFS2, NDUFB2, NDUFA11, NDUFB8, GRIN2B, NDUFV1, NDUFB10, PDE10A, NDUFA6, NDUFB6 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA3, NDUFS7, NDUFB3, NDUFS5, NDUFB11, NDUFA4, NDUFB3, NDUFS3, GRIN2B, NDUFA2, NDUFA8, NDUFA11, NDUFB5, NDUFB7, NDUFA13 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF3, NDUFS3, NDUFB9, NDUFA11, NDUFB5, NDUFB8, NDUFB6, SCN8A, NDUFB3, NDUFB2, GRIN2A, NDUFAF3, NDUFB8, CNR1, NDUFB3 that are known targets for Huntingtons Disease in celltype cluster:182, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PPARA, NDUFB3, NDUFS8, NDUFA12, SCN9A, NDUFB8, NDUFAF4, NDUFS2, SCN7A, NDUFS1, NDUFB4, NDUFA5, GRIN2D, NDUFS3, NDUFB10 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, SCN8A, NDUFB5, NDUFV3, NDUFB2, GRIN2B, NDUFS5, GRIN3A, NDUFA4, ALDH5A1, NDUFS7, GRIN1, NDUFB1, NDUFS6, NDUFV1 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA8, NDUFB11, CNR1, NDUFC1, SCN1A, NDUFS4, NDUFA6, NDUFA10, NDUFAB1, NDUFV2, GSK3B, NDUFB9, NDUFA8, NDUFV2, NDUFB11 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB9, NDUFS2, NDUFB5, GRIN2D, NDUFS4, ALDH5A1, NDUFV2, NDUFA8, NDUFB3, PPARA, NDUFA4, SCN1A, NDUFS3, SCN7A, GRIN3A that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, PPARA, NDUFV1, NDUFB8, NDUFS3, CNR1, NDUFA10, NDUFB4, NDUFAF4, NDUFA12, NDUFAB1, NDUFAB1, SCN8A, NDUFS2, NDUFB9 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS1, GSK3B, NDUFS3, NDUFS8, NDUFS5, NDUFV1, NDUFS2, NDUFV1, NDUFS1, ALDH5A1, NDUFA4, SCN1A, NDUFS5, NDUFB11, NDUFV3 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB8, GRIN1, NDUFB1, ALDH5A1, ALDH5A1, NDUFA10, NDUFAF4, GRIN3A, NDUFB5, NDUFB1, NDUFV3, NDUFV3, NDUFB11, SCN9A, SCN9A that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB9, NDUFS8, NDUFS5, NDUFS3, GRIN2B, NDUFB2, NDUFV2, NDUFA4, NDUFB3, NDUFB9, ALDH5A1, NDUFS8, NDUFS2, NDUFB11, NDUFS7 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA12, NDUFB2, NDUFS6, NDUFV3, NDUFB5, NDUFS8, NDUFS4, NDUFB8, SCN9A, SCN8A, GSK3B, NDUFS3, NDUFB1, NDUFV2, SCN9A that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB1, SCN8A, GRIN3A, PPARA, NDUFB11, NDUFAF4, NDUFS4, GRIN1, NDUFS2, CNR1, NDUFS6, NDUFA13, NDUFS8, NDUFB10, NDUFA4 that are known targets for Huntingtons Disease in celltype cluster:262, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB1, NDUFB5, NDUFB2, NDUFS4, NDUFB11, MT-ND2, NDUFV1, NDUFS8, MT-ND1, MT-ND4, MT-ND3, NDUFC2, SEMA4D, SCN9A, MT-ND6 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA3, NDUFA5, NDUFB9, NDUFB4, NDUFB3, NDUFS5, NDUFAF4, SCN1A, MT-ND5, CNR1, PPARA, NDUFA6, NDUFA2, NDUFB7, HTT that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA1, GRIN2A, NDUFA12, NDUFS1, NDUFV2, GRIN3A, SCN2A, MT-ND4L, NDUFA4, NDUFA11, GRIN2C, NDUFA8, NDUFS6, NDUFAF3, NDUFB8 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAB1, GPD2, NDUFS7, NDUFA13, GSK3B, NDUFC1, NDUFB10, NDUFV3, NDUFAF4, NDUFB11, MT-ND4L, NDUFAB1, NDUFS4, NDUFB8, NDUFB2 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB11, NDUFB4, NDUFA2, SCN1A, NDUFS5, NDUFS6, CNR1, NDUFC1, NDUFB1, NDUFA2, NDUFAF3, MT-ND5, NDUFA2, NDUFV1, NDUFB10 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS7, NDUFV3, GPD2, NDUFS4, NDUFS7, NDUFB10, NDUFV1, NDUFB9, NDUFS1, NDUFB10, MT-ND3, NDUFA8, NDUFB5, NDUFA5, NDUFS4 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS1, NDUFA3, GRIN2A, NDUFB4, NDUFS5, NDUFV3, NDUFA12, SCN2A, NDUFS6, MT-ND2, NDUFAF4, CNR1, NDUFB10, NDUFAB1, NDUFB3 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB9, NDUFA2, NDUFA13, NDUFB1, MT-ND5, CNR1, NDUFB1, NDUFB8, NDUFB10, NDUFV3, NDUFS7, NDUFA1, NDUFV1, MT-ND1, GRIN2A that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS7, NDUFB9, NDUFA11, NDUFA12, GPD2, SCN1A, SEMA4D, MT-ND1, NDUFS1, NDUFS7, GPD2, NDUFC1, NDUFA8, HTT, MT-ND2 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA11, NDUFB1, NDUFV3, NDUFAF3, NDUFV3, NDUFAF3, NDUFA13, NDUFA3, GSK3B, NDUFAF3, NDUFAB1, GRIN2A, NDUFS1, SEMA4D, NDUFA2 that are known targets for Huntingtons Disease in celltype cluster:319, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB1, NDUFB11, NDUFB6, NDUFS7, NDUFA4, NDUFB8, ALDH5A1, GPD2, SCN9A, GRIN3A, NDUFAB1, NDUFS4, NDUFB5, NDUFC2, NDUFS8 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB4, SCN7A, NDUFA13, NDUFB3, NDUFA11, NDUFAF3, MT-ND4, GSK3B, NDUFAF2, NDUFC1, SCN8A, NDUFB9, NDUFB2, MT-ND4L, NDUFS1 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND3, NDUFA2, SCN1A, SCN3A, HTT, MT-ND1, NDUFA8, GRIN2D, NDUFA12, HTR2C, NDUFS5, NDUFV2, NDUFA3, IMPA1, NDUFB7 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS6, NDUFA1, PPARA, NDUFB10, ALDH5A1, SCN1A, SCN9A, NDUFAB1, NDUFB5, GPD2, ALDH5A1, NDUFA2, NDUFS4, SCN7A, NDUFA2 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB3, GRIN2D, NDUFB5, SCN7A, MT-ND4L, SCN9A, NDUFB7, NDUFA4, NDUFB8, GRIN2D, SCN1A, NDUFC2, NDUFA3, NDUFB6, NDUFC1 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF3, NDUFS1, MT-ND1, NDUFB1, GRIN3A, NDUFA8, HTT, NDUFB1, MT-ND4, NDUFB9, NDUFA1, PPARA, MT-ND1, PPARA, NDUFA13 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF3, NDUFA1, NDUFA13, HTR2C, NDUFB8, NDUFAB1, NDUFAF2, NDUFA12, NDUFB11, NDUFS1, MT-ND4L, MT-ND4L, MT-ND4L, NDUFS6, GSK3B that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, NDUFB7, HTT, NDUFB11, NDUFAF3, NDUFA1, NDUFS1, NDUFB4, NDUFC2, NDUFB9, NDUFS6, NDUFC2, NDUFV2, SCN9A, NDUFB10 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA2, SCN8A, NDUFA11, ALDH5A1, SCN7A, NDUFS5, NDUFC1, MT-ND4, NDUFB10, NDUFA1, NDUFB8, NDUFB1, MT-ND1, IMPA1, NDUFV2 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB6, NDUFS5, NDUFA12, NDUFB1, NDUFAF3, NDUFS1, NDUFA3, NDUFB6, PPARA, NDUFA11, NDUFA2, IMPA1, NDUFAF2, MT-ND4L, NDUFB8 that are known targets for Huntingtons Disease in celltype cluster:341, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB11, SEMA4D, NDUFA12, NDUFA3, NDUFA11, NDUFA4, NDUFB9, SCN8A, CNR1, NDUFS5, MT-ND4L, GRIN3A, NDUFAF3, IMPA1, NDUFB3 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB1, ALDH5A1, NDUFB7, SCN7A, NDUFAF1, NDUFS6, GRIN2D, SCN1A, NDUFB10, GPD2, PPARA, NDUFA8, NDUFA1, SCN3A, NDUFV2 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS4, NDUFB6, GSK3B, SCN9A, NDUFB2, NDUFAB1, MT-ND3, NDUFC2, HTR2C, NDUFB5, NDUFAF2, NDUFA13, NDUFS7, GRIN1, NDUFC1 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND4, NDUFA2, NDUFB4, NDUFB8, NDUFS8, NDUFB3, NDUFAF1, SCN8A, GRIN3A, NDUFA4, NDUFC1, NDUFB5, GRIN3A, GSK3B, NDUFB9 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS6, NDUFB6, NDUFB6, NDUFA2, GRIN1, NDUFB9, NDUFS8, CNR1, GSK3B, NDUFB2, GPD2, NDUFB6, GRIN1, NDUFB1, PPARA that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFC2, NDUFB4, NDUFB5, SCN9A, NDUFC2, CNR1, NDUFA2, NDUFAF1, NDUFA12, NDUFB1, NDUFA3, IMPA1, NDUFB9, NDUFB2, SEMA4D that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF1, GRIN1, NDUFB9, SCN3A, NDUFA8, NDUFA13, SCN7A, NDUFS8, GRIN1, GRIN2D, NDUFA12, NDUFB1, NDUFA3, NDUFAF2, GPD2 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS7, NDUFA11, NDUFB8, NDUFB8, NDUFC1, CNR1, GRIN2D, SCN1A, NDUFA4, NDUFS6, NDUFA1, NDUFA2, CNR1, GRIN3A, NDUFAB1 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN1A, NDUFA3, NDUFS5, NDUFB8, NDUFA4, NDUFA4, ALDH5A1, SCN8A, SCN7A, NDUFAB1, NDUFB2, NDUFB2, NDUFAF1, NDUFB10, MT-ND4 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND4, NDUFB7, NDUFA3, SEMA4D, NDUFA13, SCN8A, NDUFA8, NDUFA1, GRIN2D, NDUFC2, NDUFB3, NDUFC1, NDUFB11, SCN1A, NDUFA13 that are known targets for Huntingtons Disease in celltype cluster:346, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, MT-ND3, NDUFA13, SCN8A, SCN7A, NDUFB8, NDUFA1, NDUFB4, MT-ND1, MT-ND6, GRIN3A, NDUFAF2, NDUFS6, CNR1, NDUFB9 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFC1, NDUFA11, NDUFB6, NDUFS5, NDUFS8, NDUFA3, SCN1A, NDUFS7, NDUFB5, NDUFB10, NDUFA12, NDUFAB1, NDUFA8, MT-ND4, GSK3B that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IMPA1, NDUFV2, SCN11A, MT-ND4L, HTR2C, NDUFB1, GPD2, NDUFB7, NDUFA4, NDUFS4, NDUFA2, ALDH5A1, NDUFC2, SEMA4D, SCN9A that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF3, NDUFB2, PPARA, SCN3A, MT-ND2, NDUFB11, NDUFB3, SCN1A, HTR2C, NDUFB6, MT-ND3, NDUFC1, SEMA4D, NDUFA12, MT-ND3 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN7A, NDUFB8, NDUFS7, NDUFS4, NDUFB11, NDUFS6, SCN11A, NDUFAB1, NDUFAB1, NDUFB6, NDUFB11, PPARA, NDUFS8, SCN8A, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB7, NDUFB1, NDUFA8, IMPA1, GPD2, NDUFA2, SCN8A, MT-ND3, GRIN3A, NDUFAF3, NDUFB4, SCN11A, MT-ND1, NDUFA12, GRIN2D that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB5, NDUFA12, SCN9A, SCN1A, NDUFB11, SCN9A, NDUFA8, NDUFA8, GSK3B, SCN8A, GSK3B, NDUFA12, NDUFB3, NDUFB4, NDUFA3 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB9, GPD2, NDUFS7, MT-ND3, NDUFB8, NDUFAF3, NDUFB8, NDUFC1, ALDH5A1, PPARA, MT-ND3, NDUFC2, NDUFA13, ALDH5A1, NDUFB11 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF2, NDUFB3, NDUFS6, NDUFA13, NDUFS7, NDUFB9, SCN1A, NDUFV2, SCN11A, NDUFB8, MT-ND1, GPD2, NDUFB1, SCN9A, NDUFAB1 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS8, MT-ND4, NDUFA8, MT-ND4L, NDUFC1, CNR1, NDUFA3, HTR2C, NDUFA2, NDUFB9, NDUFB7, NDUFS8, NDUFB8, NDUFA11, NDUFA2 that are known targets for Huntingtons Disease in celltype cluster:383, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA3, NDUFA8, NDUFS7, GRIN2B, NDUFB5, ALDH5A1, MT-ND4, HTR2C, GRIN2D, NDUFB6, NDUFB11, SCN1A, NDUFB7, NDUFA13, NDUFA1 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB4, MT-ND3, NDUFV2, IMPA1, MT-ND1, NDUFAF3, NDUFS6, NDUFA11, SCN7A, NDUFAB1, GRIN3A, GRIN1, GPD2, NDUFA4, NDUFA2 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN3A, NDUFC1, NDUFB1, DRD4, NDUFA12, NDUFB8, MT-ND4L, NDUFB10, NDUFAF2, NDUFS4, PPARA, NDUFB9, GSK3B, NDUFB3, NDUFS8 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN9A, NDUFB2, NDUFS5, NDUFC2, GSK3B, GPD2, PPARA, GRIN1, NDUFC1, ALDH5A1, GRIN3A, NDUFB7, NDUFAF3, GRIN2B, GRIN2D that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN3A, NDUFV2, GSK3B, DRD4, SCN1A, NDUFAF2, MT-ND4, NDUFB5, SCN1A, NDUFS7, NDUFB2, PPARA, NDUFA2, GRIN2D, GRIN2B that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB4, MT-ND4L, NDUFB5, NDUFB9, MT-ND4, NDUFS6, MT-ND4L, NDUFAB1, NDUFA11, SCN9A, NDUFS7, NDUFA3, NDUFB6, NDUFB10, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins IMPA1, NDUFA12, PPARA, NDUFAF2, NDUFB7, NDUFA13, NDUFA2, NDUFS5, NDUFB5, NDUFB1, MT-ND1, NDUFC2, MT-ND4L, ALDH5A1, MT-ND4 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAB1, IMPA1, ALDH5A1, NDUFB5, NDUFB10, GPD2, NDUFS6, NDUFA4, MT-ND3, MT-ND1, NDUFA4, NDUFA4, MT-ND4, NDUFA4, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA1, NDUFC2, SCN1A, NDUFV2, NDUFV2, GSK3B, NDUFB10, NDUFB2, NDUFB2, PPARA, NDUFA2, NDUFB3, PPARA, NDUFAB1, NDUFA3 that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS6, NDUFC1, NDUFA13, SCN7A, MT-ND1, NDUFB3, NDUFC1, NDUFS7, NDUFA3, SCN9A, NDUFB7, NDUFS5, NDUFC1, NDUFA1, PPARA that are known targets for Huntingtons Disease in celltype cluster:403, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2D, MT-ND4, ALDH5A1, NDUFS4, NDUFAB1, GRIN1, NDUFA11, NDUFB8, PPARA, SCN9A, NDUFA1, MT-ND2, CNR1, MT-ND4L, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB7, SCN3A, MT-ND3, NDUFC2, SCN7A, NDUFB9, NDUFV2, MT-ND1, IMPA1, MT-ND5, NDUFB1, NDUFS6, NDUFA4, NDUFS5, NDUFS7 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA8, NDUFA3, SCN1A, HTR2C, GSK3B, NDUFB11, NDUFB3, NDUFS8, NDUFAF2, NDUFA2, NDUFA12, NDUFB10, NDUFC1, NDUFB6, NDUFB5 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, NDUFB4, GRIN3A, GPD2, NDUFB2, SCN5A, IMPA1, NDUFA11, NDUFAF3, GPD2, NDUFB9, PPARA, NDUFB11, NDUFB5, GSK3B that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA13, NDUFB8, NDUFB6, SCN1A, PPARA, SCN9A, NDUFS8, HTR2C, NDUFA11, NDUFB7, NDUFS4, MT-ND4L, MT-ND3, MT-ND4L, NDUFS8 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAB1, NDUFA12, SCN9A, NDUFB2, NDUFAB1, NDUFA12, MT-ND3, NDUFB11, NDUFB6, NDUFAB1, GRIN2D, NDUFAF3, NDUFB11, NDUFS5, NDUFA1 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA12, SCN7A, GPD2, SCN9A, SCN3A, NDUFB3, IMPA1, ALDH5A1, SCN9A, SCN1A, ALDH5A1, IMPA1, NDUFB7, NDUFAF3, SCN5A that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA2, NDUFB3, GRIN1, GRIN1, NDUFB5, GRIN2D, NDUFB3, ALDH5A1, NDUFC2, NDUFB2, GRIN3A, GRIN3A, NDUFAF3, NDUFB3, NDUFB10 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB9, GRIN3A, NDUFB11, NDUFB11, IMPA1, MT-ND4, NDUFS4, NDUFB2, NDUFAB1, NDUFC1, NDUFB5, NDUFS6, NDUFC1, CNR1, NDUFB1 that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND4L, MT-ND4, NDUFB3, NDUFAB1, SCN1A, NDUFS6, GSK3B, NDUFB6, SCN7A, SCN9A, NDUFB7, CNR1, NDUFB10, SCN7A, SCN9A that are known targets for Huntingtons Disease in celltype cluster:418, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB2, NDUFV1, NDUFA13, HTR2A, NDUFB9, NDUFC2, GSK3B, SCN8A, NDUFB7, NDUFA4, NDUFC1, NDUFB3, SCN1A, NDUFB11, IMPA1 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA3, NDUFB10, NDUFAF3, NDUFB8, NDUFS5, NDUFA8, MT-ND1, NDUFS1, NDUFB1, NDUFA11, NDUFV3, NDUFA1, NDUFB5, NDUFA10, GRIN1 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins GRIN2A, NDUFA9, NDUFV2, NDUFA12, NDUFS8, GRIN3A, NDUFB6, PDE10A, NDUFB4, NDUFA6, NDUFAF4, MT-ND5, NDUFAB1, NDUFS3, MT-ND4 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFA5, NDUFS7, NDUFA2, NDUFS6, NDUFS2, MT-ND4L, MT-ND3, SCN1A, NDUFV1, MT-ND4, GRIN1, NDUFB5, NDUFA6, MT-ND4L, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, NDUFS5, NDUFB4, NDUFV2, NDUFS2, NDUFA5, GRIN2A, NDUFA3, NDUFB10, GRIN3A, NDUFB7, MT-ND4L, SCN8A, NDUFAB1, SCN1A that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS8, GRIN3A, SCN8A, NDUFB1, NDUFV2, GSK3B, MT-ND3, NDUFA10, MT-ND5, NDUFC2, NDUFS6, NDUFA12, SCN8A, NDUFC1, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND4L, GRIN3A, NDUFB5, NDUFAF4, GSK3B, NDUFB7, GRIN1, NDUFV2, MT-ND3, NDUFV1, NDUFS5, NDUFB2, NDUFA13, NDUFB8, NDUFA10 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND3, GRIN2A, NDUFB8, NDUFA10, NDUFV1, HTR2A, NDUFB7, NDUFB1, NDUFC2, NDUFB6, GRIN2A, MT-ND1, GRIN1, NDUFB9, NDUFA3 that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins PDE10A, NDUFA11, NDUFB9, MT-ND4L, MT-ND5, NDUFA4, NDUFA12, HTR2A, NDUFA4, NDUFAF3, NDUFS2, SCN1A, NDUFV1, NDUFA5, GRIN2A that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFS7, NDUFB11, NDUFA13, NDUFV3, NDUFA1, MT-ND4, NDUFAB1, SCN1A, NDUFS6, SCN1A, NDUFS2, NDUFAF4, NDUFA12, GRIN3A, GRIN3A that are known targets for Huntingtons Disease in celltype cluster:434, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB1, SEMA4D, NDUFA2, NDUFV2, NDUFA8, GRIN2A, NDUFB8, GRIN1, NDUFV1, NDUFAF3, NDUFB3, NDUFS5, NDUFB4, NDUFS1, PDE10A that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2A, GRIN3A, NDUFA12, MT-ND1, NDUFS3, MT-ND4L, NDUFV3, NDUFA3, NDUFB6, NDUFA13, GRIN2D, NDUFAF4, NDUFC2, NDUFAB1, NDUFA1 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFB7, NDUFB2, MT-ND5, NDUFB5, NDUFA6, NDUFA11, GSK3B, NDUFS8, NDUFC1, MT-ND3, NDUFS6, NDUFS4, NDUFA4, NDUFB10, NDUFS7 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, NDUFB9, HTR2C, MT-ND4, NDUFB11, NDUFA9, HTR2C, NDUFA13, NDUFS8, NDUFS8, NDUFAF4, NDUFB4, NDUFB4, NDUFB7, NDUFC2 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins NDUFAF3, NDUFB8, NDUFB8, NDUFA12, GRIN1, NDUFV2, NDUFV2, GRIN2D, NDUFB9, PDE10A, HTR2A, NDUFA13, NDUFS5, NDUFS4, NDUFS3 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins HTR2C, NDUFA2, NDUFS7, NDUFA12, NDUFA6, MT-ND4L, NDUFS5, NDUFC1, MT-ND5, GRIN2A, NDUFB3, NDUFA4, GRIN3A, NDUFA1, HTR2C that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND1, NDUFV1, NDUFA4, NDUFA11, HTR2A, NDUFB7, MT-ND4L, NDUFB5, NDUFA8, MT-ND5, NDUFB10, MT-ND5, NDUFC1, MT-ND3, NDUFAF3 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins SCN8A, NDUFB11, NDUFV3, MT-ND4, NDUFAF3, NDUFB7, NDUFB4, PDE10A, NDUFB9, GSK3B, PDE10A, NDUFB3, NDUFS7, NDUFB3, NDUFB3 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND5, NDUFS1, HTR2C, NDUFV2, NDUFB10, NDUFB6, MT-ND4, NDUFC1, NDUFAF4, NDUFA3, NDUFA2, GSK3B, HTR2C, NDUFA6, NDUFAF4 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  },
+  {
+    "role": "user",
+    "content": "Given these proteins MT-ND5, GRIN3A, NDUFC2, NDUFA11, NDUFV2, NDUFA4, MT-ND3, NDUFA9, NDUFA4, NDUFS5, NDUFB8, NDUFA2, MT-ND3, NDUFA2, MT-ND5 that are known targets for Huntingtons Disease in celltype cluster:435, what other proteins are probable therapeutic targets? Use tokens from semper_embed.pth and token labels from semper_labels.txt, apply cosine similarity, and select the top proteins across all contexts."
+  }
+]

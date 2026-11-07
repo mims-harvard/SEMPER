@@ -19,7 +19,7 @@ The pipeline has two parts:
 
 ```
 data/
-├── esm_projected.pth / esm_projected_labels.txt   # SEMPER
+├── semper_embed.pth / semper_labels.txt         # SEMPER (semper/contrastive/build_semper_embeddings.py)
 ├── ppi_gt_embed.pth / ppi_gt_labels.txt           # PPI-GT
 ├── pinnacle_embed.pth / pinnacle_labels.txt        # PINNACLE
 ├── protein_esmc_600m.pkl / protein_esmc_600m.pt   # ESM-C
@@ -32,11 +32,35 @@ data/
     └── <N>_edgelist_nodes.json / <N>_edgelist_orbits.txt
 ```
 
-### Seedplans and disease gene lists
+### Seed plans and disease target lists
 
-The seedplan JSONs (which control seed/held-out trial splits per cell type) and
-the disease gene lists (clinical trial candidate targets for each disease) are
-required to run the evaluations but are not included in this repository.
+The target lists used in the paper are in
+[`data/benchmarks/clinical_targets/analysis_target_lists/`](../../data/benchmarks/clinical_targets/analysis_target_lists),
+one JSON per disease (e.g. `PD_targets_MONDO_0005180.json`). Pass these as
+`--pd_gene_file` below to score against the same targets as the paper.
+
+A seed plan fixes the seed and held-out targets of every trial so all models are
+scored on identical trials. The seed plans used in the paper are in [`seedplans/`](seedplans)
+(`<D>_seedplan.json.gz` for PD, AD, MS, HD and ALS; the evaluation scripts read the
+gzipped files directly). Use them, with the target lists above, to reproduce Fig. 4 and
+Supplementary Table 7. In these plans, the candidates in each cell type are the cell type's network
+proteins that are also in ProTrek's protein set (`make_seedplan.py` below does not apply the
+ProTrek filter).
+
+To build seed plans for your own networks with `make_seedplan.py` (paper settings: 15 seeds,
+100 trials):
+
+```bash
+python make_seedplan.py \
+    --disease_json ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
+    --ppi_dir      ../../data/networks/ppi_edgelists/ \
+    --ensp_json    ../data/ensp_to_gene.json \
+    --k_seed 15 --n_trials 100 \
+    --out_prefix   my_seedplans/PD
+```
+
+This writes `my_seedplans/PD_seedplan.json` and `my_seedplans/PD_targets.json` (the
+`--pd_gene_file` below). Repeat for AD, MS, HD and ALS.
 
 ---
 
@@ -50,11 +74,11 @@ Run each script once per disease × model combination. Each run produces a
 ```bash
 # SEMPER — run once per disease
 python run_evaluations/neuro_eval_semper_ct_network.py \
-    --seedplan      data/neuro_seedplan_PD.json \
-    --pd_gene_file  data/raw_targets_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
+    --pd_gene_file  ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json     data/ensp_to_gene.json \
-    --embed_path    data/esm_projected.pth \
-    --label_dict    data/esm_projected_labels.txt \
+    --embed_path    data/semper_embed.pth \
+    --label_dict    data/semper_labels.txt \
     --model_name    SEMPER_ESMCLIP \
     --out_prefix    trials/neuro_eval_SEMPER_ESMCLIP__ct_network_PD \
     --device        cuda \
@@ -62,8 +86,8 @@ python run_evaluations/neuro_eval_semper_ct_network.py \
 
 # PPI-GT — same script, swap embed_path, label_dict, model_name
 python run_evaluations/neuro_eval_semper_ct_network.py \
-    --seedplan      data/neuro_seedplan_PD.json \
-    --pd_gene_file  data/raw_targets_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
+    --pd_gene_file  ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json     data/ensp_to_gene.json \
     --embed_path    data/ppi_gt_embed.pth \
     --label_dict    data/ppi_gt_labels.txt \
@@ -74,8 +98,8 @@ python run_evaluations/neuro_eval_semper_ct_network.py \
 
 # PINNACLE — same script, swap embed_path, label_dict, model_name
 python run_evaluations/neuro_eval_semper_ct_network.py \
-    --seedplan      data/neuro_seedplan_PD.json \
-    --pd_gene_file  data/raw_targets_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
+    --pd_gene_file  ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json     data/ensp_to_gene.json \
     --embed_path    data/pinnacle_embed.pth \
     --label_dict    data/pinnacle_labels.txt \
@@ -84,15 +108,15 @@ python run_evaluations/neuro_eval_semper_ct_network.py \
     --device        cuda \
     --k_values 5 10 25
 
-# Repeat for AZ, MS, HD, ALS by swapping --seedplan, --pd_gene_file, --out_prefix
+# Repeat for AD, MS, HD, ALS by swapping --seedplan, --pd_gene_file, --out_prefix
 ```
 
 ### ESM-C (global embedding model)
 
 ```bash
 python run_evaluations/neuro_eval_esm_pklpt_ct_network.py \
-    --seedplan       data/neuro_seedplan_PD.json \
-    --pd_gene_file   data/raw_targets_PD.json \
+    --seedplan       seedplans/PD_seedplan.json.gz \
+    --pd_gene_file   ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json      data/ensp_to_gene.json \
     --label_dict     data/pinnacle_labels.txt \
     --esm_pickle     data/protein_esmc_600m.pkl \
@@ -103,15 +127,15 @@ python run_evaluations/neuro_eval_esm_pklpt_ct_network.py \
     --k_values 5 10 25 \
     --skip_if_missing_seed
 
-# Repeat for AZ, MS, HD, ALS
+# Repeat for AD, MS, HD, ALS
 ```
 
 ### ORCA (global graphlets)
 
 ```bash
 python run_evaluations/neuro_eval_graphlets_global_ct_network.py \
-    --seedplan      data/neuro_seedplan_PD.json \
-    --pd_gene_file  data/raw_targets_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
+    --pd_gene_file  ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json     data/ensp_to_gene.json \
     --label_dict    data/pinnacle_labels.txt \
     --node-map      data/transposenet_nodes.json \
@@ -122,15 +146,15 @@ python run_evaluations/neuro_eval_graphlets_global_ct_network.py \
     --k_values 5 10 25 \
     --skip_if_missing_seed
 
-# Repeat for AZ, MS, HD, ALS
+# Repeat for AD, MS, HD, ALS
 ```
 
 ### ORCA-CT (cell type-specific graphlets)
 
 ```bash
 python run_evaluations/neuro_eval_graphlets_ct_orbits_ct_network.py \
-    --seedplan      data/neuro_seedplan_PD.json \
-    --pd_gene_file  data/raw_targets_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
+    --pd_gene_file  ../../data/benchmarks/clinical_targets/analysis_target_lists/PD_targets_MONDO_0005180.json \
     --ensp_json     data/ensp_to_gene.json \
     --label_dict    data/pinnacle_labels.txt \
     --ct-orbits-dir data/ppi_graphlets_orca/ \
@@ -141,7 +165,7 @@ python run_evaluations/neuro_eval_graphlets_ct_orbits_ct_network.py \
     --k_values 5 10 25 \
     --skip_if_missing_seed
 
-# Repeat for AZ, MS, HD, ALS
+# Repeat for AD, MS, HD, ALS
 ```
 
 ### ProTrek Seq and ProTrek Struct (global embedding models)
@@ -152,7 +176,7 @@ the per-cell-type SEMPER candidate space. Run once per model × disease:
 ```bash
 # ProTrek Seq
 python run_evaluations/neuro_eval_protrek.py \
-    --seedplan      data/neuro_seedplan_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
     --ensp_json     data/ensp_to_gene.json \
     --protrek_gz    data/ensp_id2vec_mean.pkl.gz \
     --model_name    ProTrek_seq_mean \
@@ -163,7 +187,7 @@ python run_evaluations/neuro_eval_protrek.py \
 
 # ProTrek Struct — swap --protrek_gz and --model_name
 python run_evaluations/neuro_eval_protrek.py \
-    --seedplan      data/neuro_seedplan_PD.json \
+    --seedplan      seedplans/PD_seedplan.json.gz \
     --ensp_json     data/ensp_to_gene.json \
     --protrek_gz    data/ensp_id2vec_structure_mean.pkl.gz \
     --model_name    ProTrek_struct_mean \
@@ -172,7 +196,7 @@ python run_evaluations/neuro_eval_protrek.py \
     --k_values 5 10 25 \
     --skip_if_missing_seed
 
-# Repeat for AZ, MS, HD, ALS
+# Repeat for AD, MS, HD, ALS
 ```
 
 ---
@@ -190,15 +214,21 @@ python plot_results/plot_hits_at_k.py \
     --out_dir    figures/PD/ \
     --k_values   5 10 25
 
-# Repeat for AZ, MS, HD, ALS
+# Repeat for AD, MS, HD, ALS
 ```
 
-### Statistical significance vs. baselines (Figure 4 statistics)
+### Statistical significance vs. baselines (Supplementary Table 7)
+
+Run once per disease, so that Hits@k is averaged over the trials of one disease in
+each cell type. The test compares SEMPER with the cell type-aware baselines
+(paired, one-sided Wilcoxon signed-rank test across cell types):
 
 ```bash
-python plot_results/calc_hits_significance.py \
-    --trials_csv    "trials/*__trials.csv" \
-    --semper_model  SEMPER \
-    --baselines     PINNACLE PPI-GT ORCA-CT ESM-C ORCA \
-    --k_values      5 10 25
+for D in PD AD MS HD ALS; do
+  python plot_results/calc_hits_significance.py \
+      --trials_csv    "trials/*${D}*__trials.csv" \
+      --semper_model  SEMPER \
+      --baselines     PINNACLE PPI-GT ORCA-CT \
+      --k_values      10
+done
 ```

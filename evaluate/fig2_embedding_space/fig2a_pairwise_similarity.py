@@ -144,7 +144,7 @@ def plot_dumbbell(agg_df, out_prefix):
     color_intra = "#1f77b4"
     y_range = np.arange(1, len(agg_df) + 1)
 
-    fig, ax = plt.subplots(figsize=(6, 12))
+    fig, ax = plt.subplots(figsize=(6, max(2.5, 0.4 * len(agg_df))))  # 12 in. for the 30 superclusters
     ax.set_facecolor("white")
 
     ax.hlines(y_range, agg_df["mean_diff"], agg_df["mean_same"],

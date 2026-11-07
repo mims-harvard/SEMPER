@@ -1,23 +1,30 @@
 """
-filter_posneg_coabundance.py
+prepare_coabundance.py
+-----------------------
+Panel d: co-expressed AND brain co-abundant (Laman Trip et al.).
 
-Takes the existing posneg.csv (already containing co-expressed positives)
-and applies an additional co-abundance filter using Laman Trip et al.
-brain association scores.
+Step 1: take the co-expression posneg.csv (prepare_coexpressed.py) and keep
+the positives (label=1) for which ALL pairwise combinations of ENSP members
+have a brain association score >= threshold (paper: 0.5).
 
-For each positive complex (label=1), ALL pairwise combinations of its
-ENSP members must have a brain association score >= threshold.
-Negatives (label=0) are kept as-is.
+Step 2: draw this definition's OWN size-matched decoys for the kept positives
+(same cell type, same k, 1:10, seed 42), using step2_generate from
+prepare_coexpressed.py. The co-expression decoys are not reused.
 
-Outputs two new filtered CSVs, one per threshold (0.5 and 0.8),
-ready to be passed directly to zero_shot_single_model.py.
+Outputs, per threshold:
+  coab_assignments_t<thr>.csv   kept positives in assignments format
+  posneg_coabundance_t<thr>.csv positives + own decoys, ready for scoring
 
 Usage:
-    python filter_posneg_coabundance.py \
-        --posneg-csv   /path/to/posneg.csv \
+    python prepare_coabundance.py \
+        --posneg-csv   data/prepared/coexpressed/posneg.csv \
         --assoc-brain  /path/to/cohorts_combined_brain_tumor_avg_outer_prob.csv \
-        --ensp-json /path/to/ENSP_to_pref.json \
-        --out-dir      ./coabundance_posneg/
+        --ensp-json    /path/to/ENSP_to_pref.json \
+        --ppi-dir      data/ppi_edgelists/ \
+        --protrek-pkl  data/ensp_id2vec_mean.pkl.gz \
+        --thresholds   0.5 \
+        --neg-per-pos  10 --avoid-pos-members --dedupe-globally --seed 42 \
+        --out-dir      data/prepared/coabundance/
 """
 
 import argparse
@@ -29,6 +36,10 @@ import re
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+
+# decoy generation is shared with the co-expression definition
+from prepare_coexpressed import load_pickle_gz, step2_generate
+from prepare_coexpressed import norm_ensp as norm_ensp_prefix
 
 # ------------------------------------------------------------------ #
 #  Utilities                                                           #
@@ -180,6 +191,21 @@ def filter_posneg(posneg_df: pd.DataFrame,
     return result
 
 
+def to_assignments(positives_df: pd.DataFrame,
+                   members_col: str = "members_ensp") -> pd.DataFrame:
+    """Kept positives in the assignments format read by step2_generate."""
+    pos = positives_df
+    return pd.DataFrame({
+        "complex_name":  pos.get("complex_name", ""),
+        "complex_id":    pos.get("complex_id", ""),
+        "subunits_ensp": pos[members_col],
+        "members_norm":  pos[members_col],
+        "n_members":     pos.get("k", ""),
+        "cell_type":     pos["cell_type"],
+        "status":        "co-expressed",
+    })
+
+
 # ------------------------------------------------------------------ #
 #  Main                                                                #
 # ------------------------------------------------------------------ #
@@ -187,18 +213,27 @@ def filter_posneg(posneg_df: pd.DataFrame,
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--posneg-csv",   required=True,
-                    help="Existing posneg.csv (co-expression filtered)")
+                    help="Co-expression posneg.csv from prepare_coexpressed.py")
     ap.add_argument("--assoc-brain",  required=True,
                     help="Laman Trip brain association CSV")
     ap.add_argument("--ensp-json", required=True,
                     help="ENSP_to_pref.json")
+    ap.add_argument("--ppi-dir",      required=True,
+                    help="Cell type PPI edgelists (decoy pools)")
+    ap.add_argument("--protrek-pkl",  required=True,
+                    help="ProTrek ENSP->vec pickle.gz; defines the allowed protein universe")
     ap.add_argument("--out-dir",      default="./coabundance_posneg",
-                    help="Output directory for filtered CSVs")
+                    help="Output directory")
     ap.add_argument("--members-col",  default="members_ensp")
     ap.add_argument("--label-col",    default="label")
     ap.add_argument("--thresholds",   nargs="+", type=float,
-                    default=[0.5, 0.8],
-                    help="Co-abundance thresholds to apply (default: 0.5 0.8)")
+                    default=[0.5],
+                    help="Co-abundance thresholds to apply (paper: 0.5)")
+    ap.add_argument("--neg-per-pos",       type=int, default=10)
+    ap.add_argument("--neg-max-tries",     type=int, default=20000)
+    ap.add_argument("--avoid-pos-members", action="store_true")
+    ap.add_argument("--dedupe-globally",   action="store_true")
+    ap.add_argument("--seed",              type=int, default=42)
     args = ap.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -206,47 +241,51 @@ def main():
     # Load inputs
     ensp_to_pref = load_ensp_to_pref(args.ensp_json)
     gene_lookup  = load_brain_atlas(args.assoc_brain, ensp_to_pref)
+    allowed = set(norm_ensp_prefix(k) for k in load_pickle_gz(args.protrek_pkl).keys())
 
     print(f"\n[INFO] Loading posneg CSV: {args.posneg_csv}")
     posneg_df = pd.read_csv(args.posneg_csv, dtype=str)
     print(f"[INFO] Loaded {len(posneg_df):,} rows | "
           f"columns: {list(posneg_df.columns)}")
 
-    label_counts = posneg_df[args.label_col].value_counts()
-    print(f"[INFO] Label distribution:\n{label_counts.to_string()}")
-
     # Check required columns
-    required = {args.members_col, args.label_col}
+    required = {args.members_col, args.label_col, "cell_type"}
     missing  = required - set(posneg_df.columns)
     if missing:
         raise SystemExit(f"[ERROR] posneg CSV missing columns: {missing}")
 
-    # Apply each threshold and save
     summary_rows = []
     for threshold in args.thresholds:
+        # Step 1: co-abundance filter on positives (co-expression decoys are dropped)
         filtered_df = filter_posneg(
             posneg_df, gene_lookup, ensp_to_pref,
             threshold=threshold,
             members_col=args.members_col,
             label_col=args.label_col,
         )
+        positives = filtered_df[filtered_df[args.label_col].astype(int) == 1]
 
-        tag     = str(threshold).replace(".", "p")
-        out_csv = os.path.join(args.out_dir,
-                               f"posneg_coabundance_t{tag}.csv")
-        filtered_df.to_csv(out_csv, index=False)
-        print(f"\n[INFO] Saved: {out_csv}")
+        tag         = str(threshold).replace(".", "p")
+        assign_csv  = os.path.join(args.out_dir, f"coab_assignments_t{tag}.csv")
+        out_csv     = os.path.join(args.out_dir, f"posneg_coabundance_t{tag}.csv")
+        summary_json = os.path.join(args.out_dir, f"posneg_coabundance_t{tag}.summary.json")
+        to_assignments(positives, args.members_col).to_csv(assign_csv, index=False)
+        print(f"[INFO] Wrote {len(positives):,} co-abundance positives -> {assign_csv}")
 
-        n_pos = int((filtered_df[args.label_col].astype(int) == 1).sum())
-        n_neg = int((filtered_df[args.label_col].astype(int) == 0).sum())
+        # Step 2: this definition's own size-matched decoys
+        step2_generate(assign_csv, args.ppi_dir, allowed,
+                       args.neg_per_pos, args.neg_max_tries,
+                       args.avoid_pos_members, args.dedupe_globally,
+                       args.seed, out_csv, summary_json)
+
+        out = pd.read_csv(out_csv, dtype=str)
         summary_rows.append({
             "threshold":   threshold,
-            "n_positives": n_pos,
-            "n_negatives": n_neg,
+            "n_positives": int((out["label"].astype(int) == 1).sum()),
+            "n_negatives": int((out["label"].astype(int) == 0).sum()),
             "out_csv":     out_csv,
         })
 
-    # Print summary and next steps
     print("\n" + "="*60)
     print("SUMMARY")
     print("="*60)
@@ -255,18 +294,6 @@ def main():
               f"positives={row['n_positives']:,}  "
               f"negatives={row['n_negatives']:,}")
         print(f"    -> {row['out_csv']}")
-
-    print("\n[NEXT STEPS] Run zero_shot_single_model.py on each output:")
-    for row in summary_rows:
-        tag = str(row['threshold']).replace(".", "p")
-        print(f"""
-  python zero_shot_single_model.py \\
-    --eval-csv {row['out_csv']} \\
-    --model-name semper_esm_coabundance_t{tag} \\
-    --model-pt   <path/to/esm_projected.pth> \\
-    --model-labels <path/to/esm_projected_labels.txt> \\
-    --out-scores-csv out_scores/semper_esm_coabundance_t{tag}_scores.csv \\
-    --out-metrics-json out_scores/semper_esm_coabundance_t{tag}_metrics.json""")
 
     print("\n[DONE]")
 

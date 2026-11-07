@@ -236,8 +236,8 @@ def main():
     ap.add_argument("--ensp-json",     required=True,
                     help="Path to ensp_to_gene.json")
     ap.add_argument("--emf-xlsx",      required=True,
-                    help="Path to moondb_emf_idmap.xlsx (columns: symbol, alias). "
-                         "Included in data/moondb_emf_idmap.xlsx. "
+                    help="Path to moonlightproteins_moondb_allemf_idmap.xlsx (gene symbol column: symbol). "
+                         "Included in data/moonlightproteins_moondb_allemf_idmap.xlsx. "
                          "Source: MoonDB (https://moondb.hb.univ-amu.fr)")
     ap.add_argument("--out-prefix",    required=True,
                     help="Output prefix for CSV and figures")
