@@ -16,7 +16,7 @@ Every step uses the same scripts as the paper, run with fewer epochs.
 The paper's 442 cell type networks come from the adult human brain atlas and are not
 redistributed. [`demo_data/`](demo_data) instead holds four synthetic "cell type"
 networks of about 370 proteins and 5,000 interactions each. Their interactions are real:
-they come from the public TransposeNet 2 interactome (confidence ≥ 0.5), in the
+they come from the TransposeNet 2 interactome (confidence ≥ 0.5), in the
 neighbourhood of the Parkinson's disease targets. The "cell types" are not: each is a
 random 75% of that neighbourhood. A two-region metagraph and the proteins' sequences
 complete the inputs. [`make_demo_data.py`](make_demo_data.py) shows exactly how it was built.
