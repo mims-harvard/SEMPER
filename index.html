@@ -147,7 +147,6 @@
     <a href="PAPER_URL">Paper</a>
     -->
     <a href="https://github.com/mims-harvard/SEMPER">Code</a>
-    <a href="https://huggingface.co/mims-harvard/SEMPER">Model</a>
     <a href="#data">Data</a>
     <a href="#cite">BibTeX</a>
   </div>
@@ -202,7 +201,7 @@
 
   <h3 id="complexes">Cell type-specific protein complexes</h3>
   <p>
-    We test 298 CNS-relevant CORUM complexes (<a href="#data">Supplementary Table 4</a>). A complex is counted as present in a cell type under four definitions: co-expression, co-expression plus physical interaction, co-expression plus brain co-abundance, and co-expression plus subcellular colocalization. Each complex is scored by the mean pairwise similarity of its subunits and ranked against size-matched decoys. SEMPER has a higher AUPRC than PINNACLE, ORCA-CT and PPI-GT under all four definitions (one-sided Wilcoxon signed-rank, all <i>P</i>&nbsp;&lt;&nbsp;10<sup>&minus;12</sup>), and its median cell type is above every cell type-agnostic baseline, including ProTrek-Seq.
+    We curate 547 CNS-relevant CORUM complexes (Supplementary Table 4). A complex is counted as present in a cell type under four definitions: co-expression, co-expression plus physical interaction, co-expression plus brain co-abundance, and co-expression plus subcellular colocalization. Each complex is scored by the mean pairwise similarity of its subunits and ranked against size-matched decoys. SEMPER has a higher AUPRC than PINNACLE, ORCA-CT and PPI-GT under all four definitions (one-sided Wilcoxon signed-rank, all <i>P</i>&nbsp;&lt;&nbsp;10<sup>&minus;12</sup>), and its median cell type is above every cell type-agnostic baseline, including ProTrek-Seq.
   </p>
   <figure>
     <a href="figures/figure3.png"><img src="figures/figure3.png" alt="Zero-shot identification of protein complexes across CNS cell types" loading="lazy" /></a>
@@ -220,11 +219,11 @@
   <table>
     <thead><tr><th>Disease</th><th class="num">Targets</th><th class="num">Phase 2</th><th class="num">Phase 3</th><th class="num">Phase 4</th><th>File</th></tr></thead>
     <tbody>
-      <tr><td>Parkinson's disease</td><td class="num">97</td><td class="num">45</td><td class="num">18</td><td class="num">34</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_PD.csv">PD.csv</a></td></tr>
-      <tr><td>Alzheimer's disease</td><td class="num">130</td><td class="num">73</td><td class="num">48</td><td class="num">9</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_AD.csv">AD.csv</a></td></tr>
-      <tr><td>Multiple sclerosis</td><td class="num">166</td><td class="num">47</td><td class="num">56</td><td class="num">63</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_MS.csv">MS.csv</a></td></tr>
-      <tr><td>Huntington's disease</td><td class="num">86</td><td class="num">18</td><td class="num">67</td><td class="num">1</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_HD.csv">HD.csv</a></td></tr>
-      <tr><td>ALS</td><td class="num">98</td><td class="num">71</td><td class="num">17</td><td class="num">10</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_ALS.csv">ALS.csv</a></td></tr>
+      <tr><td>Parkinson's disease</td><td class="num">97</td><td class="num">45</td><td class="num">18</td><td class="num">34</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/clinical_targets/PD_clinical_targets.csv">PD.csv</a></td></tr>
+      <tr><td>Alzheimer's disease</td><td class="num">130</td><td class="num">73</td><td class="num">48</td><td class="num">9</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/clinical_targets/AD_clinical_targets.csv">AD.csv</a></td></tr>
+      <tr><td>Multiple sclerosis</td><td class="num">166</td><td class="num">47</td><td class="num">56</td><td class="num">63</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/clinical_targets/MS_clinical_targets.csv">MS.csv</a></td></tr>
+      <tr><td>Huntington's disease</td><td class="num">86</td><td class="num">18</td><td class="num">67</td><td class="num">1</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/clinical_targets/HD_clinical_targets.csv">HD.csv</a></td></tr>
+      <tr><td>ALS</td><td class="num">98</td><td class="num">71</td><td class="num">17</td><td class="num">10</td><td><a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/clinical_targets/ALS_clinical_targets.csv">ALS.csv</a></td></tr>
     </tbody>
   </table>
   <p>
@@ -241,7 +240,7 @@
 
   <h3 id="essential">Essential genes in dopaminergic neurons</h3>
   <p>
-    A genome-wide CRISPR/Cas9 screen in human iPSC-derived midbrain dopaminergic neurons gives a set of essential genes that is not described in the literature. We compare an LLM prompted with example genes, SEMPER retrieval, and an LLM that rescores SEMPER's top 100 candidates. SEMPER beats the LLM at every cutoff (Hits@25 1.8 vs 1.1, Hits@50 3.4 vs 2.7, Hits@75 4.9 vs 4.1), and the LLM rescoring raises Hits@75 to 5.9. The two pick different genes: the LLM favors well-studied neuronal genes, while SEMPER ranks regulators of G-protein signaling, mitochondrial respiration and protein trafficking (<a href="#data">Supplementary Table 8</a>).
+    A genome-wide CRISPR/Cas9 screen in human iPSC-derived midbrain dopaminergic neurons gives a set of essential genes that is not described in the literature. We compare an LLM prompted with example genes, SEMPER retrieval, and an LLM that rescores SEMPER's top 100 candidates. SEMPER beats the LLM at every cutoff (Hits@25 1.8 vs 1.1, Hits@50 3.4 vs 2.7, Hits@75 4.9 vs 4.1), and the LLM rescoring raises Hits@75 to 5.9. The two pick different genes: the LLM favors well-studied neuronal genes, while SEMPER ranks regulators of G-protein signaling, mitochondrial respiration and protein trafficking (Supplementary Table 8).
   </p>
   <figure>
     <a href="figures/figure5.png"><img src="figures/figure5.png" alt="Prediction of essential genes and clinically pursued targets with SEMPER and a large language model" loading="lazy" /></a>
@@ -278,45 +277,51 @@
 <section id="data">
   <h2>Data and code</h2>
   <p>
-    The cell type-specific interaction networks are not released. The ground-truth lists used for evaluation are in the
-    <a href="https://github.com/mims-harvard/SEMPER/tree/main/data/ground_truth">GitHub repository</a> as CSV files; see the folder's
-    <a href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/README.md">README</a> for column definitions.
+    The ground-truth datasets used to evaluate SEMPER are in the
+    <a href="https://github.com/mims-harvard/SEMPER/tree/main/data/benchmarks">GitHub repository</a> as CSV and JSON files. They contain no SEMPER
+    outputs and can be used to benchmark any protein representation model. See the folder's
+    <a href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/README.md">README</a> for column definitions and sources.
   </p>
   <table class="stack">
-    <thead><tr><th>Table</th><th>Contents</th><th class="num">Rows</th><th>Files</th></tr></thead>
+    <thead><tr><th>Dataset</th><th>Contents</th><th class="num">Rows</th><th>Files</th></tr></thead>
     <tbody>
       <tr>
-        <td>Supplementary Table 4</td>
-        <td>CNS-relevant CORUM protein complexes with subunits and GO annotations (Figure 3)</td>
-        <td class="num">298</td>
+        <td>Cell type-specific protein complexes<br>(Supplementary Table 4)</td>
+        <td>547 CNS-relevant CORUM complexes and, for each of the four complex definitions, the complexes present in each cell type with ten size-matched decoys per complex, as evaluated in Figure 3 (144, 125, 40 and 36 complexes)</td>
+        <td class="num">547</td>
         <td>
-          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table4_CNS_protein_complexes.csv">view</a>
-          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table4_CNS_protein_complexes.csv" download>csv</a>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/tree/main/data/benchmarks/protein_complexes">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/protein_complexes/cns_complexes_547.csv" download>complexes</a>
         </td>
       </tr>
       <tr>
-        <td>Supplementary Table 6</td>
-        <td>Clinically pursued drug targets for PD, AD, MS, HD and ALS, with trial phase, ChEMBL/DrugBank drugs and therapeutic intent (Figures 4&ndash;6)</td>
-        <td class="num">577</td>
+        <td>Clinically pursued targets<br>(Supplementary Table 6)</td>
+        <td>Targets of drugs and compounds in completed Phase 2 or in Phase 3&ndash;4 trials for Alzheimer's disease, Parkinson's disease, multiple sclerosis, Huntington's disease and ALS, with clinical phase, ChEMBL/DrugBank drugs, pharmacological action and therapeutic intent (Figures 4&ndash;6). The exact target lists used in the analyses are in <code>analysis_target_lists/</code></td>
+        <td class="num">130 / 97 / 166 / 86 / 98</td>
         <td>
-          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table6_clinical_targets_all.csv">view</a>
-          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table6_clinical_targets_all.csv" download>csv</a>
-          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table6_clinical_targets.xlsx" download>xlsx</a>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/tree/main/data/benchmarks/clinical_targets">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/clinical_targets/AD_clinical_targets.csv" download>AD</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/clinical_targets/PD_clinical_targets.csv" download>PD</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/clinical_targets/MS_clinical_targets.csv" download>MS</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/clinical_targets/HD_clinical_targets.csv" download>HD</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/clinical_targets/ALS_clinical_targets.csv" download>ALS</a>
         </td>
       </tr>
       <tr>
-        <td>Supplementary Table 8</td>
-        <td>Dopaminergic neuron essential genes in the top 3 of the LLM, SEMPER or SEMPER+LLM (Figure 5e)</td>
-        <td class="num">26</td>
+        <td>Dopaminergic neuron essential genes</td>
+        <td>Genes essential to the survival of human iPSC-derived midbrain dopaminergic neurons, from the genome-wide CRISPR screen of Nazeen et al. (2026) (Figure 5)</td>
+        <td class="num">693</td>
         <td>
-          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/ground_truth/SI_Table8_DA_essential_genes_top3.csv">view</a>
-          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/ground_truth/SI_Table8_DA_essential_genes_top3.csv" download>csv</a>
+          <a class="dl" href="https://github.com/mims-harvard/SEMPER/blob/main/data/benchmarks/da_neuron_essential_genes/da_neuron_essential_genes.csv">view</a>
+          <a class="dl" href="https://raw.githubusercontent.com/mims-harvard/SEMPER/main/data/benchmarks/da_neuron_essential_genes/da_neuron_essential_genes.csv" download>csv</a>
         </td>
       </tr>
     </tbody>
   </table>
   <p>
-    Code is on <a href="https://github.com/mims-harvard/SEMPER">GitHub</a> (MIT License) and model weights are on <a href="https://huggingface.co/mims-harvard/SEMPER">Hugging Face</a>.
+    The cell type-specific interaction networks, SEMPER representations and model weights are not released. Code is on
+    <a href="https://github.com/mims-harvard/SEMPER">GitHub</a> (MIT License), with a
+    <a href="https://github.com/mims-harvard/SEMPER/tree/main/tutorial">tutorial</a> that runs the full pipeline on a demo dataset and reproduces paper-style figures with the same scripts.
   </p>
 </section>
 
