@@ -264,12 +264,11 @@ released (see below), so they can be run on representations trained with the cod
 If you use SEMPER, please cite:
 
 ```bibtex
-@article{dong2026semper,
+@misc{dong2026semper,
   title   = {Multimodal protein representations across human brain cell types},
   author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Gao, Shanghua and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
-  journal = {},
   year    = {2026},
-  url     = {https://github.com/mims-harvard/SEMPER}
+  url     = {https://zitniklab.hms.harvard.edu/SEMPER/}
 }
 ```
 
