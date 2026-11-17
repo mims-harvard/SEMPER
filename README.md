@@ -1,7 +1,7 @@
 # SEMPER: Multimodal protein representations across human brain cell types
 
 [![Project Page](https://img.shields.io/badge/Project_Page-mims--harvard-blue)](https://zitniklab.hms.harvard.edu/SEMPER/)
-[![Paper](https://img.shields.io/badge/Paper-SEMPER-green)](#citation)
+[![Paper](https://img.shields.io/badge/Paper-bioRxiv-green)](https://www.biorxiv.org/content/10.64898/2026.11.10.765762)
 [![Code](https://img.shields.io/badge/Code-SEMPER-purple)](https://github.com/mims-harvard/SEMPER)
 [![License](https://img.shields.io/badge/License-MIT-lightgreen)](LICENSE)
 
@@ -256,6 +256,7 @@ released (see below), so they can be run on representations trained with the cod
 - **Interactome:** TransposeNet 2 will be available at Figshare (doi:[10.6084/m9.figshare.33717070](https://doi.org/10.6084/m9.figshare.33717070)).
 - **Cell type networks, representations and model weights:** the 442 cell type PPI networks, the metagraph, and the SEMPER representations and model weights derived from them are not released. The weights are specific to these networks, so to apply SEMPER to another atlas, tissue or organism, retrain on your own networks with the code above.
 - **Project website:** https://zitniklab.hms.harvard.edu/SEMPER/
+- **Preprint:** https://www.biorxiv.org/content/10.64898/2026.11.10.765762
 
 ---
 
@@ -264,11 +265,13 @@ released (see below), so they can be run on representations trained with the cod
 If you use SEMPER, please cite:
 
 ```bibtex
-@misc{dong2026semper,
+@article{dong2026semper,
   title   = {Multimodal protein representations across human brain cell types},
   author  = {Dong, Amy and Li, Michelle M. and Ding, Kerr and Nazeen, Sumaiya and Noori, Ayush and Huang, Yepeng and Gao, Shanghua and Ritter, Dylan and Afroz, Jalwa and Henderson, Alexander B. H. and Studer, Lorenz and Luo, Yunan and Khurana, Vikram and Parmigiani, Giovanni and Zitnik, Marinka},
+  journal = {bioRxiv},
   year    = {2026},
-  url     = {https://zitniklab.hms.harvard.edu/SEMPER/}
+  doi     = {10.64898/2026.11.10.765762},
+  url     = {https://www.biorxiv.org/content/10.64898/2026.11.10.765762}
 }
 ```
 
